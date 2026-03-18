@@ -19,6 +19,26 @@ For local conversion of these .md format files, to other friendly formats, I rec
 
 ---
 
+# Section Study Guides
+
+Comprehensive study guides with exam coaching, must-know concepts, common exam traps, command references, quick-reference tables, and practice quizzes.
+
+| Section | Days | Topics |
+| --- | --- | --- |
+| [Section_01_Days_1-15_Study_Guide.md](./summary_sections/Section_01_Days_1-15_Study_Guide.md) | 1–15 | Network Devices, Cables, OSI, CLI, Ethernet, IPv4, Subnetting |
+| [Section_02_Days_16-20_Study_Guide.md](./summary_sections/Section_02_Days_16-20_Study_Guide.md) | 16–20 | VLANs, DTP/VTP, STP Part 1 |
+| [Section_03_Days_21-25_Study_Guide.md](./summary_sections/Section_03_Days_21-25_Study_Guide.md) | 21–25 | STP Part 2, RSTP, EtherChannel, Dynamic Routing, RIP/EIGRP |
+| [Section_04_Days_26-30_Study_Guide.md](./summary_sections/Section_04_Days_26-30_Study_Guide.md) | 26–30 | OSPF Parts 1–3, FHRPs, TCP & UDP |
+| [Section_05_Days_31-35_Study_Guide.md](./summary_sections/Section_05_Days_31-35_Study_Guide.md) | 31–35 | IPv6 Parts 1–3, Standard ACLs, Extended ACLs |
+| [Section_06_Days_36-40_Study_Guide.md](./summary_sections/Section_06_Days_36-40_Study_Guide.md) | 36–40 | CDP/LLDP, NTP, DNS, DHCP, SNMP |
+| [Section_07_Days_41-45_Study_Guide.md](./summary_sections/Section_07_Days_41-45_Study_Guide.md) | 41–45 | Syslog, SSH, FTP/TFTP, Static NAT, Dynamic NAT/PAT |
+| [Section_08_Days_46-50_Study_Guide.md](./summary_sections/Section_08_Days_46-50_Study_Guide.md) | 46–50 | QoS, Security Fundamentals, Port Security, DHCP Snooping |
+| [Section_09_Days_51-55_Study_Guide.md](./summary_sections/Section_09_Days_51-55_Study_Guide.md) | 51–55 | DAI, LAN/WAN Architectures, Virtualization & Cloud, Wireless Fundamentals |
+| [Section_10_Days_56-58_Study_Guide.md](./summary_sections/Section_10_Days_56-58_Study_Guide.md) | 56–58 | Wireless Architectures, Wireless Security, Wireless Configuration |
+| [Section_11_Days_59-63_Study_Guide.md](./summary_sections/Section_11_Days_59-63_Study_Guide.md) | 59–63 | Network Automation, JSON/XML/YAML, REST APIs, SDN, Ansible/Puppet/Chef |
+
+---
+
 # Course Day Chapter Notes:
 
 - Day 1.  [Network_Devices.md](./Course_Notes/Network_Devices.md)
