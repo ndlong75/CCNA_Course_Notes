@@ -1,0 +1,213 @@
+====================================================================
+CCNA 200-301 - HUONG DAN HOC NHANH VOI CLAUDE AI
+====================================================================
+
+Khoa hoc: Free CCNA 200-301 (126 clips YouTube)
+Playlist: https://www.youtube.com/playlist?list=PLxbwE86jKRgMpuZuLBivzlM8s2Dk5lXBQ
+Muc tieu: Pass CCNA exam 200-301
+Phuong phap: Extract transcript + hoc voi Claude AI
+
+====================================================================
+BUOC 1: CHUAN BI (15 phut)
+====================================================================
+
+1. Cai dat Python (neu chua co):
+   https://python.org/downloads
+
+2. Cai thu vien can thiet:
+   pip install youtube-transcript-api pytube
+
+3. Chay script:
+   python ccna_transcript_extractor.py
+
+4. Ket qua: thu muc "ccna_transcripts" chua:
+   - VIDEO_INDEX.txt         → Muc luc toan bo khoa hoc
+   - ALL_TRANSCRIPTS.txt     → Toan bo transcript (file lon)
+   - batches_for_claude/     → 26 file batch, moi file 5 video
+   - 001_*.txt ... 126_*.txt → Transcript tung video rieng le
+
+====================================================================
+BUOC 2: HOC VOI CLAUDE - QUY TRINH TUNG BATCH
+====================================================================
+
+Moi ngay hoc 2-3 batch (10-15 video). Voi 126 clips / 5 video moi
+batch = 26 batches. Hoc 3 batch/ngay → xong trong ~9 ngay.
+
+PROMPT MAU #1: TOM TAT & KEY CONCEPTS
+--------------------------------------
+Copy noi dung batch file vao Claude, kem prompt:
+
+"""
+Day la transcript cua 5 video trong khoa hoc CCNA 200-301.
+
+Hay giup toi:
+1. TOM TAT moi video trong 5-7 dong (focus vao exam-relevant content)
+2. LIET KE cac khai niem/thuat ngu CCNA quan trong (dinh nghia ngan)
+3. TAO BANG so sanh neu co nhieu concepts tuong tu (vd: TCP vs UDP)
+4. GHI CHU nhung diem kho hoac de nham lan trong ky thi
+5. MAP vao CCNA exam domain nao (Network Fundamentals, Network Access,
+   IP Connectivity, IP Services, Security, Automation)
+"""
+
+
+PROMPT MAU #2: QUIZ & KIEM TRA
+-------------------------------
+Sau khi doc tom tat, dung prompt nay:
+
+"""
+Dua tren noi dung 5 video CCNA vua tom tat, hay:
+
+1. Tao 15 cau hoi trac nghiem (4 lua chon) giong format de thi CCNA
+2. Moi cau ghi ro dap an dung va GIAI THICH tai sao
+3. Them 5 cau hoi tinh huong (scenario-based) nhu de thi that
+4. Danh dau do kho: Easy / Medium / Hard
+"""
+
+
+PROMPT MAU #3: FLASHCARD
+--------------------------
+"""
+Tu noi dung CCNA vua hoc, tao 20 flashcards theo format:
+
+FRONT: [Cau hoi hoac khai niem]
+BACK: [Cau tra loi ngan gon, de nho]
+
+Uu tien cac khai niem:
+- Subnet mask va CIDR notation
+- Port numbers quan trong
+- Protocol functions
+- Command syntax (Cisco IOS)
+- So sanh giua cac protocol
+"""
+
+
+PROMPT MAU #4: CISCO IOS COMMANDS
+----------------------------------
+"""
+Tu transcript nay, liet ke TAT CA Cisco IOS commands duoc nhac den.
+Voi moi command:
+- Cu phap day du
+- Giai thich chuc nang
+- Vi du su dung cu the
+- Luu y khi dung trong thuc te va trong ky thi
+
+Sap xep theo: Global config → Interface config → Show commands
+"""
+
+
+PROMPT MAU #5: SUBNETTING PRACTICE (cho cac video ve IP addressing)
+-------------------------------------------------------------------
+"""
+Dua tren noi dung video ve subnetting/IP addressing, hay:
+
+1. Giai thich lai cach tinh subnet bang cach don gian nhat
+2. Tao 10 bai tap subnetting tu de den kho
+3. Chi cach tinh nhanh (shortcut) cho ky thi
+4. Cac subnet mask can nho thuoc long
+"""
+
+
+====================================================================
+BUOC 3: ON TAP TONG HOP (sau khi xong 126 clips)
+====================================================================
+
+PROMPT TONG HOP #1: STUDY GUIDE
+---------------------------------
+"""
+Toi da hoc xong toan bo khoa hoc CCNA 200-301 (126 video).
+Hay tao mot COMPREHENSIVE STUDY GUIDE bao gom:
+
+1. CCNA Exam Blueprint - trong so tung domain:
+   - Network Fundamentals (20%)
+   - Network Access (20%)
+   - IP Connectivity (25%)
+   - IP Services (10%)
+   - Security Fundamentals (15%)
+   - Automation and Programmability (10%)
+
+2. Voi moi domain: liet ke cac topic chinh va muc do quan trong
+3. Cac khai niem HAY BI NHAM LAN nhat trong ky thi
+4. TOP 50 commands can nho
+5. Checklist tu danh gia truoc khi thi
+"""
+
+
+PROMPT TONG HOP #2: PRACTICE EXAM
+-----------------------------------
+"""
+Tao mot bai thi thu CCNA 200-301 voi:
+- 50 cau hoi trac nghiem
+- Phan bo theo dung ty le exam blueprint
+- Bao gom: single choice, multiple choice, va drag-and-drop style
+- Co scenario-based questions
+- Timer suggestion: 90 phut
+- Dap an va giai thich chi tiet o cuoi
+"""
+
+
+PROMPT TONG HOP #3: WEAK AREAS
+--------------------------------
+"""
+Trong qua trinh hoc CCNA, toi thay kho nhat o phan [X].
+Hay:
+1. Giai thich lai [X] tu co ban den nang cao
+2. Dung vi du thuc te de minh hoa
+3. Tao 10 cau hoi tap trung vao [X]
+4. Chi ra cac "trap" thuong gap trong de thi lien quan den [X]
+"""
+
+
+====================================================================
+TIPS HOC NHANH & HIEU QUA
+====================================================================
+
+1. SPEED: Xem video o toc do 1.5x-2x, doc transcript khi can chi tiet
+
+2. PRIORITY: Tap trung vao 3 domain lon nhat:
+   - IP Connectivity (25%) → routing, OSPF
+   - Network Fundamentals (20%) → OSI, TCP/IP, subnetting
+   - Network Access (20%) → VLAN, STP, wireless
+
+3. HANDS-ON: Dung Cisco Packet Tracer (mien phi) de thuc hanh commands
+   Download: https://www.netacad.com/courses/packet-tracer
+
+4. SPACED REPETITION: Sau moi batch, on lai batch truoc do bang quiz
+
+5. ACTIVE RECALL: Truoc khi doc tom tat Claude, thu tu nho lai
+   noi dung video da xem
+
+6. 80/20 RULE: 20% kien thuc xuat hien trong 80% cau hoi thi:
+   - Subnetting & IP addressing
+   - VLAN configuration
+   - OSPF concepts
+   - ACL (Access Control Lists)
+   - Basic security concepts
+   - Wireless fundamentals
+
+7. EXAM DAY: Dang ky thi tai Pearson VUE
+   - Phi: ~$330 USD
+   - Thoi gian: 120 phut
+   - So cau: 100-120 cau
+   - Diem dat: ~825/1000
+
+====================================================================
+LICH HOC GOI Y (2 TUAN)
+====================================================================
+
+Ngay 01: Batch 01-03 (Video 1-15)    → Network Fundamentals
+Ngay 02: Batch 04-06 (Video 16-30)   → Network Fundamentals + Access
+Ngay 03: Batch 07-09 (Video 31-45)   → Network Access (VLAN, STP)
+Ngay 04: Batch 10-12 (Video 46-60)   → IP Connectivity (Routing)
+Ngay 05: Batch 13-15 (Video 61-75)   → IP Connectivity (OSPF)
+Ngay 06: ON TAP Ngay 1-5             → Quiz tong hop + weak areas
+Ngay 07: NGHI                        → De nao nghi ngoi
+
+Ngay 08: Batch 16-18 (Video 76-90)   → IP Services
+Ngay 09: Batch 19-21 (Video 91-105)  → Security Fundamentals
+Ngay 10: Batch 22-24 (Video 106-120) → Automation & Programmability
+Ngay 11: Batch 25-26 (Video 121-126) → Review & misc topics
+Ngay 12: ON TAP TONG HOP             → Full practice exam
+Ngay 13: ON TAP WEAK AREAS           → Focus vao phan yeu
+Ngay 14: THI THU CUOI CUNG           → Simulated exam conditions
+
+====================================================================

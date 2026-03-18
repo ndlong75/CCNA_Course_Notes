@@ -1,0 +1,27 @@
+CCNA 200-301 - Complete Course Video Index
+======================================================================
+
+Total in playlist: 126
+Transcripts ready: 8
+Still missing:     0
+
+By extraction method:
+  API: 8 videos
+
+
+BY CCNA EXAM DOMAIN:
+--------------------------------------------------
+
+3-IP_Connectivity (1 videos):
+  126. (158m) Complete Network Configuration // CCNA Mega Lab! / OSPF, VLANs, STP, DHCP, Security, Wireless + more
+
+4-IP_Services (1 videos):
+  119. (41m) AI & Machine Learning | CCNA 200-301 Day 59 (part 2)
+
+6-Automation (6 videos):
+  120. (28m) Free CCNA | JSON, XML, & YAML | Day 60 | CCNA 200-301 Complete Course
+  121. (31m) Free CCNA | REST APIs | Day 61 | CCNA 200-301 Complete Course
+  122. (29m) REST API Authentication | CCNA 200-301 Day 61 (part 2)
+  123. (28m) Free CCNA | Software-Defined Networking | Day 62 | CCNA 200-301 Complete Course
+  124. (21m) Free CCNA | Ansible, Puppet, & Chef | Day 63 (part 1) | CCNA 200-301 Complete Course
+  125. (22m) Terraform | CCNA 200-301 Day 63 (part 2)

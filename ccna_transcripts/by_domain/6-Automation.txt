@@ -1,0 +1,3137 @@
+CCNA Domain: 6-Automation (6 videos)
+======================================================================
+
+--- VIDEO 120: Free CCNA | JSON, XML, & YAML | Day 60 | CCNA 200-301 Complete Course ---
+
+Welcome to Jeremy’s IT Lab. This is a free,
+complete course for the CCNA. If you like
+these videos, please subscribe to follow along
+with the series. Also, please like and leave
+a comment, and share the video to help spread
+this free series of videos. Thanks for your
+help. In this video we will look at JSON,
+XML, and YAML. These are known as data serialization
+languages, or data serialization formats.
+These allow us to format or structure data
+in a standardized way so it can be communicated
+between applications. This is covered in exam
+topic 6.7, which says you must be able to
+interpret JSON encoded data. Note that it
+only mentions JSON, not XML or YAML. So, the
+majority of this video will focus on JSON,
+but at the end I will take a bit of time to
+compare JSON to two other popular data serialization
+languages, XML and YAML.
+Here’s what we’ll cover in this video.
+First I’ll briefly introduce data serialization
+and why we need it. Then I’ll cover JSON.
+This will be the main part of this video,
+and we’ll focus on how to interpret basic
+JSON-encoded data. Then I’ll briefly introduce
+XML and YAML, so you can compare and contrast
+them with JSON. However I won’t spend so
+much time on those two, since they’re not
+mentioned in the exam topics list. And make
+sure to watch until the end of the video for
+a bonus practice question from Boson Software’s
+ExSim, the best practice exams for the CCNA.
+So, let’s take a look at what data serialization
+is. It is the process of converting data into
+a standardized format, or structure, that
+can be stored, for example in a file, or transmitted,
+for example over a network, and then be reconstructed
+later, perhaps by a different application.
+Why is that useful? It allows the data to
+be communicated between applications in a
+way both applications can understand. If one
+application is written in Python, and the
+other is written in Java, both languages store
+data differently so they need some standard
+format to send data between each other. Data
+serialization languages, for example JSON,
+allow us to represent variables with text.
+Now, what is a variable? Here are some examples
+of variables. Interface name, gigabitethernet1/1.
+Status, up. IP address, 192.168.1.1. Netmask,
+255.255.255.0. These are four variables. Basically,
+variables are containers that store values.
+For example ‘interface_name’ is a container,
+and it contains the value ‘gigabitethernet1/1’
+inside of it. ‘Status’ is another container,
+and inside there is the value ‘up’. So,
+let’s see how data exchanges would work
+without the use of a standard data serialization
+format. The client, for example an app trying
+to get information from an SDN controller,
+sends a GET message. The server, the controller,
+sends those variables directly to the client
+without converting them to a standard format
+like JSON. However, the client doesn’t understand
+the data it received. The app and the controller
+are programs written in different languages
+and they store data differently, they can’t
+communicate directly.
+So let’s see how a data serialization language
+such as JSON fixes that. The client sends
+a GET request. The requested variables are
+sent to the API, which converts them to a
+standard format, JSON, and sends them over
+the network to the client. Because the variables
+are in a standard format that both the client
+and the server understand, the client is able
+to take those variables and convert them into
+its own native format. Now, we haven’t looked
+at any details about how APIs work yet, I
+will cover them in the next video. So, this
+process might not be totally clear for you
+yet, but I’m sure you can see the benefit
+of having a standard data format like JSON
+to allow these two programs to share data
+with each other.
+Now let’s take a look at JSON. JSON, which
+stands for JavaScript Object Notation, is
+an open standard file format and data interchange
+format, meaning it can be used to store data
+as files or to send data over a network, that
+uses human-readable text to store and transmit
+data objects. So, although it’s used to
+exchange data between machines, so it must
+be easily machine-readable of course, it’s
+also quite human-readable. It’s easy for
+us to read and understand. It is standardized
+in RFC 8259, which you can access at this
+URL. Or just do a google search for RFC 8259.
+I recommend taking the time to read it. If
+you’re not used to reading technical documentation
+like this it might be a bit difficult to understand
+at first, but it’s the best source to really
+understand JSON. Anyway, JSON was derived
+from JavaScript, but it is language-independent
+and many modern programming languages are
+able to generate and read JSON data. Note
+that REST APIs often use JSON, which is why
+Cisco expects you to learn the basics of JSON
+for the CCNA exam. In JSON, whitespace is
+insignificant. What does that mean? Well,
+I’ll demonstrate with examples later, but
+basically it means that spaces and linebreaks
+don’t matter. They don’t change the meaning
+of the data. In JSON, there are four primitive
+data types. In the next slide I’ll demonstrate
+them, but they are string, number, boolean,
+and null. In addition, there are two structured
+data types, object and array. Let’s look
+at these six data types and see how JSON data
+is actually formatted.
+First up, the primitive data types. A string
+is a text value, and it is surrounded by double
+quotes. Here are some examples of strings.
+Hello. Notice that it is surrounded by double
+quotes. This means it is a string, a series
+of alphanumeric characters. These are all
+also strings. So, remember that if it’s
+contained within double quotes, it’s a string,
+a simple text value. Next, a number is simply
+a numeric value. It is not surrounded by quotes.
+So, 5, 100, or any other number. Note that
+the five in the string examples with the double
+quotes is a string, a text value, but the
+5 down here without double quotes is a number,
+a numeric value. They are different data types.
+Next, a boolean is a data type that has only
+two possible values. Those are true and false.
+Note that they are written without quotes.
+In a networking setting, perhaps on an OSPF-enabled
+interface a variable named ‘passive’ would
+have the boolean value ‘true’ if the interface
+is passive, and if the interface isn’t passive
+the variable would have the boolean value
+‘false’. That’s just one example of
+how boolean values could be used. Note that
+in the string examples I included “true”
+with double quotes. That isn’t a boolean
+value, that’s just the word ‘true’,
+a series of letters. However when written
+without double quotes, it is a boolean value.
+Finally, note that they are written all lower-case,
+no capital T in true or capital F in false.
+The final primitive data type is null, which
+represents the intentional absence of any
+object value. It’s simply written as null,
+lower case n u l l, without quotes. This simply
+means there is no value, it means nothing.
+Again, in the string examples I included “null”
+in double quotes. That is a string, because
+it is contained within double quotes. It does
+not express a null value, it just means the
+word ‘null’. Okay, those are the four
+primitive JSON data types. String, number,
+boolean, and null.
+Now let’s go on to the structured data types,
+there are two. First, an object is an unordered
+list of key-value pairs, basically variables.
+Unordered means the order of the variables
+doesn’t matter. Objects are surrounded by
+curly brackets. The key, which is basically
+the name of the variable, the container, must
+be a string. So, it must use double quotes.
+Then the value inside of that variable can
+be any valid JSON data type. A string, number,
+boolean, null, object, or array. The key and
+the value are separated by a colon, and if
+there are multiple key-value pairs in the
+object, each pair is separated by a comma.
+Okay, let’s look at some examples to help
+you visualize it. This is one JSON object.
+Note the curly bracket at the top indicating
+the start of the object, and the curly bracket
+closing it at the bottom. Inside there are
+five key-value pairs. Before looking at this
+object in more detail, I want to show you
+this. This is the exact same object. As I
+said before, in JSON whitespace is insignificant,
+it has no meaning. Of course, for humans the
+one on the left is easier to read, but computers
+don’t care either way.
+So, I’ve colored the keys blue and the values
+red. All of this is one JSON object, but let’s
+look at the data type of each individual key
+and value. First, the top one. “interface”
+in double quotes, that’s the key. Then notice
+a colon separating the key and the value,
+which is “gigabitethernet1/1” in double
+quotes. So, the key and value are both strings,
+they both have double quotes. Remember that
+the key must be a string, but the value can
+be any valid JSON data type. Notice that there
+is a comma after as well, because if there
+are multiple key-value pairs in an object,
+each pair is separated by a comma. Okay, in
+the next key-value pair under it the key is
+“is_up”. It’s a string, of course. Notice
+the colon between the key “is_up” and
+the value, which is true, written without
+double quotes. That is a boolean. This probably
+indicates that the interface status is up,
+because of the value true for the key “is_up”.
+Again, notice the comma after this key-value
+pair, because there is another key-value pair
+after it. For these next two examples, the
+values are both strings, because they are
+contained within double quotes. Notice the
+standard JSON formatting again. The key is
+always a string, there is a colon between
+the key and value, and there is a comma after
+each key-value pair. Now let’s look at the
+final pair. What data type is the value 1000?
+It’s a number, a numeric value not contained
+in double quotes. And notice that this time
+there is no comma after the value. That’s
+because it’s the last key-value pair in
+this object. Okay, so that’s a basic JSON
+object with multiple key-value pairs inside.
+Now, as you can see in the following example,
+objects are a valid data type for the value
+of a key-value pair. I’ve colored the curly
+brackets to make it a bit easier to see, but
+I want you to pause the video to try to interpret
+this data. Find the key value pairs. It’s
+important that you get comfortable reading
+JSON-formatted data, as it’s clearly stated
+in the CCNA exam. Okay, so this example is
+one JSON object, indicated by the red curly
+brackets at the top and bottom. Inside of
+this object there are two key-value pairs.
+Here’s one key-value pair. The key is “device”,
+a string of course, and the value is an object,
+indicated by the blue curly brackets. So,
+we have an object inside of an object. Note
+that objects within objects are called ‘nested
+objects’. Now, within that value, the object,
+there are multiple key-value pairs. “name”:”R1”
+is a key-value pair, “vendor”:”Cisco”
+is a key-value pair, and “model”:”1101”
+is a key-value pair. Now down here we have
+one more key-value pair, and again the value
+is an object, indicated by the purple curly
+brackets. And inside of that object there
+are again more key-value pairs. I’m keeping
+this fairly easy to read by using indenting
+and using line breaks and different colors,
+but keep in mind that JSON data won’t always
+look like this. The whitespace is insignificant
+and only used to make it easier for us to
+read, but applications themselves don’t
+need this whitespace.
+Okay, now there is one more JSON structured
+data type to look at, and that is the array.
+An array is a series of values separated by
+commas. Note that it’s not a series of key-value
+pairs, that’s an object. It’s just a series
+of values. And note that the values don’t
+have to be the same data type. One could be
+a string, and another a number, for example.
+So, here I’ve got one JSON object with two
+key-value pairs, and both of the values are
+arrays. The first array, the value of the
+“interfaces” key, lists three interface
+names, with a comma between each of them.
+Note that there is no comma after gigabitethernet1/3,
+because it’s the last value. And then the
+second array has two values, “Hi” and
+5. Note that “Hi” is a string and 5 is
+a number, because it has no double quotes.
+So, as you can see the values don’t necessarily
+have to be the same type, although often they
+will be. If you need to, pause the video now
+to look at this example and make sure you
+understand it, as well as the previous examples.
+Just listening to me talk about JSON won’t
+help you interpret it if you don’t practice
+actually looking at and understanding JSON-formatted
+data.
+For reference, here is the output of SHOW
+IP INTERFACE BRIEF, and a version of the same
+output in JSON. Note that this isn’t actual
+JSON output from a Cisco device, I just wrote
+this JSON data myself. The point is that,
+although SHOW command outputs in the CLI are
+easy for us humans to read, they aren’t
+in a format that is easy for computers to
+understand. JSON, on the other hand, is very
+easy for computers to understand, and if we
+format the text properly like this it’s
+also quite human-readable too. Anyway, pause
+the video if you want to compare this SHOW
+command output and the JSON data.
+Okay, so we’ve looked at all of the six
+JSON data types. There are four primitive
+data types: string, number, boolean, and null,
+and two structured data types: object and
+array. One more point, note that an object
+is sometimes called a dictionary. Same thing,
+just a different name, but you should be aware
+of it. Okay, that’s all for JSON for now.
+We’ll take a quick look at XML and YAML,
+and then in the quiz for today’s video we’ll
+get lots of practice interpreting JSON data.
+So, here’s XML. XML was developed as a markup
+language, but is now used as a general data
+serialization language. You know what a data
+serialization language is, but what’s a
+markup language? Markup languages are used
+to format text, for example HTML, which you’ve
+probably heard of, is a markup language. XML
+is generally less human-readable than JSON,
+although it’s not so difficult to read.
+Like JSON, whitespace is insignificant, although
+you’ll often see it displayed with spaces
+and line breaks to make it more human-readable.
+XML is also often used by REST APIs, same
+as JSON. The general format you need to know
+is this: the key is tagged like this, with
+the value in the middle. For example, on Cisco
+IOS you can use a SHOW command, pipe the command
+with the FORMAT keyword, and it will display
+it in XML. I used SHOW IP INTERFACE BRIEF,
+pipe, FORMAT, and here is the output in XML
+format. I’ve colored the output to make
+it easier to see, so I think you can easily
+see the keys and values. We have two interfaces,
+each marked with ENTRY tags. Within each entry
+we have Interface, IP-address, OK, Method,
+Status, and Protocol keys, and the value is
+in the middle of those keys. For example,
+here we have an  tag, with a value
+of GigabitEthernet0/0, and then a forward
+slash interface tag to close it off.
+And here you can compare the regular SHOW
+IP INTERFACE BRIEF output with the XML-formatted
+output, without any coloring in the XML this
+time. XML is generally thought to be less
+human-readable than JSON, but it’s still
+not so hard to read when formatted like this.
+So, that’s all I’ll say about XML. If
+you’re familiar with HTML, it looks quite
+similar. Remember basic characteristics like
+the key-value pair format for variables using
+tags, remember that whitespace is insignificant,
+and remember that it’s similar to HTML and
+also used by REST APIs. If you want to take
+some time to examine this output pause the
+video, but now I’ll move on.
+Finally, let’s take a brief look at YAML.
+The name YAML originally meant Yet Another
+Markup Language, but to distinguish its purpose
+as a data-serialization language rather than
+a markup language, it was repurposed to YAML
+Aint Markup Language. That’s known as a
+recursive acronym by the way, when the acronym
+itself is part of the acronym. YAML is used
+by the network automation tool Ansible, which
+we’ll cover in another video. It has all
+sorts of other uses too, of course, but its
+use in Ansible is relevant to our current
+topic, network automation. YAML is very human-readable,
+and whitespace is significant, unlike JSON
+and XML. So, indentation is very important.
+We aren’t free to format the text however
+we want. YAML files start with three hyphens,
+and one hyphen is used to indicate a list.
+Key value pairs are represented as key colon
+value. There are more rules to YAML, of course,
+but I’ll leave it there. Here’s an example
+of YAML. This is the same SHOW IP INTERFACE
+BRIEF data I showed you in JSON and XML. It
+looks quite simple compared to JSON and XML.
+And for comparison, here it is next to JSON.
+As you can see, both languages are quite human-readable,
+and they’re also used by applications to
+communicate data. So, that’s all I’ll
+say about YAML. You don’t need to know it
+or XML as much as you need to know JSON, but
+you should know basic things such as the fact
+that whitespace is significant in YAML, and
+that it’s used in Ansible, because we’ll
+be studying Ansible in a future video.
+Here’s what we covered in this video. I
+gave a basic introduction to data serialization
+and why we need it. Basically, it’s to provide
+a standard data format so applications can
+communicate the data with each other. Then
+I introduced JSON, XML, and YAML, focusing
+primarily on JSON because it’s the one you
+really need to know for the CCNA. Now, in
+today’s quiz I will give more questions
+than usual so you can practice reading and
+interpreting JSON data. And make sure to watch
+until the end of the quiz for a bonus question
+from Boson Software’s ExSim, the best practice
+exams for the CCNA. Okay, let’s go to quiz
+question 1.
+In which of the following data serialization
+languages is whitespace significant? Pause
+the video now to select the best answer.
+Okay, the answer is B, YAML. In JSON and XML
+whitespace is not significant, it has no meaning.
+However in YAML whitespace is significant,
+so things like indentation are very important.
+Okay, let’s go to question 2.
+Which of the following data serialization
+languages formats key-value pairs like this?
+Key, value, and then forward slash key. Pause
+the video now to select the best answer.
+Okay, the answer is C, XML. XML uses HTML-like
+tags like this to indicate key-value pairs.
+Okay, let’s go to question 3.
+Which of the following is NOT a valid JSON
+data type? Pause the video now to select the
+best answer.
+Okay, the answer is E, key. Although JSON
+defines key-value pairs, key isn’t actually
+a data type. All keys must be strings, and
+string is a valid data type. Okay, let’s
+go to question 4.
+Examine the JSON-formatted data. Which of
+the following statements is true? Pause the
+video now to select the best answer.
+Okay, the answer is C, there are too many
+commas. Here I’ve highlighted the extra
+comma. A comma is required between separate
+key-value pairs in an object, but you should
+not put a comma after the last key-value pair.
+Okay, let’s go to question 5.
+Examine the JSON-formatted data. Which of
+the following statements is true? Pause the
+video now to select the best answer.
+Okay, the answer is B, the value of “ip_interfaces”
+is an array. Now, within that array there
+are multiple objects, but as these square
+brackets indicate, the value itself is an
+array, that’s the JSON data type. Okay,
+let’s go to question 6.
+Which of the following is an example of valid
+JSON-formatted data? Pause the video now to
+select the best answer.
+Okay, the answer is D. Let me point out the
+errors in the others. In A, there is a comma
+after the “interfaces” key. It should
+be a colon. In B, there is a colon after this
+value 5. A colon should only be used between
+the key and value of a key-value pair, it
+is not valid here. And in C, there is a missing
+comma between gigabitethernet1/1 and gigabitethernet1/2.
+If multiple values are listed in an array,
+there must be a comma between each of them.
+There are no problems with D, it is valid
+JSON data. Okay, let’s go to question 7.
+Examine the JSON-formatted data. Which of
+the following statements is true? Pause the
+video now to select the best answer.
+Okay, the answer is A, the value of “is_up”
+is a boolean. I’ve highlighted it here.
+It’s true, written without double quotes,
+so it is a boolean value. Booleans can be
+true or false, and they are written without
+quotes. Okay, let’s go to question 8.
+Examine the JSON-formatted data. Which of
+the following statements is true? Pause the
+video now to select the best answer.
+Okay, the answer is D, it is valid JSON data.
+No comma or curly brackets are missing, and
+whitespace is insignificant in JSON, so this
+is validly formatted. We often use indentation
+and line breaks to make it easier to read,
+but whitespace like that is unnecessary and
+doesn’t have any meaning in JSON. Okay,
+let’s go to question 9.
+Examine the JSON-formatted data. Which of
+the following statements is true? I think
+this question will be a bit more of a challenge.
+Make sure each opening curly bracket has a
+closing curly bracket, each opening square
+bracket has a closing square bracket, each
+string has double quotes, etc. Pause the video
+to select the best answer.
+Okay, the answer is C, a square bracket is
+missing. The value of the “routes” key
+is an array, it has an opening square bracket,
+but in the example on the left there is no
+closing square bracket for that array. Again,
+make sure to check carefully that each opening
+bracket has a closing bracket. Let’s go
+to question 10.
+Examine the JSON-formatted data. Which of
+the following statements is true? Pause the
+video now to select the best answer.
+Okay, the answer is A, it is valid JSON data.
+There are no missing curly brackets or square
+brackets, and the value of “dhcp4” is
+a string, not a boolean. Okay, I hope this
+practice was helpful for you. That’s all
+for the quiz. Now let’s take a look at a
+bonus question from Boson Software’s ExSim
+for CCNA.
+
+--- VIDEO 121: Free CCNA | REST APIs | Day 61 | CCNA 200-301 Complete Course ---
+
+Welcome to Jeremy’s IT Lab.
+This is a free, complete course for the CCNA.
+If you like these videos, please subscribe
+to follow along with the series.
+Also, please like and leave a comment, and
+share the video to help spread this free series
+of videos.
+Thanks for your help.
+In this video we will look at REST APIs.
+APIs are used to allow programs to exchange
+information with each other.
+They are important for network automation
+because they allow our programs to easily
+interact with network devices and controllers.
+REST APIs specifically are commonly used for
+the Northbound interface in SDN architecture.
+I’ve already briefly introduced REST APIs
+and SDN, but in this video we’ll look at
+REST APIs in greater depth, and then in the
+next we’ll do the same for SDN.
+This video will cover exam topic 6.5, which
+states that you must be able to describe characteristics
+of REST-based APIs.
+So, as with all of the exam topics in this
+section, Cisco doesn’t expect you to master
+the use of REST APIs, they just expect you
+to have a foundational understanding.
+Here’s what we’ll cover in this video.
+First I’ll briefly review APIs.
+Then I’ll introduce CRUD operations and
+HTTP.
+CRUD stands for Create, Read, Update, and
+Delete, and it refers to the different actions
+we perform when using REST APIs.
+HTTP also uses CRUD operations, and REST APIs
+often use HTTP as their communication protocol
+over the network, so it’s important to understand
+HTTP.
+Then I’ll outline the characteristics of
+REST APIs, and finally we’ll use Cisco DevNet
+to try out a couple basic REST API Calls,
+and it’s free to use so you can follow along
+too.
+Make sure to watch until the end of the video
+for a bonus practice question from Boson Software’s
+ExSim, the best practice exams for the CCNA.
+So, let’s quickly review what an API is.
+An API, application programming interface,
+is a software interface that allows two applications
+to communicate with each other.
+They are essential not just for network automation,
+but for all kinds of applications.
+If you want other applications to be able
+to access data from your application, you
+should design an API that allows them to access
+it.
+Here’s that basic diagram of SDN architecture
+again, which we’ll cover in greater detail
+in the next video.
+In SDN architecture, APIs are used to communicate
+between apps and the SDN controller via the
+northbound interface, and between the SDN
+controller and the network devices via the
+southbound interface.
+The NBI typically uses REST APIs, the topic
+of this video.
+Some other examples of APIs that can be used
+to configure network devices via the southbound
+interface are NETCONF and RESTCONF, but we
+won’t cover those in this video.
+You’ll have to learn more about those for
+the CCNP and beyond, however.
+So, let’s take a look at CRUD.
+CRUD stands for Create, Read, Update, Delete,
+and it refers to the operations we perform
+using REST APIs.
+But this CRUD framework isn’t just used
+by REST APIs, and I’ll introduce it using
+HTTP in the next slide.
+First let’s look at the definition of each
+of those operations.
+Create operations are used to create new variables
+and set their initial values.
+For example, you could create a variable “ip_address”
+and set the value to “10.1.1.1”.
+Read operations are used to retrieve the value
+of a variable, for example you could then
+ask ‘What is the value of variable “ip_address”?
+Update operations are used to change the value
+of a variable, for example you could change
+the value of the variable “ip_address”
+to “10.2.3.4”.
+And finally delete operations are used to
+delete variables, so you could delete the
+variable “ip_address”.
+So, those are the CRUD operations, now let’s
+look at HTTP.
+First, why should I talk about HTTP, even
+though this video is about REST?
+First, HTTP uses ‘verbs’ or ‘methods’
+that map to these CRUD operations, and these
+CRUD operations match the actions we typically
+want to perform with an application.
+When an HTTP client sends a request to an
+HTTP server, it includes a verb indicating
+what the client wants to do.
+For example, if the client is trying to access
+a web page on a server, it will use the GET
+verb to retrieve that web page, to get it,
+from the server.
+And for this reason, among others, REST APIs
+typically use HTTP as their application-layer
+protocol to communicate over the network.
+So, let’s compare these CRUD operations
+to HTTP verbs.
+Here is a simple chart.
+The HTTP verb POST is used to create a new
+variable.
+The equivalent of a read operation is GET.
+There are two main options for the update
+operation, PUT and PATCH, and the verb for
+the delete operation is simply DELETE.
+You don’t have to know the exact details
+of these verbs, but definitely know which
+ones are used for which CRUD operation.
+The flashcards will help with remembering
+them.
+There are other HTTP verbs too, and you can
+see them in this guide from Mozilla if you
+want to learn more.
+Let’s look more at how those verbs are used.
+When an HTTP client, or a REST client using
+HTTP, sends a request to a server, it includes
+some information such as an HTTP verb, which
+I just introduced and a URI, uniform resource
+identifier, indicating the resource it is
+trying to access.
+So, here we have a server storing data as
+variables, with a URI for each resource.
+The client sends a GET message, for example,
+trying to retrieve the resource with URI A.
+The server would then send a response, but
+I’ll get into the details of the response
+soon.
+Here’s an example of a URI, and I’ll use
+this URI later when demonstrating a REST API
+call on Cisco DevNet.
+Note the three main sections.
+First is the scheme, which is basically the
+protocol.
+In this case HTTP, or more specifically HTTPS,
+HTTP Secure, is the protocol.
+Then there is the authority.
+This is basically the address, or hostname,
+you are sending the request to.
+After that is the path, this indicates the
+resource you want to access.
+Now, the Verb and URI are just part of the
+HTTP request, let’s look at some more of
+an HTTP request.
+The HTTP request can include additional headers
+which pass additional information to the server.
+There is a great list at this page here from
+Mozilla.
+Here’s an example of an HTTP request message.
+On the outside there is an IP header and a
+TCP header, then the HTTP verb and URI, followed
+by some additional headers and data.
+An example header would be the Accept header,
+which informs the server about the type or
+types of data that can be sent back to the
+client.
+The client might say I accept JSON data or
+XML data, for example.
+There’s another list of standard HTTP headers
+here on Wikipedia, and there are examples
+for each header so you can see what kind of
+information is included.
+Now, before I continue I want to clarify once
+more why I’m spending so much time talking
+about HTTP in a video that’s supposed to
+be about REST APIs.
+It’s because when a REST client makes an
+API call, a request to a REST server, it will
+send an HTTP request like the one above.
+So, you have to understand some basics about
+HTTP.
+Note that REST APIs don’t actually HAVE
+to use HTTP for communication, although HTTP
+is the most common choice.
+For the purpose of the CCNA you can assume
+that REST APIs use HTTP, but just keep in
+mind that HTTP is a specific communication
+protocol, and REST is a framework for building
+APIs.
+They aren’t the same thing, and they aren’t
+always used together.
+Now, after the client’s HTTP request the
+server has to send a response.
+Let’s look a bit at what is in that response.
+The server’s response will include a status
+code indicating if the request succeeded or
+failed, as well as other details.
+You might not know it, but I’m sure you’ve
+seen at least one of these codes before.
+The first digit indicates the class, the type,
+of the response.
+Here are the different classes.
+If the response code begins with a 1, it is
+an informational response.
+This indicates that the server received the
+request, but the exact meaning beyond that
+depends on the remaining two digits of the
+response code.
+We’ll look at an example in the next slide.
+If the response code begins with a 2, the
+class is ‘successful’.
+This means the request was successfully received,
+understood, and accepted.
+This is usually the class of response you
+want from the server.
+If the response code begins with a 3 the class
+is redirection.
+It means that further action is required to
+be taken in order to complete the request.
+For example, if the URI of the resource has
+been changed, this response can tell the client
+to request the new URI to get the resource.
+If the response code begins with a 4, the
+response class is client error.
+This means there was some error in the request
+and it can’t be fulfilled, such as requesting
+a resource that doesn’t exist.
+Let me show an example of that.
+The client sends a GET request for the resource
+at URI G, however that doesn’t exist on
+the server.
+So, it sends a response with response code
+404, indicating the resource was not found.
+I think many of you will recognize the 404
+code, you’ve probably seen it on the Internet
+before.
+For example, I tried to access google.com/jeremysitlab,
+and I got an error message.
+Notice the response code, 404, indicating
+that the resource was not found.
+I got this error message because google.com/jeremysitlab
+doesn’t exist, at least not until Google
+acquires my company for the low price of a
+billion dollars.
+If anyone from Google’s watching, I’m
+waiting for your offer.
+Anyway, there is one more class of response.
+If the response code begins with a 5 the class
+is server error.
+This means that the request was valid, but
+the server was unable to fulfill it for some
+reason.
+For example, perhaps the server doesn’t
+support the HTTP version of the request.
+Here are some examples of each HTTP Response
+class.
+I’ll just give one or two examples for each.
+For the informational class, you might see
+code 102, which means processing.
+This indicates that the server has received
+the request and is processing it, but the
+response is not yet available.
+For the successful class you might see code
+200, meaning OK.
+This indicates that the request succeeded.
+If this is in response to a GET request, for
+example, the code 200 in the header will indicate
+it was successful, and in the message body
+the requested resource is sent.
+Another example is 201, created, which indicates
+that the request succeeded and a new resource
+was created, for example in response to a
+POST request.
+Remember, POST is equivalent to the CRUD Create
+operation.
+In the redirection class, 301, moved permanently,
+indicates that the requested resource has
+been moved, and the server indicates its new
+location to the client.
+In the client error class we have 403, unauthorized.
+This means that the client must authenticate
+to get a response.
+Note that when talking about AAA in the security
+section of the course I told you about authentication
+and authorization.
+They are different things.
+The official name for code 403 is unauthorized,
+but maybe a better name would be unauthenticated,
+because it indicates that the client needs
+to authenticate.
+Another example is 404, indicating that the
+requested resource was not found.
+Finally, an example of the server error class
+is 500 internal server error, indicating that
+the server encountered something unexpected
+that it doesn’t know how to handle.
+These are just a few examples, but there are
+many more HTTP response codes.
+If you’re curious about the others, check
+out this page, once again from Mozilla.
+You can also check out this page for a summary
+of which Response codes you might see in response
+to each HTTP verb.
+Okay, that’s enough about HTTP.
+Let’s finally take a look at some characteristics
+of REST APIs.
+REST stands for representational state transfer.
+And REST APIs are also known as REST-based
+APIs or RESTful APIs.
+I usually just call them REST APIs.
+Note that, as I’ve said before, REST isn’t
+a specific API.
+Rather, it describes a set of rules about
+how the API should work.
+It’s a framework for APIs.
+The six constraints, or rules, of RESTful
+architecture are a uniform interface, client-server
+architecture, stateless operations, cacheable
+(or non-cacheable) functions, a layered system,
+and optionally something called code-on-demand.
+If you’re curious to know more details about
+all of these requirements check out this link,
+but now I will explain just a few of them
+that I think you should know for the CCNA.
+The first is client-server.
+REST APIs use a client-server architecture,
+like HTTP.
+The client uses API calls, basically that
+means HTTP requests, to access resources on
+the server, such as in the example below.
+The separation between the client and server
+means that they can both change and evolve
+independently of each other, they aren’t
+dependent on one another.
+And when the client application changes or
+the server application changes, the interface
+between them must not break, it should continue
+to function.
+I think you’re fairly familiar with client-server
+architecture already, it’s used in various
+aspects of networking.
+The next characteristic I want to cover is
+that REST API exchanges are stateless.
+I haven’t mentioned this term yet in the
+course, but it’s an important one.
+Statelessness means that each API exchange
+is a separate event, independent of all past
+exchanges between the client and server.
+So, the server does not store information
+about previous requests to determine how it
+should respond to new requests.
+Each new request is a totally separate event.
+And if authentication is required, this means
+that the client has to authenticate with the
+server for each request it makes.
+Although I haven’t used the term stateless,
+or stateful, in the course yet, I have introduced
+some stateful and stateless protocols.
+For example, TCP is stateful.
+It establishes connections and uses sequence
+and acknowledgment numbers to keep track of
+the exchanges between hosts.
+UDP, on the other hand, is stateless.
+No connection is set up and neither host keeps
+track of any sequence or acknowledgment numbers.
+The data is simply sent from host A to host
+B, UDP doesn’t keep track of the state of
+the exchange.
+Now, I want to make a clarification.
+Although REST APIs use HTTP, which uses TCP
+as its Layer 4 protocol, HTTP and REST APIs
+themselves aren’t stateful.
+Keep in mind that the functions of the layers
+of the OSI model are separate.
+Just because a stateful Layer 4 protocol is
+used doesn’t mean that the application layer
+protocol must also be stateful.
+The last rule of REST APIs that I’ll mention
+is the cacheable OR non-cacheable requirement.
+Let me explain.
+REST APIs must support caching of data, basically
+that means storing data for future use.
+You might have heard this term before in reference
+to web browsing.
+For example, your computer might cache many
+elements of a web page so that it doesn’t
+have to retrieve the entire page every time
+you visit it.
+This improves performance for the client and
+reduces the load on the server.
+So, caching must be supported, but that doesn’t
+mean that every resource has to be cacheable.
+Not all resources have to be cacheable, but
+cacheable resources must be declared as cacheable
+when the server sends them to the client,
+so the client will cache them for future use.
+As I said before, if you’re curious about
+the other aspects of REST APIs you can check
+this link for restfulapi.net, but those three
+are the key ones you should understand for
+now.
+And I’m repeating myself, but let me say
+this again.
+For applications to communicate over a network,
+networking protocols must be used to facilitate
+those communications.
+And for REST APIs, HTTP is the most common
+choice, or more often HTTPS, its encrypted
+version is used.
+That’s all we’ll cover for REST.
+For the CCNA, Make sure you know the CRUD
+actions, HTTP client request verbs, HTTP server
+response codes, and the basic characteristics
+of REST APIs that we covered in this video.
+Now let’s move on to try some simple REST
+API calls using free resources provided by
+Cisco DevNet.
+So, what is Cisco DevNet?
+I’ll let them describe it themselves.
+Cisco DevNet is Cisco’s developer program
+to help developers and IT professionals who
+want to write applications and develop integrations
+with Cisco products, platforms, and APIs.
+There’s the magic word, API.
+Basically, DevNet offers lots of free resources
+such as courses, tutorials, labs, sandboxes,
+documentation, etc. to learn about automation
+and develop your skills.
+It really is a great resource and it keeps
+getting better.
+Note that there is also a DevNet certification
+track that you can pursue if you’re interested
+in network automation.
+If that’s the case for you, perhaps consider
+the DevNet associate cert after you get your
+CCNA.
+Today we will use their Cisco DNA Center Sandbox
+to send a REST API call using Postman.
+DNA Center is one of Cisco’s SDN controllers,
+and we’ll cover it in the next video when
+we go more in depth regarding SDN.
+DevNet has various always-on sandboxes, which
+are devices you are free to access at any
+time and look around to get familiar with
+them.
+In this case we’ll use their always-on DNA
+Center sandbox.
+And Postman, which we’ll use to send the
+API calls, is a platform for building and
+using APIs.
+It’s also a great learning tool.
+So, to start I want you to make an account
+on DevNet, developer.cisco.com, and also make
+an account on postman.com and download the
+desktop app.
+You can use it directly in your browser too,
+but I like to use the desktop app.
+For this demonstration we will simply follow
+this short tutorial on DevNet.
+Go to this link or just do a google search
+for ‘devnet dna center getting started’,
+it should be the top result.
+Note that you don’t have to follow along,
+you can just watch me do it, but I do recommend
+that you try it out yourself.
+But even if you’re just following what I’m
+doing, make sure you read the tutorial on
+DevNet too because it will explain the reason
+for each of the steps.
+I’ll just show you them.
+So, I’ve installed the Postman desktop app
+and opened it.
+From the home screen, click on workspaces
+and and select My Workspace.
+If you don’t have a workspace you can create
+one by clicking where it says ‘create workspace’.
+Now I’m in my workspace.
+Next you should click New here.
+That will open this window, where you can
+select what you want to create.
+For example, you can create a new API, documentation
+for an API, a mock server to test APIs, etc.
+In this case, we want to create an HTTP request
+which we will send to DevNet’s DNA center
+server.
+After clicking on HTTP request, we can now
+specify what kind of HTTP request we want
+to send to DNA center’s REST API.
+As explained in the DevNet tutorial, first
+we have to generate an authorization token
+which we will use for our second HTTP request.
+First, set the HTTP verb to POST, it is GET
+by default.
+Then we have to specify the URL.
+Just a quick note, the DevNet tutorial uses
+the term URL, Uniform Resource Locator, but
+I used the term URI, Uniform Resource Identifier,
+earlier in the video.
+Basically, a URL is just a type of URI.
+You can google ‘URI vs URL’ for more info.
+So, if we send a POST request to this URL,
+an authorization token will be generated.
+However we have to specify a username and
+password for that to happen.
+To do that, click on authorization here, and
+then select Basic Auth.
+That will open this menu, where you should
+enter these credentials.
+Username devnetuser, password Cisco123! with
+a capital C and an exclamation point at the
+end.
+Okay, the POST is ready so now we can click
+send to send the POST request to DNA center’s
+API.
+If the POST is successful you will get a response
+with code 200, OK.
+The body of the response message will include
+your authorization token in JSON key-value
+format.
+Make sure to copy the value of the token.
+You don’t have to copy the quotation marks
+around the string, just the part I’ve highlighted.
+Okay, now we’re ready to send the second
+API call, which will retrieve a device inventory
+from the DNA center controller.
+First, change the HTTP verb to GET.
+We will also send this request to a different
+URL, as written in the tutorial.
+And the next step is to add an additional
+HTTP header with our authentication token.
+To do that, click on ‘headers’ here, enter
+‘X-Auth-Token’ for the key, and in the
+value field paste the authorization key you
+got from DNA center with the previous API
+call.
+Okay, now we’re ready for the second API
+call, click on send to send the GET request.
+If the GET is successful, you will once again
+get a response with a 200 OK code.
+And in the body we get the requested information,
+JSON-formatted data listing the inventory
+of devices managed by the DNA center controller.
+The output here is quite long, but let me
+show output for one of the devices.
+Here is that output.
+You should be familiar with the format, as
+I mentioned it’s JSON.
+So, by looking at this output we can learn
+about this device that is managed by the DNA
+center controller.
+For example, the device family is listed as
+switches or hubs.
+Since hubs aren’t really used anymore, it’s
+safe to say that this is a switch.
+The role is access, so it’s an access layer
+switch.
+The hostname is leaf1.abc.com.
+Leaf1, perhaps that means this is a leaf switch
+in a spine-leaf architecture.
+Here’s the platform ID, C9300-24U.
+This is the device model, Catalyst 9300.
+Here’s a picture of a C9300, by the way.
+We can also get info like the uptime, how
+much time has passed since the device booted
+up.
+So, that was a quick look at some basic REST
+API calls to Cisco DNA Center using Postman.
+We retrieved data in a machine-readable format,
+JSON, so we can write applications that gather
+data like this, interact with it, tell DNA
+center to change it, etc.
+We’ve barely scratched the surface, but
+I hope you’re starting to see the utility
+of APIs.
+Here’s what we covered in this video.
+We briefly reviewed what an API is, and then
+looked at CRUD operations and their equivalent
+HTTP verbs.
+Then we looked at the basic characteristics
+of REST APIs, and finally tried a few REST
+API Calls to DNA Center using a Cisco DevNet
+tutorial.
+As I mentioned earlier, make sure you know
+the CRUD actions, HTTP client request verbs,
+HTTP server response codes, and the basic
+characteristics of REST APIs that I covered
+in this video.
+I also gave various links to different resources
+throughout the video that I recommend reading,
+although they will go in much more depth than
+is required.
+But check them out if you want a greater understanding.
+And make sure to watch until the end of the
+quiz for a bonus practice question from Boson
+Software’s ExSim, the best practice exams
+for the CCNA.
+Okay, let’s go to quiz question 1.
+What HTTP response code would you expect to
+receive if you tried to GET a resource that
+doesn’t exist on the server?
+Pause the video now to select the best answer.
+Okay, the answer is B, 404.
+This code means Not Found.
+If the requested resource does not exist on
+the server, you can expect this response code.
+Okay, let’s go to question 2.
+Which of the following is NOT a constraint
+of RESTful architecture?
+Pause the video now to select the best answer.
+Okay, the answer is C, stateful.
+REST APIs are stateless, meaning that each
+individual client request is a unique event,
+not dependent on any previous requests.
+In addition to these five constraints, there
+is an optional one called ‘code on demand’,
+which basically extends client functionality
+by allowing them to download and execute code
+from servers.
+Okay, let’s go to question 3.
+Which category of HTTP response would you
+expect in response to a successful request?
+Pause the video now to select the best answer.
+Okay, the answer is B, you should expect a
+response code beginning with 2.
+This indicates a successful request, for example
+with the 200 OK response code or the 201 Created
+response code.
+Okay, let’s go to question 4.
+HTTP verbs PUT and PATCH are equivalent to
+what CRUD operation?
+Pause the video now to select the best answer.
+Okay, the answer is C, U, which stands for
+update.
+Note that you might also see PUT categorized
+as a Create action, because it can be used
+to create new variables, but usually it’s
+used as an Update function.
+Okay, let’s go to question 5.
+Which of the following would you expect to
+find as the scheme of a URI?
+Pause the video now to select the best answer.
+Okay, the answer is A, HTTPS.
+The scheme of a URI identifies the protocol
+you are using, typically HTTP or HTTPS for
+web services and REST APIs.
+Okay, that’s all for the quiz.
+Now let’s take a look at a bonus question
+in Boson Software’s ExSim for CCNA.
+
+--- VIDEO 122: REST API Authentication | CCNA 200-301 Day 61 (part 2) ---
+
+Hi from Tokyo Japan, and welcome to Jeremy’s 
+IT Lab. In this video we’re going to cover REST  
+API authentication. We’ve already covered the 
+basics of REST APIs, but Cisco recently added  
+authentication to the list of things you need 
+to know about REST for the CCNA exam. APIs give  
+access to an application and its data, so security 
+should always be a major concern when designing  
+and using APIs. In this video, we’ll examine 
+some common methods of REST API authentication.
+But before we get started, let me take a minute 
+to shill my books, Acing the CCNA Exam volumes  
+1 and 2. These books are up to date, covering 
+everything you need for the latest version of  
+the exam. REST API authentication, for example, 
+is covered in chapter 23 of volume 2. I highly  
+recommend using books in combination with 
+a video course, and if you want my books,  
+you can get them at the links on the screen 
+now, or on Amazon. Now let’s get started.
+So, what are we going to cover in this 
+video? First, I’ll introduce the concept  
+of REST API authentication in general, 
+including why it’s so important. Then,  
+for the rest of the video, we’ll cover 
+four common types of REST authentication:  
+basic authentication, bearer authentication, 
+API key authentication, and finally OAuth2.0.  
+We’ll outline how each of these methods works, 
+and their advantages and disadvantages. So,  
+that’s the plan for today. Now let’s 
+learn about REST API authentication.
+Hopefully you already know this definition 
+from the security section of the course, but  
+authentication is the process of validating the 
+identity of a user or system to ensure legitimate  
+access to resources. In the case of an API, the 
+resource is the application and its data. In many  
+cases, these resources should be protected. But 
+without authentication, unauthorized users can  
+send API requests, potentially accessing sensitive 
+data or modifying the application. For example,  
+here we have an application and some data. The API 
+serves as an interface, allowing other apps to use  
+the application or to access its data. Without 
+authentication, if a malicious user sends an  
+API call, also called an API request, the API will 
+accept the request and provide the requested data.  
+It’s worth noting that some APIs are intentionally 
+open and don’t require authentication. These APIs  
+typically provide publicly available data 
+that doesn’t require security protection.
+But for many APIs, that isn’t the case, 
+and security is a major concern. When the  
+malicious user makes the API call, the API 
+should authenticate the user, asking “who  
+are you?”. If the authentication process fails, 
+the request is denied and the user doesn’t get  
+access to the data. Implementing a reliable 
+authentication method like this is essential  
+for protecting applications and data that aren’t 
+meant to be publicly available. And in addition to  
+security concerns, many APIs track usage for 
+analytics and billing purposes. For example,  
+charging customers according to how much they use 
+the API is a common practice. A great example is  
+the ChatGPT API. Many AI applications use ChatGPT 
+behind the scenes, and OpenAI charges businesses  
+based on token usage. Basically, a token 
+is a chunk of text, either input or output,  
+and this means companies pay more as they send 
+larger or more frequent requests to the API.
+So, to summarize the previous slide, when working 
+with REST APIs, authentication is crucial for  
+verifying a client’s identity and securing access 
+to resources. REST APIs use various types of  
+authentication to achieve this, and we’ll cover 
+some key ones in this video. These authentication  
+types are also called authentication methods, 
+or authentication schemes; those are the more  
+technical terms. In this video, we’re going to 
+cover four of them. The first method is basic  
+authentication. As the name suggests, this is the 
+simplest form of REST authentication. It sends a  
+username and password in every request, encoded 
+in Base64 format. Note that encoding is not the  
+same as encryption; I’ll explain that in the next 
+slide. Next, we have bearer authentication. This  
+method uses a token, called a bearer token, 
+included as an HTTP header in the request,  
+to verify the client’s identity. This method 
+is quite common in modern APIs; the client  
+first obtains a token and then includes it in 
+requests after that. Another common method is API  
+key authentication. This requires a unique key, 
+which is typically included as an HTTP header,  
+like the bearer token. The API key acts as a 
+unique identifier for the client, and is useful  
+for tracking usage. Finally, we have OAuth 2.0. 
+This is a more advanced and secure authentication  
+framework that grants access using access tokens. 
+OAuth 2.0 is widely used for delegated access  
+and third-party authentication. I’ll break down 
+what those terms mean when we cover OAuth 2.0 in  
+detail. But if you’ve ever seen the “log in with 
+google” option on a website, that’s OAuth2.0. Each  
+of these methods has its own advantages and 
+use cases. Now let’s look at them one by one.
+We’ll start with basic authentication, which 
+authenticates using a username and password in  
+the HTTP headers of each API request. Before 
+we dive deeper into basic authentication,  
+let's first break down the structure of an HTTP 
+message so you can see where authentication fits  
+in. It begins with what’s called the start line, 
+which includes three pieces of information: The  
+HTTP method, which is POST in this case; the URL, 
+which is api/v1/acl/rules; and the HTTP version,  
+which is 2 in this case. The POST method 
+is typically used for a create operation;  
+think back to the CRUD operations (create, read, 
+update, delete) we covered in the previous video  
+on REST. So, this HTTP message is probably a 
+request to create something on the server. Next,  
+we have the headers. These provide metadata about 
+the request, such as authentication details,  
+content type, and information about the 
+client making the request. Often there  
+are several headers; there are four in this 
+case. The headers are followed by a blank line,  
+and then there is the message body, the actual 
+contents of the message. This is the HTTP message,  
+which would then be encapsulated in a TCP 
+segment to be sent over the network. This  
+message is using basic authentication; 
+can you find it? It’s this line right  
+here. It uses the “Authorization” header, 
+but the real purpose is to authenticate the  
+request. And then that authentication can 
+be used to provide proper authorization.
+Now that we’ve identified where the basic 
+authentication occurs in the HTTP headers of  
+the API request, let’s look a bit deeper at basic 
+authentication. As I said, basic authentication  
+includes a username and password in the HTTP 
+headers. These credentials are encoded in Base64  
+format, but not encrypted. That’s an important 
+distinction. Base64 is an encoding scheme,  
+which is simply a way of representing data. 
+And unlike encryption, it is not secure and  
+can be easily decoded. So, although I’ve been 
+referring to HTTP, you really should be using  
+HTTPS with your REST APIs for security. HTTPS 
+is HTTP plus TLS, Transport Layer Security,  
+which provides robust encryption and security. 
+The username and password used for basic  
+authentication are sent in the format username 
+colon password, encoded in Base64. For example,  
+username jeremy and password ccna would be sent 
+as this string of characters. If you’re curious,  
+you can visit this URL, base64decode.org, 
+to encode and decode base64. So, let’s see  
+how basic authentication works in action. 
+On the right here we have the REST server,  
+with an API allowing access to its data. And 
+on the left we have a client app that wants  
+to access the data. It sends an API call, 
+including the “Authorization” header for  
+authentication. Notice the password is encoded 
+in Base64; that’s username jeremy and password  
+ccna. The authentication succeeds, so the server 
+grants the request and responds with the data. So,  
+it’s that simple: a username and password are 
+included with each request, and if they’re  
+correct, authentication succeeds. Now that 
+we’ve seen how basic authentication works,  
+let’s consider the advantages and disadvantages. 
+Honestly, the main advantage is that it’s simple  
+and easy to implement, just a username and 
+password. But since those credentials are sent  
+in every request, attackers could steal them if 
+the connection isn’t properly secured. But really,  
+that applies for any authentication method: 
+HTTPS is essential when communicating over  
+the modern Internet; you shouldn’t use regular 
+HTTP. But even if using HTTPS for encryption,  
+relying solely on a username and password 
+combination isn’t particularly secure. If an  
+attacker gets access to the credentials, whether 
+through social engineering or another attack,  
+they get access to the API. So that’s basic 
+authentication. Let’s move on to the next method.
+Next, we’ll look at bearer authentication, 
+which is a form of token-based authentication,  
+and uses a token instead of a username 
+and password. In bearer authentication,  
+the client first obtains a token by authenticating 
+with an authorization server, often just called an  
+“auth server”. This is typically different from 
+the server actually hosting the resource the  
+client wants to access. Note that authenticating 
+with the auth server can be done using basic  
+authentication or another authentication method. 
+This step is separate from the actual API request  
+to the resource server. Then, after the client 
+gets the token, for each API request, the client  
+includes the token in the HTTP authorization 
+header like we saw before. For example,  
+it will look something like this: Authorization: 
+Bearer, and then the token. Let’s see how it  
+works. Notice I’m showing two servers now. One 
+is the auth server, which generates the token.  
+And then the resource server, which hosts whatever 
+resource the client wants to access. So, to begin,  
+the client requests a token from the auth server, 
+and if successful, the server grants the client  
+a token. Then, when the client sends an API call 
+to the resource server, it includes the token in  
+the call. And then the resource server responds, 
+either with the requested resource, or a message  
+indicating the server did what was requested. So, 
+that’s basically how bearer authentication works.  
+The term “bearer” means that anyone who possesses 
+the token can use it. This means that, if an  
+attacker steals the token, they can make requests, 
+API calls, as if they were the legitimate user.  
+This is clearly a security problem, so to 
+mitigate against this, tokens usually expire  
+after a set period of time. The expiration time 
+depends on the API’s security needs. Some tokens  
+expire in 15 minutes to reduce risk, while 
+others last weeks or months for convenience,  
+especially in low-security environments. Okay, 
+let’s summarize by considering some advantages  
+and disadvantages of bearer authentication. First 
+off, it’s more secure than basic authentication,  
+because there’s no need to transmit the same 
+username and password for every single API  
+call. The tokens that are used instead expire, so 
+a stolen token will only be temporarily valid. But  
+still, it’s worth mentioning as a disadvantage 
+that, if the token is stolen, the attacker can  
+still access the API until the token expires. And 
+since tokens need to be refreshed periodically,  
+it adds some extra complexity when implementing 
+bearer authentication, compared to basic  
+authentication. That’s not a problem for 
+network engineers, but for the programmers  
+who build these APIs it’s worth considering. 
+And finally, just like basic authentication,  
+it should only be used with HTTPS. If the token is 
+sent in cleartext, no encryption, it simply isn’t  
+secure; you need HTTPS when communicating over the 
+modern internet. While bearer tokens are commonly  
+used for user authentication in APIs, some APIs 
+use a simpler method, which we’ll cover next.
+Next up is API key authentication, which uses a 
+static key issued by the API provider. The client  
+uses this key in each API call for authentication. 
+The main difference between a bearer token and a  
+key is that, unlike bearer tokens, the API key 
+is static. It doesn’t expire automatically,  
+so it remains valid until revoked. API keys 
+can be sent to the server in a few ways.  
+The recommended way is to include the key in the 
+HTTP Authorization header, as we saw in basic and  
+bearer authentication. But you can also include 
+the key in the URL, in the start line of the  
+HTTP request, by adding a parameter to the URL. 
+But this is not recommended for several reasons,  
+one being that since URLs are often logged 
+by web servers, proxies, and browsers,  
+API keys included in URLs can be exposed in logs, 
+making them vulnerable to attackers. And a third  
+option is to send the API key as a cookie, which 
+is sometimes used for browser-based APIs. But in  
+any case, the recommended method is to include 
+the key in the authorization header. Let’s  
+see what it looks like; it’s quite simple. 
+The client sends an API call to the server  
+hosting the resource it wants to access. And the 
+client includes the API key in the authorization  
+header of the HTTP message. Assuming the key was 
+valid, the server then sends its response. Okay,  
+now that we’ve seen how it works, let’s consider 
+a couple of advantages and disadvantages. One  
+advantage is that it’s easier to implement than 
+Bearer authentication. And API key authentication  
+is good for tracking usage. The API provider can 
+assign a unique key to each customer, and then  
+easily track each customer’s usage by tracking 
+the key used in each API call. Because of this,  
+API keys are often used in cloud services and 
+third-party APIs. If you’re wondering what a  
+third-party API is, think of a developer that 
+builds a chatbot app that uses ChatGPT. The end  
+users are the first party. The developer creating 
+the chatbot app is the second party. But instead  
+of generating responses itself, the app calls 
+OpenAI’s API to get responses from ChatGPT.  
+Since OpenAI is external to both the users and 
+the app developer, it’s the third party in this  
+interaction. Hopefully that makes sense! Now let’s 
+look at a couple of disadvantages. One problem is  
+that, if stolen, the key grants full access until 
+revoked. It doesn’t automatically expire. So,  
+API keys must be rotated manually to maintain 
+security, whereas the tokens used in bearer  
+authentication expire automatically. Okay 
+that’s all for API key authentication.
+Finally, we move on to OAuth 2.0. It’s a secure 
+authentication framework that is widely used in  
+modern web applications. Its overall purpose is 
+different from the other methods we’ve looked at,  
+in that it provides access delegation, 
+granting third-party applications limited  
+access to resources on behalf of the resource’s 
+owner. The main benefit is that there is no need  
+to share the resource owner’s credentials with 
+the third party. For example, when you use ‘Log  
+in with Google’ on a website, the website 
+never sees your Google password. Instead,  
+Google confirms your identity and grants 
+access only to approved information. Let’s  
+look at some examples of OAuth2.0. The first is 
+what I just mentioned, logging in with google.  
+Many websites and apps offer the option to log 
+in using your Google account. The third party  
+website or app is granted access to some of your 
+Google account’s information, without actually  
+getting access to your account’s credentials. 
+Connecting apps to social media accounts is  
+another example. Many apps can be connected to 
+Instagram, Facebook, LinkedIn, etc. OAuth 2.0  
+lets these apps access your social media account 
+for specific tasks, like posting on your behalf,  
+without revealing your login credentials. 
+Calendar integration is one more example.  
+A third-party tool, like a scheduling app, can 
+be given access to your Google calendar to check  
+availability and schedule meetings. These are 
+all common examples of OAuth2.0. Now let’s  
+see how it actually works. There are four main 
+parties involved. First is the resource owner,  
+the account owner granting access to their data. 
+Using the Google calendar integration example,  
+this is the owner of the google account. Next 
+is the client app, the third-party application  
+requesting access to your Google data, like a 
+scheduling tool accessing your calendar. Then  
+there is the auth server. This server issues 
+access tokens, granting limited access to your  
+google account, after receiving user approval. 
+In this example, this is Google’s OAuth service.  
+Finally, there is the resource server, the 
+server that hosts the protected resource. In  
+this example, it’s the server hosting the Google 
+calendar data that the client app wants to access.
+Now let’s see OAuth2.0 in action. The overall 
+process consists of six main steps. First,  
+the client app requests authorization 
+from the resource owner. In our example,  
+this could be a scheduling app requesting 
+access to your Google Calendar. Next,  
+the resource owner—which is you, the account 
+owner—grants authorization by logging into your  
+Google account and giving permission for the 
+scheduling app to access your calendar data.  
+Once permission is granted, the client app 
+exchanges this authorization grant for an  
+access token from the auth server—which in this 
+case, is Google’s OAuth service. The auth server  
+then issues an access token to the client app. 
+This token acts as a temporary key that allows  
+the app to request resources on your behalf. Now 
+that the client app has a token, it includes the  
+token in an API request to the resource server, 
+which hosts the actual data—in this case,  
+your Google Calendar data. Finally, the resource 
+server validates the access token and provides the  
+requested resource back to the client app. If 
+the token is valid and the app has the correct  
+permissions, it will receive the data it needs. 
+The key part of OAuth 2.0 is the access token  
+issued in step 4. It functions like the tokens we 
+saw in bearer authentication. It grants access to  
+the specified resource within the allowed scope, 
+for example read-only access. And just as in  
+bearer authentication, access tokens expire after 
+a short period, which helps improve security. But  
+instead of requiring the user to log in again 
+every single time the access token expires,  
+OAuth 2.0 uses refresh tokens, granted by the auth 
+server, which allow the client app to request a  
+new access token without user interaction. This 
+way, the app can maintain access over an extended  
+period of time without constantly requiring the 
+user to log in. So, that’s OAuth 2.0. It allows  
+third-party apps to securely access a user’s 
+data without exposing their credentials, and  
+while allowing users to control what information 
+is shared. That’s why OAuth 2.0 is so widely used  
+in modern web applications. By the way, OAuth 
+2.0 is defined in RFC 6749, which you can access  
+from this link here, or just google search for 
+RFC 6749. Diving into RFCs isn’t expected for  
+the CCNA exam, but if you’re curious to learn 
+more about OAuth 2.0, it’s worth checking out.
+Alright, let’s wrap things up with a quick summary 
+of what we covered in this video before we move on  
+to the quiz. REST API authentication ensures that 
+only authorized users or systems can access an  
+API. Without it, anyone could send API requests, 
+potentially exposing or modifying sensitive data.  
+We looked at four types of REST API authentication 
+methods. Basic Authentication uses a username and  
+password encoded in Base64, but it’s not 
+encrypted, so it must be used with HTTPS  
+for security. Actually, that statement really 
+applies to all of these authentication methods:  
+in the modern internet, you should always use 
+HTTPS, not regular HTTP. Bearer Authentication  
+is a step up in security, using a token 
+issued by an authorization server instead  
+of sending a username and password in every 
+request. Tokens expire after a short time,  
+which increases security, but they can still 
+be stolen if not protected with HTTPS. Next,  
+API Key Authentication works similarly but uses a 
+static key issued by the API provider. It’s good  
+for tracking API usage, so it’s commonly used by 
+cloud service providers and third-party APIs. It’s  
+easier to implement than bearer authentication, 
+but it’s considered less secure because stolen  
+keys remain valid until manually revoked. 
+They don’t automatically expire. Finally,  
+OAuth 2.0 is a framework for access delegation, 
+allowing third-party applications limited access  
+to a user’s resources without sharing login 
+credentials. It relies on access tokens that  
+can be refreshed with a refresh token, 
+allowing continued access without user  
+reauthentication. OAuth 2.0 involves four 
+key parties: the resource owner, for example,  
+the owner of the Google account. The client 
+app, the app that requests access to the  
+account’s resources. The authorization server, 
+which grants the client app a token to provide  
+limited access to the requested resource. And 
+finally, the resource server; the server that  
+hosts the protected resource: for example, the 
+Google account’s information. Okay, that’s what  
+we covered in the video. Now let’s move on 
+to a quick quiz to test your understanding.
+Here’s quiz question 1. Which of the following 
+REST authentication methods involve an Auth  
+server issuing tokens? Select two. Pause 
+the video now to think about your answers.
+Okay, the answers are A and B, OAuth 2.0 and 
+bearer authentication. Here’s the diagram I  
+showed for OAuth 2.0, and here’s the diagram 
+for bearer authentication. Basic authentication  
+doesn’t involve an auth server; it just uses 
+simple username and password authentication. And  
+neither does API key authentication, which uses a 
+static key. Okay, let’s go to the next question.
+Here’s question 2. Which of the 
+following best describes how  
+OAuth 2.0 improves security? Pause the 
+video now to think about your answer.
+Okay, the answer is B, it allows third-party 
+apps to access resources without exposing  
+user credentials. Here’s the diagram once again. 
+Instead of using the resource owner’s credentials  
+for authentication, the client app receives an 
+access token from the auth server in step 4,  
+which allows it to authenticate 
+with the resource server in step 5,  
+and then access the resource. Okay, 
+let’s go to the next question.
+Here’s question 3. Which of the 
+following statements are true?  
+Select three. Pause the video 
+now to think about your answers.
+Okay, the answers are B, C, and E. B is 
+correct because bearer authentication  
+does require a token; the term “bearer” refers to 
+this bearer token. C is correct because OAuth 2.0  
+enables access delegation, as we covered in the 
+previous quiz question. And E is correct because,  
+instead of requiring user reauthentication 
+every time the access token expires,  
+a refresh token can be used to automatically 
+obtain a new access token. A is incorrect  
+because API keys do not expire automatically; 
+for this reason, they are considered less  
+secure than tokens. D is incorrect because basic 
+authentication doesn’t use encryption. Instead,  
+the username and password are encoded in 
+Base64 format, which is easily reversible.  
+Finally, F is incorrect because API keys should 
+not be included in URLs. Instead, they should be  
+included in the HTTP Authorization header, as this 
+is more secure. Okay, that’s all for the quiz.
+And that’s all for this video on REST API 
+authentication. We covered four kinds:  
+basic authentication, bearer authentication, 
+API key authentication, and OAuth 2.0. There  
+are other REST authentication methods out 
+there, but these are the four I recommend  
+knowing for the CCNA exam. I hope you found 
+this video helpful. Thanks for watching.
+
+--- VIDEO 123: Free CCNA | Software-Defined Networking | Day 62 | CCNA 200-301 Complete Course ---
+
+Welcome to Jeremy’s IT Lab.
+This is a free, complete course for the CCNA.
+If you like these videos, please subscribe
+to follow along with the series.
+Also, please like and leave a comment, and
+share the video to help spread this free series
+of videos.
+Thanks for your help.
+In this video we will look at software-defined
+networking.
+In the first video of this network automation
+series we already covered the fundamentals
+such as centralizing the control plane in
+an SDN controller, northbound and southbound
+APIs, etc.
+So, in this video we’ll take a more in-depth
+look at one of Cisco’s SDN offerings, SD-Access,
+Software-Defined Access.
+We’ll cover exam topics 6.3 and 6.4.
+You’ll learn new terms like overlay, underlay,
+and fabric which are essential concepts in
+SDN that we haven’t covered yet.
+Here’s what we’ll cover in this video.
+First I’ll briefly review the points about
+SDN that you’ll need to remember for this
+video.
+Then I’ll introduce Cisco’s SD-Access,
+including important concepts like underlay,
+overlay, and fabric.
+I’ll also introduce Cisco’s DNA Center
+management platform, which is an essential
+part of SD-Access, and compare it to traditional
+network management.
+Make sure to watch until the end of the video
+for a bonus practice question from Boson Software’s
+ExSim, the best practice exams for the CCNA.
+Let’s reviews some points about SDN.
+SDN is an approach to networking that centralizes
+the control plane into an application called
+a controller.
+Traditional control planes use a distributed
+architecture, which means that every network
+device has its own control plane.
+The control planes of each network device
+use protocols like OSPF to communicate with
+each other and share routing information,
+each device has its own ACLs and security
+rules, etc.
+That’s a distributed control plane.
+An SDN controller centralizes control plane
+functions like calculating routes.
+Network devices no longer use OSPF to share
+information with each other, instead they
+share information with the controller, which
+takes that information and calculates routes
+for the entire network.
+Now, depending on the SDN solution the entire
+control plane might be centralized in the
+SDN controller, or perhaps only part of the
+control plane is centralized, leaving some
+functions on the individual network devices.
+The controller can interact programmatically
+with the network devices using APIs.
+Specifically it uses what we call the southbound
+interface to do that.
+Then there is also the northbound interface,
+which is what allows us to interact with the
+controller using our scripts and applications.
+Okay, those are the fundamental points of
+SDN that I wanted to review.
+And here’s one more look at the SDN architecture
+we covered in the first video of this automation
+section.
+The applications are on top, the controller
+in the middle, and the network devices on
+the bottom.
+Actually, these three ‘layers’ of the
+architecture have names.
+On top there is the application layer.
+This layer contains scripts and applications
+that tell the SDN controller what network
+behaviors are desired.
+Note that this isn’t the application layer
+of the OSI model, this is a totally different
+concept.
+We’re not talking about the OSI model here.
+Anyway, next is the control layer.
+This contains the SDN controller that receives
+and processes instructions from the application
+layer.
+Although this is a separate concept from the
+‘control plane’, this layer is also what
+contains the centralized control plane of
+the network.
+And finally there is the infrastructure layer,
+which contains the actual devices that are
+responsible for forwarding messages across
+the network.
+I didn’t mention these layers in earlier
+videos, so take the time to learn them now.
+The application layer contains apps and scripts
+for instructing the SDN controller, the control
+layer contains the SDN controller, and the
+infrastructure layer contains the network
+devices.
+Okay, so I’ve told you the basics of what
+SDN is and its purpose, but we still haven’t
+looked at a specific example of SDN.
+So, let’s take a look at one, Cisco Software-Defined
+Access.
+Cisco SD-Access is Cisco’s SDN solution
+for automating campus LANs.
+So, office wired and wireless LANs, for example.
+Cisco has other SDN solutions, for example
+ACI, Application Centric Infrastructure, is
+their SDN solution for automating data center
+networks.
+Remember when I explained spine-leaf architecture
+earlier in the course?
+That is used extensively in ACI data center
+networks.
+Cisco also has SD-WAN, their SDN solution
+for automating WANs.
+But for now let’s look at SD-Access.
+Cisco DNA, Digital Network Architecture, Center
+is the controller at the center of SD-Access.
+In the previous video about REST APIs we sent
+a REST API call to DNA Center, so perhaps
+you remember that name.
+Okay, let’s look at the basic SD-Access
+architecture.
+At the center, in the control layer, we have
+DNA Center.
+And then under it we have the network devices
+in our campus LAN in the infrastructure layer.
+These devices form the fabric of SD-Access,
+and I’ll explain that term in the next slide.
+In the application layer we have our scripts
+and apps that interact with DNA center.
+These could be tools we develop, third-party
+tools, or tools directly from Cisco.
+DNA Center itself also has a GUI that we can
+use to control it.
+Okay, so that’s the basic architecture of
+Cisco’s SD Access.
+Notice how it fits perfectly into the SDN
+Application layer, Control layer, Infrastructure
+layer model.
+Next let’s look at that term ‘fabric’.
+To understand the fabric, you need to understand
+two other terms.
+First, the underlay is the underlying physical
+network of devices and connections, wired
+and wireless, which provide IP connectivity,
+for example with a routing protocol like IS-IS.
+Usually I’d use OSPF as an example, since
+it’s the most common interior gateway routing
+protocol, but soon you’ll see why I chose
+IS-IS for this example.
+Basically the underlay is a bunch of multilayer
+switches and their connections.
+Then the overlay is the virtual network built
+on top of the physical underlay network.
+For example, SD-Access uses a protocol called
+VXLAN, virtual extensible LAN, to build tunnels.
+And fabric is the term we use to refer to
+the combination of the overlay and underlay,
+the physical and virtual network as a whole.
+For example, this is the underlay network.
+The physical multilayer switches and their
+connections form the underlay, and they are
+perhaps running IS-IS to share routing information
+and provide connectivity throughout the network.
+Then the overlay network consists of VXLAN
+tunnels, for example between these two switches.
+When hosts in the LAN communicate with each
+other, their traffic is sent over the VXLAN
+tunnels.
+That’s the overlay network.
+And the fabric refers to the physical and
+virtual network as a whole, overlay plus underlay.
+Both are necessary to make SD-Access work.
+Okay, now let me give a little more detail
+about both the underlay and overlay.
+So, let’s talk about the underlay.
+The underlay’s purpose is to support the
+VXLAN tunnels of the overlay.
+To make a virtual network of tunnels, the
+devices first need to be connected and able
+to reach other of course, so the underlay
+is very important.
+There are three different roles for switches
+in SD-Access.
+Those are edge node, these are switches that
+connect to end hosts, like a traditional access
+layer switch.
+Then there are border nodes, which connect
+to devices outside of the SD-Access domain,
+for example connecting to a WAN router.
+And finally there are control nodes, which
+use a protocol called LISP, Locator ID Separation
+Protocol, to perform various control plane
+functions.
+I think LISP is far beyond what you need to
+know for the CCNA, so just know that it is
+used for the control plane of SD-Access.
+Note that you can add SD-Access on top of
+an existing network if your network hardware
+and software supports it.
+This is called a brownfield deployment, when
+you add it on to an already existing network.
+If you’re curious which hardware supports
+it, you can google ‘Cisco SD-Access compatibility
+matrix’, but you don’t have to know the
+specific devices for the CCNA.
+And also note that in this case DNA center
+won’t configure the underlay, because this
+could be a major risk to the current working
+production network.
+Ideally you will be using a greenfield deployment,
+which is a totally new network built for the
+purpose of SD-Access.
+In this case DNA center will configure the
+devices for the optimal SD-access underlay.
+For example, all switches are layer 3 and
+use IS-IS as their routing protocol.
+That’s why I mentioned IS-IS in the example
+earlier.
+Additionally all links between switches are
+routed ports, so STP is not needed to avoid
+Layer 2 loops.
+And edge nodes, so access switches, act as
+the default gateway of end hosts.
+This is known as a routed access layer, we’ve
+brought layer 3 all the way down to the access
+switches that end hosts connect to.
+Let me demonstrate with a diagram.
+Here’s a traditional LAN.
+Notice that STP is used to avoid layer 2 loops,
+and an FHRP, for example HSRP, is used by
+the distribution layer switches to provide
+a redundant default gateway for the end hosts.
+So, to send traffic out of their local network,
+they will send it to the virtual IP provided
+by the FHRP, 192.168.1.1.
+In an SD-access underlay, however, all connections
+between switches are Layer 3 and IS-IS is
+used to exchange routing information.
+Note that STP is no longer needed, and an
+FHRP isn’t needed either.
+Instead, the access layer switches are the
+default gateways of the end hosts.
+Now we have a routed access layer.
+Now let me briefly introduce a few aspects
+of the SD-Access overlay.
+First, LISP provides the control plane of
+SD-Access.
+A list of mappings of EIDs to RLOCs is kept.
+Let me explain those terms.
+EIDs, endpoint identifiers, identify end hosts
+connected to edge switches, and RLOCs, routing
+locators, identify the edge switch which can
+be used to reach the end host.
+Of course, there is a lot more detail to cover
+about LISP, but I think with just that you
+can see how it differs from the traditional
+control plane.
+Instead of a traditional routing table to
+locate destination hosts, a DNS-like system
+of mappings is used.
+Cisco TrustSec, CTS, provides policy control
+such as QoS and security policy.
+Just remember that name, Cisco TrustSec, you
+don’t have to know about its functionality.
+And finally VXLAN provides the data plane
+of SD-Access, the tunnels that are used to
+actually forward traffic in the data plane.
+Let’s look at how VXLAN tunnels work with
+LISP.
+Notice that SW3 is a control node, so it is
+important for the function of LISP.
+PC2 is connected to SW2, and it tells the
+control node that PC2 is reachable via SW2.
+So, SW3 creates that mapping.
+Now PC1 wants to send traffic to PC2, so it
+sends it to the default gateway, SW1.
+SW1 asks SW3, how can I reach PC2?
+And SW3 informs it that PC2 is reachable via
+SW2.
+So, the message from PC1 is forwarded over
+a VXLAN tunnel between SW1 and SW2.
+Okay, that’s all I’ll say about the overlay
+for now.
+VXLAN does more than just create tunnels,
+it provides a lot of features to SD-Access
+which I won’t get into in this video.
+Just know the difference between fabric, overlay,
+and underlay, and know some basics of SD-Access
+like edge node, border node, and control node,
+LISP, VXLAN, and Cisco TrustSec.
+Now let’s look a bit more at DNA Center.
+DNA Center itself has two main roles.
+First, it is the SDN controller used in SD-Access,
+as I mentioned earlier.
+Additionally it can be a network manager in
+a traditional network that isn’t using SD-Access.
+In that case, although it doesn’t provide
+SD-Access functions, it still acts as a central
+point to monitor, analyze, and configure the
+network.
+Although I will mention both purposes, for
+this lecture we’re focusing on the SD-Access
+application.
+Note that DNA Center is a software application
+installed on Cisco UCS server hardware.
+I mentioned Cisco UCS in the virtualization
+lecture of this course.
+DNA Center has a REST API, as you already
+know, which can be used to interact with it.
+And its southbound interface supports protocols
+such as NETCONF and RESTCONF, as well as traditional
+protocols Telnet, SSH, and SNMP to control
+and monitor devices.
+DNA Center enables something called intent-based
+networking, IBN, yet another buzzword.
+Basically, the goal is to allow the engineer
+to communicate their intent for network behavior
+to DNA Center, and then DNA Center will take
+care of the details of the actual configurations
+and policies on the devices.
+It simplifies the process, and allows engineers
+to spend time on more important things than
+analyzing and configuring policies on devices
+one at a time.
+Here’s one example.
+Traditional security policies using ACLs can
+become very cumbersome.
+For example, ACLs can have thousands of entries,
+and the intent of entries is easily forgotten
+with time and as engineers leave and new engineers
+take over.
+Looking at another engineer’s configurations
+and trying to figure out the intent is often
+not an easy task.
+And configuring and applying ACLs correctly
+across a network is cumbersome and leaves
+room for error.
+DNA Center, on the other hand, allows the
+engineer to specify the intent of the policy,
+for example this group of users can’t communicate
+with this group, or this group can access
+this server but not that server, etc, and
+DNA Center will take care of the exact details
+of implementing the policy.
+This is what configuring policies on DNA Center
+looks like.
+Notice on the left here we have source groups.
+Of course, you’d have to define the groups
+first, which users belong in which groups.
+And here we have those same groups as destination.
+Up here we have the legend for the colors
+in the policy grid.
+Note that the entire grid is white now, so
+default.
+However, let’s say any traffic sourced from
+users in the developers group and destined
+for the Test_Servers group should be permitted.
+Now, what about traffic sourced from the guest
+group?
+They shouldn’t be able to access our servers,
+so we’ll make that red.
+How about users in the employees group?
+Maybe that depends on various factors, we
+can’t just permit or deny all traffic, so
+we would want to make a custom policy for
+that.
+We can go ahead and define policies like this,
+it’s a very simple and straightforward way
+of creating and applying policies across the
+entire SD-Access fabric.
+No need to configure policies on devices one
+at a time.
+I’m not showing the whole process here of
+course, but one thing to note is that the
+engineer can write an explanation for each
+policy made, making it much easier to understand
+the purpose of policies later.
+Okay, now let’s take a look at some of the
+other features of DNA Center.
+In the menu on the left side you can see there
+are various sections, and I’ve opened the
+design section.
+Here we can build the network hierarchy, manage
+IP addresses and subnets, configure DHCP servers,
+DNS servers, etc, among other things.
+Here, for example, I’m looking at one site,
+SJC-20, on a map.
+You can map your enterprise’s sites all
+over the world and create hierarchies based
+on country, etc.
+In the policy menu you can configure policies
+like the example I showed you earlier.
+You tell DNA Center how the network devices
+should behave, and DNA Center will change
+that into configurations on the devices in
+the network.
+For example, here’s that group-based access
+control page again.
+A simple and logical way to configure network
+policies.
+In the provision menu we can manage our device
+inventory and add new devices.
+Other services are available as well, as you
+can see in the menu.
+Here’s the inventory page.
+In the side bar you can see that there are
+3 unassigned devices under global.
+By default, when you add devices to DNA Center
+they will be under the global site, until
+you assign them to a specific site.
+You can see their status of ‘managed’
+here, this means they are under control of
+DNA Center, they are not independent devices.
+This is also the default setting when you
+register a device in DNA Center.
+Here you can see the compliance status of
+the devices.
+The top device is compliant with our policies,
+but the bottom two aren’t.
+I clicked on one of the non-compliant devices,
+and you can see why it is labeled as non-compliant.
+The software image, the version of IOS, is
+not up to date.
+The version should be 17.03.03, but currently
+it is 16.11.1c.
+We can use DNA Center to update that later
+if we want.
+And here you can see that it is also non-compliant
+with some security advisories.
+Anyway moving on, in the assurance section
+of the menu you can monitor the status of
+the network.
+You can make sure the devices are all up and
+running without issues.
+For example, here I can see which devices
+in the network are considered ‘healthy’
+by DNA Center.
+3 of 4 devices are in good health, and 1 of
+them simply has no health data.
+Okay, that’s all we’ll look at for now,
+but if you want to look around DNA Center
+yourself you can check out the DevNet sandbox
+at sandboxdnac.cisco.com, and you can see
+the username and password here.
+I highly recommend checking it out and looking
+around at what DNA Center has to offer.
+Okay, that was a quick look at DNA Center,
+but to be honest you don’t have to be familiar
+with all of the functions of DNA Center for
+the CCNA.
+Basically, just understand its role as a network
+controller in SD-Access architecture, and
+also understand that it can be a network management
+platform in a traditional network.
+However, the exam topics do state that you
+should be able to compare DNA Center-enabled
+device management with traditional device
+management.
+Actually, I’ve covered most of these points
+already when I first introduced network automation,
+but let’s review to make sure.
+First, let’s review some characteristics
+of traditional network management.
+Devices are configured one-by-one via SSH
+or console connection.
+This is what we’ve been doing throughout
+the labs in this course.
+Devices are manually configured via console
+connection before being deployed.
+This means when deploying a new device to
+a network.
+You first have to manually set it up before
+connecting it to the network.
+Configurations and policies are managed per-device,
+in a distributed manner.
+There is no central management.
+New network deployments take a long time due
+to the manual labor required.
+Setting up dozens of new devices manually
+takes a lot of time, and also errors and failures
+are more likely due to increased manual effort.
+Now, I don’t want to make it seem like traditional
+network management is bad, but you should
+be aware of these potential downsides.
+Now some characteristics of DNA Center-based
+network management.
+Devices are centrally managed and monitored
+from the DNA Center GUI or other applications
+using its REST API.
+In this video I showed you the DNA Center
+GUI, but using the REST API other applications
+can be used to interact with DNA Center too.
+With DNA Center, the administrator communicates
+their intended network behavior to DNA Center,
+which changes those intentions into configurations
+on the managed network devices.
+Configurations and policies are centrally
+managed, they’re all stored and managed
+on DNA Center.
+Software versions are also centrally managed.
+DNA Center can monitor cloud servers for new
+versions and then update the managed devices
+when needed.
+In this video you saw an example of DNA Center
+showing us an alert for a device with an old
+software version.
+Finally, with DNA Center new network deployments
+are much quicker.
+New devices can automatically receive their
+configurations from DNA Center without manual
+configuration.
+Not only is this faster, human error is reduced
+too, which is a huge bonus.
+Okay, that’s all I’ll say about this.
+Most of these points we have already covered,
+but make sure you’re aware of them because
+it is mentioned on the exam topics.
+Okay, let’s review what we covered.
+We first reviewed SDN, and I newly introduced
+the terms application layer, control layer,
+and infrastructure layer.
+Then, as an example of SDN, I introduced some
+concepts of Cisco SD-Access.
+The main takeaways from this section are the
+concepts of underlay, overlay, and fabric.
+Make sure you understand those concepts.
+Then I showed you some functions of Cisco
+DNA Center, and compared network management
+with DNA Center to traditional network management.
+Remember, DNA Center is an SDN controller
+in SD-Access architecture, but it can also
+be used as a general network management tool
+even in networks that don’t use SD-Access.
+Make sure to watch until the end of the quiz
+for a bonus practice question from Boson Software’s
+ExSim, the best practice exams for the CCNA.
+Okay, let’s go to quiz question 1.
+Which of the following terms describes the
+network of devices and physical connections?
+Pause the video now to select the best answer.
+Okay, the answer is A, underlay.
+The underlay refers to the underlying physical
+network, and then the virtual overlay network
+is built on top of it.
+The combination of underlay and overlay is
+called the fabric.
+Okay, let’s go to question 2.
+In which of the following layers would you
+expect to find scripts that interact with
+the controller?
+Pause the video now to select the best answer.
+Okay, the answer is B, application.
+In SDN architecture, the application layer
+includes apps and scripts that can be used
+to interact with the controller, which is
+in the control layer.
+Finally the bottom layer is the infrastructure
+layer, which includes the network devices.
+Okay, let’s go to question 3.
+Which of the following is a characteristic
+of an optimal SD-Access underlay network as
+configured by DNA-Center?
+Pause the video now to select the best answer.
+Okay, the answer is B, all links between switches
+are layer 3.
+This means that spanning tree is not needed,
+and no links will have to be disabled because
+there is no risk of layer 2 loops.
+Okay, let’s go to question 4.
+Which protocol is used to create virtual tunnels
+in the SD-Access overlay?
+Pause the video now to select the best answer.
+Okay, the answer is D, VXLAN.
+It is used to create virtual tunnels in the
+overlay network.
+And although we didn’t cover any details
+at all, the ‘extensible’ in the name ‘virtual
+extensible LAN’ is very important.
+It means that VXLAN supports many different
+features which are used by SD-Access.
+Okay, let’s go to question 5.
+Which of the following are valid switch roles
+in Cisco SD-Access?
+(select three) Pause the video now to select
+the best answers.
+Okay, the answers areA, C, and D. Control,
+border, and edge nodes.
+These are the three different switch roles
+in Cisco SD-Access, and there is no such thing
+as a management node.
+Okay, that’s all for the quiz.
+Now let’s take a look at a bonus question 
+in Boson Software’s ExSim for CCNA.
+
+--- VIDEO 124: Free CCNA | Ansible, Puppet, & Chef | Day 63 (part 1) | CCNA 200-301 Complete Course ---
+
+Welcome to Jeremy’s IT Lab.
+This is a free, complete course for the CCNA.
+If you like these videos, please subscribe
+to follow along with the series.
+Also, please like and leave a comment, and
+share the video to help spread this free series
+of videos.
+Thanks for your help.
+In this video we will cover configuration
+management tools Ansible, Puppet, and Chef.
+They are exam topic 6.6, which says you must
+be able to recognize the capabilities of configuration
+management mechanisms.
+So, just like with the other automation topics
+on the CCNA, you don’t have to actually
+be able to use these tools yet, but Cisco
+expects you to have a basic understanding
+of their purpose and capabilities.
+Here’s what we’ll cover in this video.
+First I’ll introduce configuration management
+tools, what they are and why we use them.
+Then I’ll introduce some of the characteristics
+of the configuration management tools Ansible,
+Puppet, and Chef.
+So far I’ve introduced various automation
+tools, and I just want to say that these are
+just tools.
+They are suitable for some jobs, and not suitable
+for others.
+Depending on the company you work for and
+its size, they might use a lot of different
+automation tools, or just a few of them, or
+none at all.
+Configuration management tools like these
+three can be useful in any network, but especially
+in medium to large networks with hundreds
+or even thousands of devices.
+And make sure to watch until the end of the
+video for a bonus practice question from Boson
+Software’s ExSim, the best practice exams
+for the CCNA.
+To understand one reason why configuration
+management tools are useful, let me explain
+the concept of configuration drift.
+Configuration drift is when individual changes
+made over time cause a device’s configuration
+to deviate from the standard and correct configurations
+as defined by the company.
+This is not a good thing, and should be avoided
+wherever possible.
+I mentioned this earlier in the course, but
+each device in a network typically doesn’t
+have a totally unique configuration.
+Although each device will have unique parts
+of its configuration, for example IP addresses
+and its host name, most of a device’s configuration
+is usually defined in standard templates designed
+by the network architects or engineers of
+the company.
+For example, you can expect all of your routers
+to have the same SNMP configurations, the
+same Syslog configurations, the same AAA configurations
+for logging in, one or two WAN interfaces,
+one or two LAN interfaces, etc.
+Those all follow standard templates, with
+just a few unique configurations for each
+device.
+But, as individual engineers make changes
+to devices, for example to troubleshoot and
+fix network issues, test configurations, etc,
+the configuration of a device can drift away
+from the standard.
+Often records of these individual changes
+and their reasons aren’t kept, and this
+can lead to issues in the future.
+For example, it might be hard to tell if a
+certain configuration is necessary when looking
+at it a few years later.
+The configuration management tools we’ll
+look at today can help with this, but even
+without automation tools like Ansible, it
+is best to have standard configuration management
+practices.
+For example, something I did in the past was
+when a change is made, save the config as
+a text file and place it in a shared folder.
+In my case, a standard file naming system
+hostname_year month day was used.
+Notice in the screenshot here we have three
+different versions of R1’s config from three
+different dates, and three versions of R2’s
+config as well.
+This helps keep track of previous versions
+of the config and see when changes were made.
+However there are flaws to this system, as
+an engineer might simply forget to place the
+new config in the folder after making changes.
+In that case, which one should be considered
+the correct config?
+And even if the configurations are properly
+saved in a folder like this, it doesn’t
+guarantee that the configurations actually
+match the standard.
+It just helps us keep track of different versions
+of the config.
+Plus, a manual approach is not very scalable
+in networks with hundreds of devices.
+So, configuration management tools can of
+course help us with the issues I just mentioned
+like preventing configuration drift, but they
+can also assist us in configuration provisioning.
+Configuration provisioning refers to how configuration
+changes are applied to devices.
+This includes configuring new devices too,
+so not just making changes to current devices.
+As you know, traditionally configuration provisioning
+is done by connecting to devices one-by-one
+via SSH, or console as well of course.
+But this is not practical in large networks.
+It simply doesn’t scale well in networks
+with hundreds or thousands of devices.
+Configuration management tools like Ansible,
+Puppet, and Chef allow us to make changes
+to devices on a mass scale with a fraction
+of the time and effort.
+Two essential components that you’ll find
+in all of these tools are templates and variables.
+Here’s an example of a template, where values
+aren’t given for things like the hostname,
+IP address, mask, OSPF process ID, and area.
+Instead, we use a separate file specifying
+the variables for a specific device, R1 in
+this case.
+Given a template and the appropriate variables,
+a config is generated and sent to the device.
+Of course, this is just a small snippet of
+a configuration, but I think you can see how
+easy it would be to generate the configuration
+of many devices at once.
+All devices can share the template, and we
+just need to specify some variables like hostnames,
+IP addresses, etc.
+Exactly how these templates and variables
+are managed is different depending on the
+tool, but they all use a system like this.
+Okay now let me introduce configuration management
+tools.
+These are network automation tools that facilitate
+the centralized control of large numbers of
+network devices.
+They can be useful in networks of any size,
+but typically they’re used in larger networks.
+The options you need to be aware of for the
+CCNA are Ansible, Puppet, and Chef.
+When it comes to managing network devices,
+that’s also the order of their popularity.
+Ansible first, Puppet second, and Chef third.
+However, these tools weren’t originally
+developed for the management of network devices.
+They were originally developed after the rise
+of VMs, to enable server system admins to
+automate the process of creating, configuring,
+and removing VMs.
+But these days they are also widely used to
+manage network devices, especially Ansible.
+They can be used to perform tasks such as
+generate configurations for new devices on
+a large scale.
+Using templates it’s very simple to generate
+a new configuration for a new device, it’s
+just a bit of copy and paste.
+They can be used to perform configuration
+changes on devices.
+It can be all devices in your network, or
+a certain subset of devices, or just one device.
+You tell Ansible or Puppet or Chef which changes
+you want to make on which devices, and it
+does the rest of the work for you.
+These tools can also be used to check device
+configurations for compliance with defined
+standards.
+If a device’s configuration doesn’t match
+the standard, an alert could be sent out,
+for example.
+Then you can investigate that issue and fix
+it, to make the configuration comply with
+the standard again.
+Or you can automate the change.
+You can also compare configurations between
+devices, and between different versions of
+configurations on the same device.
+These are just some examples of what you can
+do with these tools.
+Basically, they solve the problem of managing
+the configurations of devices in networks
+with hundreds or thousands of different devices.
+Now let’s take a look at the basic characteristics
+of each of these three tools.
+First up, Ansible.
+Ansible is a configuration management tool
+owned by Red Hat, famous for Red Hat Linux.
+Ansible itself is written in Python.
+The other two I’ll introduce, Puppet and
+Chef, are written in a different language,
+Ruby.
+Ansible is agentless.
+So, what does that mean?
+It means that it doesn’t require any special
+software to run on the managed devices.
+Instead, Ansible simply uses SSH to connect
+to devices, make configuration changes, extract
+information, etc.
+This is a big advantage of Ansible which makes
+it very versatile, and it’s probably the
+reason that it is the most popular choice
+for network device configuration management.
+Ansible also uses what’s called a push model.
+The Ansible server, also called the control
+node, uses SSH to connect to managed devices
+and push configuration changes to them.
+This is different than Puppet and Chef which
+use a pull model, in which the managed devices
+connect to the server to receive their configurations.
+After installing Ansible, you must create
+several text files that it can use.
+Playbooks are the ‘blueprint’ of automation
+tasks.
+They outline the logic and actions of the
+tasks that Ansible should do, and these playbooks
+are written in YAML.
+Then you’ll also need inventory files which
+list the devices that will be managed by Ansible,
+as well as their characteristics.
+For example, their device role such as access
+switch, core switch, WAN router, firewall
+etc can be listed as a characteristic.
+These inventory files can be written in multiple
+formats, such as INI or YAML.
+You also need templates, which as you saw
+earlier represent a device configuration file,
+but specific values for variables are not
+provided, for example the host name and IP
+addresses.
+These templates are written in a format called
+Jinja2.
+And finally you’ll need variable files.
+They list variables and their values, as you
+also saw earlier.
+These values are substituted into the templates
+to create complete configuration files, and
+these files are written in YAML.
+Let’s look at a diagram to visualize how
+this works.
+So, here we have our inventory, templates,
+variables, and playbook.
+The inventory provides a list of devices,
+the template files provide configuration templates
+for the devices, and the variables provide
+specific variables and their values.
+These inputs are given to the playbook which
+takes the necessary actions to push the config
+to the managed devices.
+Okay, that’s all for Ansible.
+You should know that it is agentless, written
+in Python, uses a push model, uses SSH to
+connect to devices, and uses YAML for its
+necessary files.
+Next up, Puppet.
+Puppet is a configuration management tool
+written in the programming language Ruby.
+It is typically agent-based, which means that
+specific software, a Puppet agent, must be
+installed on the managed devices.
+And not all Cisco devices support a Puppet
+agent, which is a major reason that Ansible
+is more popular for network device management.
+However it can be run agentless, in which
+a proxy agent runs on an external host and
+the proxy agent uses SSH to connect to the
+managed devices and communicate with them.
+Note that in Puppet the server is called the
+Puppet master.
+And Puppet uses a pull model, so clients pull
+configurations from the Puppet master instead
+of the Puppet master pushing configurations
+to them.
+And note that clients use TCP 8140 to communicate
+with the Puppet master.
+You probably should remember that port number.
+And instead of YAML, it uses a proprietary
+language for its files.
+Like Ansible it requires some different text
+files on the Puppet master, for example a
+Manifest file defines the desired configuration
+state of a network device.
+The Puppet master then uses this Manifest
+to generate specific configurations for the
+managed devices.
+And just like Ansible, templates are used
+too, in this case to help generate Manifests
+for the devices.
+Here’s a very simplified look at that.
+Note that some of the devices have a Puppet
+agent installed which provides a REST API
+to communicate with the device, but one doesn’t.
+Instead it will communicate via the external
+agent.
+In both cases, the network devices are able
+to pull configurations from the Puppet master.
+Okay, that’s Puppet.
+Remember that it’s written in Ruby, is typically
+agent-based, the server is called the Puppet
+master, it uses a pull model, clients use
+TCP 8140 to communicate with the Puppet master,
+it uses a proprietary language for its files
+instead of YAML, and uses Manifests to define
+the desired configuration state of devices.
+Those are the main points you should know
+about Puppet.
+Finally let’s look at Chef.
+Like Puppet, it is a configuration management
+tool written in Ruby.
+It is agent-based, so specific software, a
+Chef agent, must be installed on the managed
+devices.
+And not all Cisco devices support a Chef agent,
+in fact most don’t.
+So, this is the least popular of the three
+choices.
+Like Puppet, Chef also uses a Pull model.
+And the Chef server uses TCP port 10002 to
+send configurations to clients.
+It uses various other ports, too, but you
+should remember 10002.
+And Chef’s files use a DSL, Domain-Specific
+Language, which is based on Ruby.
+So, what are some of those files used by Chef.
+We have resources, which are like the ingredients
+in a recipe.
+They define configuration objects managed
+by Chef.
+A configuration object could be, for example,
+a set of configuration commands.
+Then there are recipes, like the recipes in
+a cookbook.
+They outline the logic and actions of the
+tasks performed on the resources.
+And of course there are cookbooks too, sets
+of related recipes grouped together.
+And finally run-lists, which are an ordered
+list of recipes that are run to bring a device
+to the desired configuration state.
+And here’s a diagram from the Chef website
+demonstrating the architecture.
+Admins will do their work on a Chef workstation,
+a computer they use to prepare cookbooks,
+recipes, etc.
+Required information is stored on a Chef server,
+and the managed devices, the Chef clients,
+communicate with the Chef server.
+Notice that possible clients include servers,
+storage devices, virtual platforms, public
+clouds, and of course network devices.
+As mentioned earlier, these tools weren’t
+designed specifically for network devices,
+and they can be used for various purposes.
+So, that’s Chef.
+Remember that it is written in Ruby, is agent-based,
+uses a pull model, uses TCP 10002 to send
+configurations, and its files such as cookbooks
+use a language based on Ruby.
+And finally, here’s a chart comparing the
+three.
+Something I didn’t mention clearly is that
+Puppet and Chef both communicate using HTTP,
+via their REST APIs.
+I recommend memorizing these basic characteristics
+as shown in the chart, you may be tested on
+them.
+Okay, here’s what we covered in this video.
+I introduced configuration management tools
+and what we use them for.
+And then I introduced three that you should
+know for the CCNA: Ansible, Puppet, and Chef.
+We only covered some very basic characteristics
+of each of them, but that’s all you need
+to know for the CCNA.
+As you continue your studies you’ll probably
+get some hands on experience with these tools,
+especially Ansible, but for now you just need
+to know the basics.
+And make sure to watch until the end of the
+quiz for a bonus practice question from Boson
+Software’s ExSim, the best practice exams
+for the CCNA.
+Okay, let’s go to quiz question 1.
+Which of the following configuration management
+tools connects to devices using SSH?
+Pause the video now to select the best answer.
+Okay, the answer is B, Ansible.
+Ansible is agentless, so the control node
+simply connects to managed devices using SSH.
+Now, a Puppet external agent also connects
+to devices using SSH, but standard Puppet
+architecture does not, so Ansible is definitely
+the better answer here.
+Okay, let’s go to question 2.
+Which of the following configuration management
+tools use a pull model?
+Select all that apply.
+Pause the video now to select the best answers.
+Okay, the answers are A, Chef and C, Puppet.
+They both use a pull model, whereas Ansible
+uses a push model.
+Okay, let’s go to question 3.
+Which of the following configuration management
+tools use a client-server model?
+Pause the video now to select the best answer.
+Okay, the answer is D, all of the above.
+Now, in this video I didn’t explicitly state
+that Ansible, Puppet, or Chef use a client-server
+model, but in describing their operations
+I mentioned servers and clients.
+Okay, let’s go to question 4.
+Which of the following configuration management
+tools are written in Ruby?
+Select all that apply.
+Pause the video now to select the best answers.
+Okay, the answers are A, Chef and C, Puppet.
+Both of these tools are written in Ruby, whereas
+Ansible is written in Python.
+Okay, let’s go to question 5.
+Which of the following configuration management
+tools uses playbooks?
+Pause the video now to select the best answer.
+Okay the answer is B, Ansible.
+Ansible playbooks are the blueprints of automation
+tasks.
+They outline the logic and actions of the
+tasks that Ansible should perform.
+Okay, that’s all for the quiz.
+Now let’s try a bonus question from Boson
+Software’s ExSim for CCNA.
+
+--- VIDEO 125: Terraform | CCNA 200-301 Day 63 (part 2) ---
+
+Hi from Tokyo Japan, and welcome to Jeremy’s 
+IT Lab. In this video we’re covering another  
+recent addition to the CCNA exam, Terraform. The 
+exam blueprint previously listed Ansible, Puppet,  
+and Chef as the configuration management tools 
+you need to know for the exam. Cisco recently  
+changed that to Ansible and Terraform. However 
+I’m keeping Puppet and Chef in the course for  
+two reasons. First, notice the wording of the 
+new exam topic: Recognize the capabilities  
+of configuration management mechanisms, 
+“such as” Ansible and Terraform. For me,  
+the words “such as” imply that there could be 
+others on the exam. Second, Puppet and Chef  
+help illustrate key concepts, like comparing the 
+agentless architecture of Ansible and Terraform  
+to the agent-based architecture of Puppet and 
+Chef. So instead of modifying the previous video,  
+I’m adding this new one to focus on Terraform.
+Before we get started, let me take a minute to  
+shill my books, Acing the CCNA Exam volumes 
+1 and 2. These books cover everything on the  
+latest version of the CCNA exam, including the 
+topics of this video. The very final chapter,  
+chapter 25 of volume 2, focuses on Ansible 
+and Terraform, and also includes a bit about  
+Puppet and Chef. I always recommend using books in 
+combination with a video course, so if you want to  
+get my books, check out the links on the screen 
+now to buy them directly from the publisher,  
+or find them on Amazon. Now let’s get started.
+So, what are we going to cover in this video?  
+Of course, the focus is on Terraform, but 
+I’ll take the opportunity to introduce a few  
+new concepts. Specifically, we’ll talk about 
+the concept of infrastructure as code, IaC;  
+Terraform and the other tools we’ve covered 
+are examples of IaC. Then we’ll compare  
+infrastructure provisioning and configuration 
+management. Whereas Ansible is primarily used  
+for configuration management, Terraform leans 
+toward provisioning. We’ll then cover the  
+concepts of mutable vs immutable infrastructure, 
+and procedural vs declarative approaches. Finally,  
+we’ll shift our focus to Terraform itself 
+and cover its basics. Okay, let’s begin.
+First let’s look at the concept of infrastructure 
+as code. Actually, we’ve already covered it,  
+I just didn’t use the specific term in 
+the last video. Infrastructure as code,  
+IaC, is the practice of provisioning and 
+managing infrastructure, such as servers,  
+networks, and cloud resources, using 
+machine-readable configuration files,  
+code, instead of manual configuration via 
+CLI or GUI. That probably sounds familiar,  
+because Ansible, Puppet, and Chef are examples of 
+IaC configuration management tools. For example,  
+Ansible manages device configurations using 
+several files that are used by the control  
+node. We covered these in the previous 
+video. Ansible uses playbook, inventory,  
+template, and variable files. Ansible runs on 
+the control node and uses these files to manage  
+the infrastructure. Instead of configuring the 
+devices via the CLI or GUI, their configurations  
+are managed via these code files, hence the 
+term “infrastructure as code”. Terraform,  
+on the other hand, is an IaC-based provisioning 
+tool that automates the creation of infrastructure  
+resources. In the next slide I’ll clarify the 
+difference between configuration management and  
+provisioning, but Terraform is primarily used for 
+provisioning. So, to summarize, infrastructure as  
+code automates infrastructure deployment and 
+management, ensuring consistency, scalability,  
+and repeatability. Basically, the various benefits 
+of automation that we covered in previous videos.
+So, I mentioned that Ansible, Puppet, and Chef are 
+primarily configuration management tools, whereas  
+Terraform is primarily a provisioning tool. Let’s 
+clarify what the difference is. First, what is  
+configuration management? Tools like Ansible, 
+Puppet, and Chef manage existing infrastructure  
+by installing software, configuring settings, and 
+maintaining system state. This ensures consistency  
+by applying and enforcing configurations across 
+multiple devices. Again, these are the benefits  
+of Ansible, Puppet, and Chef that I covered 
+in the previous video. As for infrastructure  
+provisioning, it creates, modifies, and deletes 
+infrastructure resources such as servers and  
+network infrastructure. For example, creating 
+virtual servers and routers on a cloud platform  
+like AWS. But the focus is on initial setup 
+rather than ongoing configuration management.  
+To summarize, configuration management tools work 
+on already existing systems, whereas provisioning  
+tools build infrastructure from scratch. Of 
+course, these tools can be used together.  
+For example, Terraform, a provisioning tool, 
+and Ansible, a configuration management tool,  
+often work as a pair. Terraform 
+provisions infrastructure, creating VMs,  
+network infrastructure, storage, and other 
+resources, while Ansible provides ongoing  
+configuration and management, maintaining 
+those systems. With all of that said,  
+both Terraform and Ansible have some overlap. Each 
+can perform both provisioning and configuration  
+management to some extent. But their strengths 
+are different, so they’re often used together.
+One major difference between infrastructure 
+provisioning and management tools is the  
+approach they take with the infrastructure: 
+is the infrastructure mutable or immutable?  
+Configuration management tools typically 
+use a mutable infrastructure approach. This  
+means that infrastructure can be modified after 
+deployment, such as applying updates, patches,  
+or configuration changes. In other words, changes 
+are made in place, meaning existing resources are  
+updated rather than replaced. This is just like 
+when you manually modify a device’s configuration  
+in the CLI. So, when using a mutable approach, 
+if you want to update the config of this VM,  
+Ansible or a similar tool would simply update the 
+config while leaving the VM itself in place. Only  
+the relevant settings are changed. So, what’s 
+the alternative to mutable infrastructure?  
+Provisioning tools like Terraform typically 
+employ an immutable infrastructure approach.  
+This means that infrastructure cannot be changed 
+after deployment. So, any changes you make involve  
+replacing the previous resource with a new one. If 
+you want to update the configuration of this VM,  
+Terraform or a similar tool would have to 
+create an updated instance of the VM with  
+the configuration changes applied, and then 
+destroy the old instance. One benefit of this  
+approach is that there is no configuration drift. 
+Each deployment starts from a fresh, predefined  
+state. There’s no opportunity for individual 
+changes to accumulate with each configuration.  
+Configuration drift isn’t a major issue when 
+Ansible or other mutable infrastructure tools  
+are properly managed. But Terraform’s immutable 
+approach virtually eliminates the risk altogether
+The final concept we’ll cover before focusing 
+on Terraform itself is the difference between  
+a procedural and declarative approach. Some 
+tools take a procedural approach to managing  
+infrastructure, also called an imperative 
+approach. This means that the tool follows  
+explicit steps in a specific order to achieve the 
+desired outcome. So the user, the engineer using  
+the tool, must define each specific action in the 
+correct order to configure the infrastructure.  
+This provides greater control than the declarative 
+approach we’ll cover next, but is more demanding  
+on the user. They have to know exactly which steps 
+are required to achieve their desired end result,  
+and in which order those steps should be 
+executed. Then there is the declarative approach,  
+which defines the desired end state instead 
+of the specific steps. The tool itself,  
+such as Terraform, figures out the steps needed to 
+achieve the goal. This makes it easier to maintain  
+and ensure consistency across deployments because 
+the user doesn’t have to worry about ordering  
+individual commands and configurations on each 
+platform. They only have to think about defining  
+what they want the final result to be. So, to 
+summarize, A procedural approach focuses on how  
+to make changes with explicit steps. For example, 
+when configuring a new router, configure the  
+router’s hostname with HOSTNAME R1. Configure the 
+IP address of G0/1 with the IP ADDRESS command.  
+Enable the interface with NO SHUTDOWN, , and 
+so on. These are the specific configurations  
+needed on a Cisco router, and the steps would be 
+different if it was a Juniper router, for example.  
+A declarative approach, on the other hand, focuses 
+on what the final state should be. You can tell  
+Terraform “Create a router named R1 with IP 
+address 192.168.1.1/24 on its G0/1 interface,  
+ensuring the interface is enabled”. Terraform 
+should then figure out the necessary steps to  
+achieve that end state. So, I’ve mentioned 
+that Terraform uses a declarative approach,  
+but you’re probably wondering about the others. 
+Here’s a table. I’ve categorized Ansible and  
+Chef as procedural, but it’s worth noting that 
+they do have some declarative elements as well,  
+especially Ansible. People who use Ansible 
+a lot might get angry at me for categorizing  
+Ansible as procedural. But Red Hat, the 
+company that owns and develops Ansible,  
+also says it is procedural, so for your CCNA 
+studies I’d say it’s best to consider Ansible  
+a procedural tool. Meanwhile, Terraform 
+and Puppet use a declarative approach,  
+allowing you to define the desired end state 
+and let the tool figure out the rest for you.
+Finally let’s move on to Terraform, which is an 
+open-source IaC tool developed by HashiCorp, an  
+American company that was acquired by IBM in 2025. 
+As I’ve mentioned a few times, it is primarily  
+a provisioning tool, focused on deploying 
+infrastructure resources on various cloud and  
+on-prem platforms. In Terraform, these platforms 
+are called providers and include AWS, Azure,  
+GCP, Kubernetes, and many more; it supports over 
+1000 different providers. For CCNA students, this  
+includes integrations with Cisco platforms like 
+Catalyst Center, ACI, which is Application Centric  
+Infrastructure, Cisco’s data center SDN solution. 
+And IOS XE, which is the type of IOS you’ll find  
+on modern Cisco devices like Catalyst switches. 
+Like Ansible, Terraform uses a push model and  
+is agentless. It doesn’t require a software agent 
+on infrastructure it provisions or manages. Okay,  
+now let’s see how Terraform actually works. At 
+the core of Terraform is Terraform Core; this is  
+the main Terraform software, typically running on 
+a Linux server, that processes configurations and  
+interacts with providers. An engineer creates 
+Terraform configuration files, which specify  
+the desired end state in a declarative fashion. 
+It’s up to Terraform Core to take that desired  
+end state and deploy the necessary infrastructure 
+on the appropriate provider or providers, such as  
+deploying cloud resources on AWS. It does this via 
+each provider’s APIs. And one more key element is  
+the state file, which Terraform uses to track the 
+state of the deployed infrastructure. By comparing  
+the current state of the infrastructure 
+to the desired end state defined in the  
+configuration files, Terraform can identify which 
+actions it needs to take, and in which order,  
+to achieve the desired result. To summarize, 
+these are Terraform’s four key components,  
+all working together to provision and manage 
+infrastructure: Terraform Core, the core software  
+developed by HashiCorp. Configuration files, 
+which an engineer creates to define the desired  
+end state of the infrastructure. The state 
+file, which tracks the current state of the  
+deployed infrastructure. And the providers, the 
+platforms on which the infrastructure is deployed.
+Let’s cover a few more key points about Terraform. 
+The basic Terraform workflow consists of three  
+main steps. The first is “write”, in 
+which you define the desired end state  
+of your infrastructure resources in configuration 
+files. The second step is “plan,” where Terraform  
+analyzes your configuration files and shows you 
+exactly what changes will be made. This lets  
+you review and confirm the changes before applying 
+them. And the third step is apply, where Terraform  
+executes the plan to provision and manage the 
+infrastructure resources. That’s basically how it  
+works. If you think back to Ansible, hopefully you 
+remember that Ansible itself is written in Python,  
+while its playbooks are written in YAML. So 
+what about Terraform? While Terraform Core is  
+written in Go, the configuration files that 
+define the desired end state are written in  
+HashiCorp Configuration Language, HCL. HCL is 
+an example of a domain-specific language, DSL,  
+which is specialized for a particular purpose, 
+like Puppet’s DSL mentioned in the previous  
+video. Since DSLs are designed for specific 
+tasks, they make complex operations simpler,  
+and they require less effort compared to 
+general-purpose languages like Python or  
+Go. The downside is that HCL is another thing 
+you have to learn specifically to use Terraform,  
+but it’s relatively simple compared to learning 
+a full programming language. So, the key points  
+to remember here are the three steps of the 
+Terraform workflow: write, plan, and apply.  
+And also remember that Terraform Core is written 
+in Go, while the configuration files you make are  
+written in HashiCorp Configuration Language, 
+HCL, which is a Domain Specific Language.
+Okay, those are the basics of Terraform. Now 
+here’s a one-slide summary before we move on to  
+the quiz. Infrastructure as Code is the practice 
+of provisioning and managing infrastructure using  
+machine-readable configuration files instead 
+of manual configuration. Ansible, Puppet,  
+Chef, and Terraform are all examples of IaC 
+tools. But not all IaC tools are used for the  
+exact same purpose. Configuration management 
+tools like Ansible, Puppet, and Chef focus on  
+managing existing infrastructure, doing things 
+like installing software, configuring settings,  
+and generally maintaining the state of your 
+systems. Infrastructure provisioning tools like  
+Terraform, on the other hand, focus on creating, 
+modifying, and deleting infrastructure resources.  
+That doesn’t mean that Ansible can’t be used to 
+provision resources or Terraform can’t be used to  
+make configuration changes, it’s just that each 
+tool is better fit for a different purpose. We  
+then covered mutable infrastructure, which means 
+that the infrastructure can be modified after  
+deployment. And immutable infrastructure, meaning 
+that it cannot be changed after deployment. Any  
+changes involve replacing the previous resource 
+with a new, updated version, and then deleting the  
+old one. Provisioning tools like Terraform use an 
+immutable approach, whereas management tools like  
+Ansible use a mutable approach to infrastructure. 
+We then compared the procedural and declarative  
+approaches. A procedural, also called imperative, 
+approach follows explicit steps in a specific  
+order to achieve the desired outcome, and these 
+steps must be specified by the engineer using the  
+tool. A declarative approach defines the desired 
+end state, and the IaC tool, such as Terraform,  
+figures out the steps needed to achieve that goal, 
+and in which order they should be executed. Okay,  
+finally we looked at Terraform itself, it’s an 
+open-source IaC tool developed by HashiCorp. It’s  
+primarily a provisioning tool used for deploying 
+infrastructure on providers like AWS, Azure,  
+GCP, Kubernetes, etc. Terraform interacts with 
+these providers via their APIs. Like Ansible,  
+it uses a push model and is agentless. Its main 
+components are Terraform Core, the configuration  
+files where you specify the desired end state, 
+the state file that tracks the current state of  
+the infrastructure, and the providers. The basic 
+workflow consists of three main steps: write,  
+plan, and apply. You could also add a fourth step 
+there: destroy, in which you delete the resources  
+after they are no longer needed. But these three 
+are considered the main steps. Terraform Core is  
+written in Go, and the configuration files are 
+written in HashiCorp Configuration Language,  
+which is a domain-specific language. Alright, 
+that’s what we covered in this video. Just a  
+very high-level overview of Terraform, but 
+as long as you know these basics you should  
+be ready for the CCNA exam. Now let’s do 
+a short quiz to test your understanding.
+Here’s quiz question 1. Which of 
+the following are characteristics  
+of Terraform? (select two) Pause the 
+video now to think about your answers.
+Okay, the answers are B, declarative, and 
+C, immutable infrastructure. Terraform  
+uses a declarative approach in which 
+you specify the desired end state and  
+Terraform takes care of the rest for you. 
+It also uses immutable infrastructure,  
+where a particular resource can’t be changed after 
+provisioning. To change a resource, Terraform will  
+deploy a new version of the resource and then 
+delete the old one instead. Okay, next question.
+Here’s question 2. What are the three 
+main steps of the Terraform workflow?  
+Pause the video now to think about your answer.
+Okay, the answer is D, write, plan, apply. In 
+the write step, you define the desired state of  
+your infrastructure in configuration files. In 
+the plan step you verify the changes that will  
+be executed before applying them. And then 
+in apply, Terraform applies whatever changes  
+necessary to bring the infrastructure in line with 
+the desired state. Now let’s do one more question.
+Here’s quiz question 3. Which of the 
+following IaC tools are focused on  
+configuration management? Select three. Pause 
+the video now to think about your answers.
+Okay, the answers are A, C, and D. Ansible, Chef,  
+and Puppet are primarily used for configuration 
+management, whereas Terraform is a provisioning  
+tool. To take advantage of the strengths of 
+each, it’s fairly common to use a combination,  
+such as Terraform and Ansible. These tools 
+aren’t exclusive and can be used together.
+Okay, that’s all for this video. We covered some 
+additional concepts related to Infrastructure  
+as Code that weren’t covered in the 
+previous video, and then focused on  
+the basics of Terraform, a very popular 
+IaC provisioning tool. For the CCNA exam,  
+I recommend knowing the basics of Terraform 
+introduced in this video. You should also  
+be able to compare and contrast it with the 
+other tools we covered in the previous video:  
+Ansible, Puppet, and Chef. I hope this 
+video was helpful. Thanks for watching.

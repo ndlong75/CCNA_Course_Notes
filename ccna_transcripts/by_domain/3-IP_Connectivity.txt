@@ -1,0 +1,3366 @@
+CCNA Domain: 3-IP_Connectivity (1 videos)
+======================================================================
+
+--- VIDEO 126: Complete Network Configuration // CCNA Mega Lab! / OSPF, VLANs, STP, DHCP, Security, Wireless + more ---
+
+Welcome to the Jeremy’s IT Lab CCNA mega lab.
+In this lab, we’ll cover every configuration
+topic you need to know for the CCNA exam.
+Just a warning: this lab is intense.
+If you’ve studied all of the exam topics
+and are getting ready to take on the CCNA
+exam itself, you’ve come to the right place.
+Now, we won’t cover every single configuration
+command you should know, but we will cover
+all configuration topics on the CCNA exam.
+IPv4 and IPv6, static routes, VLANs, spanning
+tree, OSPF, EtherChannel, DHCP, DNS, NAT,
+SSH, security features, wireless, and more
+– everything!
+If you want to dive deeper into any particular
+topic, such as specific OSPF configurations,
+you can check out the relevant videos in my
+CCNA course, or the relevant chapter in my
+CCNA book.
+The point of this lab is to tie everything
+together, instead of focusing on each individual
+technology or protocol in detail.
+And the point of this video is to demonstrate
+the correct solution to this lab, rather than
+to explain the details of each concept again.
+You may notice that this lab file isn’t
+a typical .pkt Packet Tracer file.
+It’s a .pka, Packet Tracer activity, file.
+Pka files include automated grading, so after
+you complete the lab, you can click Check
+Results here to see if you configured everything
+correctly.
+Now, by default, the instructions here are
+a separate window like this, but I’ll click
+‘Dock’ here to dock them into the same
+window as the lab topology, so we can easily
+see the instructions as we go through the
+lab.
+The network topology for this lab is a three-tier
+LAN consisting of two offices, Office A on
+the left and Office B on the right.
+The two offices are connected via a core layer,
+and R1 provides Internet access with two redundant
+connections.
+If you click on the Internet here, you can
+see it simply consists of two routers that
+I have labeled ISP A and ISP B. You don’t
+have to worry about these routers for this
+lab; you only need to configure the network
+from the perspective of the customer of these
+ISPs – the enterprise connected to the Internet.
+So, click on this back arrow here to return
+to the rest of the network.
+So, before diving in let’s read the lab
+introduction here.
+It says this comprehensive lab covers all
+configuration topics on the CCNA exam.
+Proceed through the steps in order and click
+Check Results when you are done to check your
+configurations.
+So, as you can see here this is page 1 of
+10.
+You can click next to go through the different
+pages to see the different steps.
+But there is an important note here that says
+You must save the device configurations, for
+example with the COPY RUNNING-CONFIG STARTUP-CONFIG
+command, or you will receive no points.
+The grading system for most of this lab checks
+the startup-config of each device to make
+sure it matches the one I prepared beforehand,
+so make sure to save each device’s configuration
+or you won’t get points.
+And finally, at the bottom it says this lab
+is quite extensive, so you should set aside
+at least a couple of hours to finish all of
+it.
+Here at the start of this video I have no
+idea how long the video itself will be, but
+I do know it’s going to be the longest video
+I’ve ever made.
+So, enough talking, I’ll click on Next to
+begin part 1 of this lab, which is Initial
+Setup.
+So, we’re going to configure four main things
+in this section: in step 1 we’ll configure
+the hostname of each router and switch.
+In step 2, we’ll configure an enable secret
+to protect access to privileged exec mode.
+In step 3, we’ll configure a user account.
+And then in step 4 we’ll configure the console
+line of each device.
+So, let’s start with step 1, configuring
+hostnames.
+I’ll open the CLI of R1.
+Now, recording this video on a single screen
+is a bit of a challenge.
+Ideally, I’d like to show the instructions,
+the topology, and the CLI all at once, but
+there’s just not enough real estate on the
+screen.
+So, I’ve prioritized making the CLI larger
+so you can see all of the configurations easily.
+I’ll show the instructions in between each
+step, but while we’re doing the configurations
+you won’t be able to see them.
+So, first I’ll use ENABLE to enter privileged
+EXEC mode here on R1.
+Then CONF T to enter global config mode.
+And then HOSTNAME R1 to configure the router’s
+hostname.
+The hostnames must match what’s shown in
+the diagram here.
+Okay, I configured R1’s hostname, but if
+I look at the lab instructions, notice that
+the completion rate is still 0%.
+That’s because the evaluation is checking
+the device’s startup-config, but the command
+I just entered only changed the running-config.
+To copy that configuration to the startup-config,
+I’ll use DO WRITE, but you could also use
+WRITE MEMORY or COPY RUNNING-CONFIG STARTUP-CONFIG;
+all three commands have the same effect.
+Then go back to check the completion score
+again, and now we’re at 1%.
+Because you have to configure many hundreds
+of commands in this lab, don’t expect the
+completion score to increase after every single
+new command you configure.
+However, as you go through the lab, I recommend
+saving the device configurations and checking
+that the score is increasing as you proceed.
+Now I’ll configure the hostnames of the
+core, distribution, and access switches.
+For the sake of completeness, I will show
+all of these configurations in this video,
+but feel free to skip ahead if you don’t
+want to watch these repetitive commands.
+So, I’ll open up CSW1.
+ENABLE.
+CONF T. HOSTNAME CSW1.
+And I’ll save the configuration with DO
+WRITE.
+Next, CSW2.
+ENABLE.
+CONF T. HOSTNAME CSW2.
+And save the config with DO WRITE.
+Next up we have the distribution switches:
+DSW-A1 and A2, and DSW-B1 and B2.
+I’ll start with DSW-A1.
+ENABLE.
+CONF T. HOSTNAME DSW-A1.
+DO WRITE.
+Then DSW-A2.
+ENABLE.
+CONF T. HOSTNAME DSW-A2.
+DO WRITE.
+Next, in Office B, DSW-B1.
+ENABLE.
+CONF T. HOSTNAME DSW-B1.
+DO WRITE.
+Finally, DSW-B2.
+ENABLE.
+CONF T. HOSTNAME DSW-B2.
+DO WRITE.
+Finally, the same deal on the access switches,
+starting with ASW-A1.
+ENABLE.
+CONF T. HOSTNAME ASW-A1.
+And save the config with DO WRITE.
+Then ASW-A2.
+ENABLE.
+CONF T. HOSTNAME ASW-A2.
+DO WRITE.
+Then A3.
+ENABLE.
+CONF T. HOSTNAME ASW-A3.
+DO WRITE.
+Then move on to office B, starting with ASW-B1.
+ENABLE.
+CONF T. HOSTNAME ASW-B1.
+DO WRITE.
+Then B2.
+ENABLE.
+CONF T. HOSTNAME ASW-B2.
+DO WRITE.
+Finally, B3.
+ENABLE.
+CONF T. HOSTNAME ASW-B3.
+DO WRITE.
+Okay, let’s take a look at the instructions
+again.
+Take a look at the completion score: it’s
+increased a lot already.
+Don’t get too excited – we’re just getting
+started.
+When the lab first starts, the devices all
+have no startup-config, so there’s nothing
+to evaluate.
+But when you first save the configs, various
+default configurations like interface names
+are saved to the startup-config; that’s
+why the score jumps up after just configuring
+the host names and saving the configs.
+From now on I won’t save the configs after
+every single step; I’ll just save them after
+each section of the lab to show how the score
+increases as we progress.
+Now let’s look at steps 2, 3, and 4 together.
+Step 2 says to configure the enable secret
+‘jeremysitlab’ on each router and switch.
+It also says to use type 9 hashing if available,
+or type 5 if type 9 isn’t available.
+Let’s hop on R1 again to demonstrate.
+From global config mode, type ENABLE and then
+a question mark to view the IOS context-sensitive
+help.
+So, the options are PASSWORD and SECRET.
+Now let’s go to a different device, CSW1,
+and see the options.
+Again, type ENABLE and a question mark to
+see the options.
+Notice there is a third option: ALGORITHM-TYPE.
+This lets you specify the hashing algorithm
+that is used to hide the enable secret in
+the config.
+I cover this command in my book ‘Acing the
+CCNA Exam’, but I haven’t covered it in
+my video course, so you might not be aware
+of it.
+At some point I’ll update the course and
+include it.
+Anyway, in Packet Tracer, these core and distribution
+switches, which are Cisco Catalyst 3650 switches,
+support this command, and you can use type
+9 hashing on them.
+But the other devices, including R1 and all
+of the access switches, don’t support the
+command.
+They only support type 5 hashing, which is
+MD5.
+So, I’ll return to R1.
+Configure the enable secret with ENABLE SECRET
+jeremysitlab.
+And then check with DO SHOW RUN, use the pipe
+(|) to filter the output, then ‘include
+secret’.
+As you can see, the secret is hashed using
+type 5, which is MD5.
+And then on CSW1, I’ll do ENABLE ALGORITHM-TYPE,
+and then use a question mark again.
+It has the ‘scrypt’ option; this is type
+9 hashing, it uses the scrypt hashing algorithm.
+So, let’s finish the command.
+ENABLE ALGORITHM-TYPE SCRYPT SECRET jeremysitlab.
+And let’s check.
+DO SHOW RUN | INCLUDE secret.
+So, as this number 9 indicates before the
+hash, the secret was hashed using the type
+9 algorithm, scrypt.
+So, we’ll configure type 9 hashing on the
+core and distribution switches, and type 5
+on R1 and the access switches.
+But before we do that, let’s check out steps
+3 and 4.
+Step 3 says to configure the user account
+‘cisco’ with the secret ‘ccna’ on
+each device.
+And it says the same thing about hashing:
+type 9 if available, and type 5 if not.
+Just like the enable secret, in Packet Tracer
+these multilayer switches in the core and
+distribution layer support type 9, but R1
+and the access switches only support type
+5.
+Once again, let me demonstrate that in the
+CLI, on R1 first.
+First type USERNAME, then the username ‘cisco’,
+and then use the question mark.
+There is no option for ALGORITHM-TYPE, so
+I’ll just type SECRET and then the password
+‘ccna’.
+Let’s check again with DO SHOW RUN | INCLUDE
+secret.
+Like the enable secret, this user account’s
+secret was hashed with MD5, which is type
+5 in IOS.
+Now let’s compare that with CSW1.
+First, type USERNAME cisco, and then use the
+question mark.
+This one has the ALGORITHM-TYPE option, so
+I’ll type that, followed by SCRYPT, then
+SECRET, and then the secret ‘ccna’.
+And let’s check.
+DO SHOW RUN | INCLUDE secret.
+So, both the enable secret and this account’s
+secret were hashed with the scrypt, algorithm,
+which is type 9 in IOS.
+So, on these multilayer switches in the core
+and distribution layers we’ll use type 9,
+and on R1 and the access switches we’ll
+use type 5.
+But before doing that let’s finally take
+a look at step 4.
+Step 4 says to configure the console line
+to require login with a local user account,
+set a 30-minute inactivity timeout, and enable
+synchronous logging.
+So, that requires 3 configuration commands,
+and these will be the same on all of the devices.
+I’ll show them on R1 first.
+First, use LINE CONSOLE 0 to configure the
+console line – there’s only one.
+The first instruction was to require login
+with a local user account.
+The command to enable that is LOGIN LOCAL.
+Now, when someone connects to the device console
+port, they will have to log in using a user
+account on the device, such as the ‘cisco’
+account we just created.
+The next instruction was to set a 30-minute
+inactivity timeout, meaning that the user
+will be logged out after 30 minutes of inactivity.
+I’ll use the question mark, and here you
+can see the command.
+EXEC-TIMEOUT.
+Type the command, and then the time in minutes,
+so 30.
+You can also specify seconds after, for example
+30 minutes and 30 seconds, but we don’t
+need to in this case.
+Finally, we should enable synchronous logging.
+The command for that is LOGGING SYNCHRONOUS.
+With that enabled, if a Syslog message appears
+while I’m in the middle of writing a command,
+the command will be re-printed on a new line,
+making it easier to see the command I’m
+typing; it won’t be cut off by the log message.
+Okay, I’ve finished steps 2, 3, and 4 on
+R1, so I’ll use DO WRITE to save and EXIT
+to return to global config mode.
+Now, for the rest of the devices, I’m simply
+going to copy and paste the commands.
+When you’re doing large labs like this that
+require configuring the same commands on many
+devices, this is a great technique to speed
+things up and also avoid typos and misconfigurations.
+So, I’ve prepared the commands in a text
+file, but I won’t include it in the lab
+files.
+When you do the lab, you can either type the
+commands directly into the CLI, or you can
+do what I did: prepare the commands in a text
+file like this, and then copy and paste them
+into the CLI.
+So, at the top here are the commands for R1
+and the access switches.
+The enable secret, the user account, and the
+console line configurations.
+I’m going to copy them with Ctrl-C, and
+then paste them into the access switches,
+since I already configured R1.
+Let’s do it on ASW-A1 first.
+To paste commands in Packet Tracer, right
+click in the terminal and then click on Paste.
+There we go, all of the commands were pasted
+in.
+Finally, I’ll just save the config with
+DO WRITE and return to global config mode
+with EXIT.
+Next, ASW-A2.
+Right click, paste, DO WRITE, and EXIT.
+Then A3.
+Right click, paste, DO WRITE, and EXIT.
+Now move on to Office B. ASW-B1 first.
+Right click, paste, DO WRITE, and EXIT.
+Then B2.
+Right click, paste, DO WRITE, and EXIT.
+And finally ASW-B3.
+Right click, paste, DO WRITE, and EXIT.
+So, R1 and the access switches are done.
+Now let’s take a look at that notepad again
+and scroll down.
+These switches in Packet Tracer support type
+9 hashing for the enable secret and user accounts,
+so we’ll use those commands that I showed
+before on CSW1, and also configure the console
+line.
+So, highlight and copy all of these commands,
+and let’s go on CSW1.
+We already configured the enable secret and
+user account here, but not the console line.
+I’ll just paste all of the commands in anyway.
+Right click, paste, DO WRITE, and EXIT to
+return to global config mode.
+Next up, CSW2.
+Right click, paste, DO WRITE, and EXIT.
+Then the distribution switches, DSW-A1 first.
+Right click, paste, DO WRITE, EXIT.
+Then DSW-A2.
+Right click, paste, DO WRITE, and EXIT.
+DSW-B1 next.
+Right click, paste, DO WRITE, EXIT.
+And finally, DSW-B2.
+Right click, paste, DO WRITE, EXIT.
+Okay, we’ve finished part 1.
+Notice that the completion score has increased
+a few points.
+Still a long way to go, so let’s click Next
+to go to part 2.
+Part 2 covers VLAN and Layer-2 EtherChannel
+configurations.
+So, we’ll be focusing on the distribution
+and access switches in this part.
+First, let’s quickly look at the instructions.
+Step 1 says to configure a Layer-2 EtherChannel
+between DSW-A1 and A2 in Office A using a
+Cisco-proprietary protocol, and step 2 says
+the same for DSW-B1 and B2, but says to use
+an open standard protocol.
+So, a Cisco-proprietary protocol means we’ll
+configure PAgP, Port Aggregation Protocol,
+between DSW-A1 and A2, and an open standard
+protocol means we’ll configure LACP, Link
+Aggregation Control Protocol, between DSW-B1
+and B2.
+Okay, step 3 then says to configure all links
+between access and distribution switches,
+including the EtherChannels, as trunks.
+So, all of these links here should be trunks.
+In Step 4, we’ll configure VTP on these
+switches so they can sync their VLAN databases
+automatically.
+Then, in steps 5 and 6 we’ll create the
+appropriate VLANs in Office A and Office B.
+And in steps 7 and 8 we’ll configure each
+access switch’s interfaces connecting to
+end hosts, and finally in step 9 disable unused
+ports.
+So, that’s part 2, focused on various Layer-2
+concepts.
+Let’s start by configuring those EtherChannels.
+First, I’ll do step 1, focusing on DSW-A1
+and A2.
+We already established that we’ll configure
+this one using the Cisco-proprietary PAgP,
+but notice also that it says both switches
+should actively try to form an EtherChannel.
+PAgP has two modes: desirable and auto.
+This means we should configure both sides
+to use the desirable mode, which actively
+tries to form an EtherChannel.
+Auto mode will form an EtherChannel with a
+neighbor in desirable mode, but doesn’t
+try to form an EtherChannel itself.
+So, I’ll go on DSW-A1 first.
+Now, there are no interface labels on these
+devices.
+To see them, you can turn on interface labels
+in Packet Tracer’s settings.
+Or you can look at the spreadsheet that I
+included in the lab files – it lists all
+of the connections between devices.
+You can get the lab files at this URL: jitl.jp/mega-lab.
+But the best method is to practice your CLI
+skills and use DO SHOW CDP NEIGHBORS.
+In the output of this command, you can see
+that DSW-A1 is connected to DSW-A2 via its
+G1/0/4 and G1/0/5 interfaces.
+The ‘Local Interface’ column lists the
+interface on this switch, DSW-A1.
+And on the final column on the right, you
+can see that the same interfaces are used
+on DSW-A2: G1/0/4 and G1/0/5.
+So, I’ll use INTERFACE RANGE G1/0/4-5 to
+configure both interfaces at the same time.
+Then, just use CHANNEL-GROUP 1 MODE DESIRABLE
+to configure these interfaces as part of PortChannel1.
+Now, how do you know which group number to
+use?
+Look carefully at the lab instructions: it
+says ‘configure a Layer-2 EtherChannel named
+‘PortChannel1’.
+This number, the port channel number, is the
+group number.
+Make sure to pay close attention to these
+instructions.
+If you use a different group number, it won’t
+be marked correctly when you click on Check
+Results at the end of the lab.
+Okay, now let’s do the same on DSW-A2.
+INTERFACE RANGE G1/0/4-5.
+CHANNEL-GROUP 1 MODE DESIRABLE.
+And just to make sure I’ll check its status
+with DO SHOW ETHERCHANNEL SUMMARY.
+So, here’s PortChannel1.
+It has the flags S and U, meaning Layer2 and
+in use, so that’s good.
+And the member ports both have the flag P,
+meaning in port-channel.
+So, everything looks good.
+Next, let’s configure the EtherChannel between
+DSW-B1 and B2.
+LACP has two modes: active, which is like
+PAgP’s desirable mode, and passive, which
+is like PAgP’s auto mode.
+Like step 1, step 2 says that both switches
+should actively try to form an EtherChannel,
+so we’ll use active mode.
+So, let’s go on DSW-B1.
+Like the Office A switches, these two are
+connected via G1/0/4 and 5, so INTERFACE RANGE
+G1/0/4-5.
+Then, CHANNEL-GROUP 1 MODE ACTIVE.
+That’s it.
+I’ll do the same on DSW-B2.
+INTERFACE RANGE G1/0/4-5.
+CHANNEL-GROUP 1 MODE ACTIVE.
+And just to make sure it’s okay I’ll check
+with DO SHOW ETHERCHANNEL SUMMARY.
+So, we see the SU flags on the port-channel
+interface, and the P flag on the physical
+interfaces, so all’s good.
+Now let’s move on to step 3, which says
+to configure all links between access and
+distribution switches, including the EtherChannels,
+as trunks.
+There are a few requirements.
+First, it says to explicitly disable DTP on
+all ports.
+We’ll use SWITCHPORT NONEGOTIATE for that.
+Then, it says to set each trunk’s native
+VLAN to VLAN 1000, which is unused.
+That’s a good security measure; the native
+VLAN can make the LAN vulnerable to VLAN-hopping
+attacks.
+Then, we should allow VLANs 10, 20, 40, and
+99 on all trunks in Office A, and allow VLANs
+10, 20, 30, and 99 on all trunks in Office
+B. When we configure the VLANs later, we’ll
+see the purpose of each of those VLANs.
+For now, just make sure to assign the correct
+VLAN numbers.
+Okay, first let’s focus on Office A. On
+each distribution switch, we need to configure
+these three links to the access switches as
+trunks, as well as the port channel between
+the distribution switches.
+So, I’ll hop on DSW-A1.
+First, let’s confirm the correct interfaces
+with DO SHOW CDP NEIGHBORS.
+So, ASW-A1, A2, and A3 are connected to this
+switch’s G1/0/1, 1/0/2, and 1/0/3 interfaces.
+So, let’s configure those interfaces as
+trunks.
+INTERFACE RANGE G1/0/1-3.
+First, use SWITCHPORT MODE TRUNK to make the
+interfaces trunks.
+Now, the instructions said to explicitly disable
+DTP on the ports.
+Even when manually configured in trunk or
+access mode, DTP is still technically enabled,
+so let’s disable DTP with SWITCHPORT NONEGOTIATE.
+Next, I’ll set the native VLAN with SWITCHPORT
+TRUNK NATIVE VLAN 1000.
+Finally, set the allowed VLANs.
+This is Office A, so I’ll use SWITCHPORT
+TRUNK ALLOWED VLAN 10,20,40,99.
+Next, I’ll use the same commands on PortChannel1.
+INTERFACE PORT-CHANNEL1.
+SWITCHPORT MODE TRUNK.
+SWITCHPORT NONEGOTIATE.
+SWITCHPORT TRUNK NATIVE VLAN 1000.
+And SWITCHPORT TRUNK ALLOWED VLAN 10,20,40,99.
+And then EXIT.
+Okay, we’re done configuring DSW-A1.
+These commands will be similar on most switches,
+so I’ll just copy and paste the commands
+on the others.
+Let me open up the notepad I prepared and
+scroll down to Part 2, Step 3.
+First, I’ll copy these commands to configure
+on DSW-A2, identical to the commands on DSW-A1.
+And now let’s go to DSW-A2, right click,
+and paste them.
+Then, I’ll use EXIT to return to global
+config mode.
+You don’t have to exit after each step by
+the way, it’s just a habit of mine.
+Okay, now let’s go back to the notepad and
+check the commands for the access switches
+in office A. They are connected to the distribution
+switches via their G0/1 and G0/2 interfaces,
+so the first command is INTERFACE RANGE G0/1-2.
+Then, the configuration commands are the same
+as the other trunks.
+So, let me copy these commands, and first
+I’ll go on ASW-A1.
+Right click, paste.
+EXIT.
+Then, ASW-A2.
+Right click, paste, EXIT.
+Finally, ASW-A3.
+Right click, paste, EXIT.
+Okay, Office A is done, now let’s go back
+to the notepad for the Office B switches.
+The configurations for these switches are
+nearly identical to Office A.
+The only difference is that Office B uses
+VLAN 30 instead of VLAN 40.
+Just like in Office A, we’ll make the interfaces
+trunks, disable DTP with SWITCHPORT NONEGOTIATE,
+configure the native VLAN, and allow only
+the required VLANs.
+So, let me copy the configurations for the
+distribution switches.
+Now let’s paste them into DSW-B1 first.
+Right click, paste, EXIT.
+Then, DSW-B2.
+Right click, paste, and EXIT.
+Now let’s go back to the notepad and copy
+the configurations for the access switches.
+Then paste them into the switches, starting
+with ASW-B1.
+Right click, paste, EXIT.
+Then B2.
+Right click, paste, and EXIT.
+And then B3.
+Right click, paste, and EXIT.
+That’s all for step 3.
+Next, let’s look at step 4.
+It says to configure one of each office’s
+Distribution switches as a VTPv2 server, using
+domain name JeremysITLab.
+Then, we’ll verify that other switches join
+the VTP domain, and configure all Access switches
+as VTP clients.
+These configurations won’t take too long,
+so I’ll do them manually.
+In Office A, I’ll configure VTP on DSW-A1,
+and it should propagate the configurations
+to the other switches.
+First, I’ll use DO SHOW VTP STATUS to confirm
+the default state.
+So, the default VTP Domain Name is null – no
+domain name.
+The default version is 1, and the default
+operating mode is server.
+So, we just need to configure a domain name
+and enable VTP version 2.
+VTP DOMAIN JeremysITLab.
+Make sure you get the capitalization correct;
+these are case-sensitive.
+Then, VTP VERSION 2.
+Making these configurations should cause DSW-A1
+to send VTP advertisements, and the other
+switches should join the domain.
+Let’s check on one other switch to verify,
+like ASW-A3.
+DO SHOW VTP STATUS.
+Okay, ASW-A3 is running VTPv2, and has joined
+the JeremysITLab domain.
+Now, since step 4 also said to make the access
+switches VTP clients, I’ll do that now on
+this switch.
+VTP MODE CLIENT.
+And let’s do it on the others, I’ll go
+on A2 next.
+VTP MODE CLIENT.
+And then A1.
+VTP MODE CLIENT.
+Okay, so Office A is done.
+But Office A’s VTP advertisements won’t
+reach Office B. VTP advertisements are only
+sent out of trunk ports, and we haven’t
+configured these links between the distribution
+and core switches as trunks – they’re
+currently all in access mode.
+Later, we’ll make them Layer-3 links.
+So, the point is that we need to activate
+VTP in Office B, too.
+I’ll go on DSW-B1.
+Let’s configure the domain: VTP DOMAIN JeremysITLab.
+And then VTPv2: VTP VERSION 2.
+Instead of checking on this switch, I’ll
+just check on ASW-B3; it should have joined
+the domain already.
+DO SHOW VTP STATUS.
+Okay, VTPv2 and domain name JeremysITLab.
+Now let’s configure these access switches
+as VTP clients.
+VTP MODE CLIENT.
+Then, ASW-B2.
+VTP MODE CLIENT.
+And finally, ASW-B1.
+VTP MODE CLIENT.
+Okay, step 4 is now complete.
+In steps 5 and 6, we’ll create and name
+the VLANs in these two LANs.
+In Office A, VLAN 10 is for PCs, VLAN 20 for
+phones, VLAN 40 for Wi-Fi, and VLAN 99 for
+Management.
+Office B is similar, but instead of VLAN 40
+for Wi-Fi it has VLAN 30 for servers.
+As a side note, why do you think that only
+Office A has a Wi-Fi VLAN, even though Office
+B also has an access point?
+Think about that; we’ll address it later.
+So, thanks to VTP, we only have to do these
+configurations on a single switch in each
+VLAN; VTP should propagate the changes to
+the other switches.
+So, I’ll go on DSW-A1 again.
+First, I’ll make VLAN 10, and name it with
+the command NAME PCs.
+Then, VLAN 20.
+Name it with NAME Phones.
+Then, the Wi-Fi VLAN, VLAN 40.
+NAME Wi-Fi.
+And finally, VLAN 99.
+NAME Management.
+EXIT.
+Let’s double check them with DO SHOW VLAN
+BRIEF.
+Okay, 10 PCs, 20 Phones, 40 Wi-Fi, and 99
+Management.
+Now let’s check on ASW-A3 again to make
+sure that VTP propagated the changes.
+Let’s use DO SHOW VLAN BRIEF here.
+Perfect, it has the same four VLANs with the
+correct names.
+Now let’s do the same in Office B, I’ll
+configure the VLANs on DSW-B1.
+First, VLAN 10.
+NAME PCs.
+Then VLAN 20.
+NAME Phones.
+Office B has SRV1, so I’ll create VLAN 30
+and name it with NAME Servers.
+Finally, VLAN 99.
+NAME Management.
+EXIT.
+This time, I won’t even check the VLANs
+on this switch; let’s just go straight to
+ASW-B3 and verify that it has synced its VLAN
+database.
+DO SHOW VLAN BRIEF.
+Okay, it has VLAN 10 for PCs, VLAN 20 for
+Phones, VLAN 30 for Servers, and VLAN 99 for
+Management.
+That’s all for steps 5 and 6.
+In step 7, we’ll configure each access switch’s
+access port.
+Of course, in a real network you can expect
+many more end hosts, but in a practice lab
+like this there’s not much point in connecting
+dozens of PCs to these switches; it just clutters
+up the screen.
+So, ASW-A1 and B1 are both connected to lightweight
+Aps - LWAPs.
+As step 7a says, LWAPs will not use FlexConnect.
+That means that all traffic will be tunneled
+to WLC1 in the Management VLAN – VLAN 99
+in this case.
+So, these connections to LWAPs can be access
+ports; they only need to support the Management
+VLAN.
+By the way, this is also the reason why Office
+B doesn’t have a Wi-Fi VLAN.
+Traffic from wireless clients in Office B
+is tunneled to WLC1 in Office A, and only
+then is assigned to VLAN 40, the Wi-Fi VLAN.
+So, let’s configure ASW-A1 and B1 first.
+Before we go to ASW-A1, notice that step 7d
+says to manually configure access mode and
+explicitly disable DTP.
+So, these ports are in dynamic auto mode by
+default and will operate as access ports,
+but for this lab we need to manually configure
+access mode and disable DTP.
+Okay, let’s go on ASW-A1.
+These end hosts are connected to each access
+switch’s FastEthernet0/1 interface, so I’ll
+configure INTERFACE F0/1.
+First, manually configure access mode with
+SWITCHPORT MODE ACCESS.
+DTP is disabled as a side effect of this command
+– it will not send or accept DTP messages.
+However, the instructions say to explicitly
+disable DTP, and the command to do that is
+SWITCHPORT NONEGOTIATE.
+The command is redundant in this case, since
+configuring access mode stops the port from
+sending or accepting DTP messages, but make
+sure to read each step carefully and not miss
+any configurations, especially on the CCNA
+exam.
+Finally, let’s assign this port to the management
+VLAN: SWITCHPORT ACCESS VLAN 99.
+And then EXIT.
+Okay, now let’s do the same on ASW-B1.
+INTERFACE F0/1.
+SWITCHPORT MODE ACCESS.
+SWITCHPORT NONEGOTIATE to explicitly disable
+DTP.
+And then SWITCHPORT ACCESS VLAN 99.
+EXIT.
+Okay, these two switches are done.
+Next, let’s configure ASW-A2, A3, and B2,
+which are connected to IP phones, in VLAN
+20, and PCs, in VLAN 10.
+Since these three switches will all have the
+same configurations, let’s copy and paste
+them.
+In my notepad I’ll scroll to Part 2, Step
+7, and here are the commands.
+First configure access mode and explicitly
+disable DTP.
+Then, configure access VLAN 10, for the PCs,
+and voice VLAN 20, for the phones.
+So, I’ll copy these commands.
+And I’ll paste them into ASW-A2 first.
+Right click, paste, and EXIT to return to
+global config mode.
+Then, ASW-A3.
+Right click, paste, and EXIT.
+Finally, ASW-B2.
+Right click, paste, and EXIT.
+Finally, we also need to configure ASW-B3’s
+connection to SRV1 in VLAN30, the Servers
+VLAN.
+So, on ASW-B3 configure INTERFACE F0/1.
+SWITCHPORT MODE ACCESS.
+SWITCHPORT NONEGOTIATE.
+SWITCHPORT ACCESS VLAN 30.
+EXIT.
+Okay, step 7 is done.
+Next, let’s do step 8, which says to configure
+ASW-A1’s connection to WLC1.
+There are three points: it must support the
+Wi-Fi and management VLANs, the management
+VLAN should be untagged, and we must disable
+DTP.
+So, I’ll configure it as a trunk port that
+allows both VLANs, assign the management VLAN
+as the native VLAN, and use SWITCHPORT NONEGOTIATE
+to disable DTP.
+Okay, let’s go on ASW-A1.
+WLC1 is connected to F0/2, so INTERFACE F0/2.
+Make it a trunk with SWITCHPORT MODE TRUNK.
+Allow only the Wi-Fi and Management VLANs:
+SWITCHPORT TRUNK ALLOWED VLAN 40,99.
+Configure the Management VLAN as the native
+VLAN: SWITCHPORT TRUNK NATIVE VLAN 99.
+And then disable DTP: SWITCHPORT NONEGOTIATE.
+EXIT.
+Okay, that’s step 8.
+Finally, in step 9 we’ll administratively
+disable all unused ports on access and distribution
+switches.
+So, let’s go on DSW-A1 to confirm which
+ports we need to disable.
+To check, use DO SHOW INTERFACES STATUS.
+So, all of these interfaces with the status
+‘notconnect’ aren’t connected to another
+switch and should be disabled.
+So, that’s G1/0/6 to 1/0/24, and G1/1/3
+and 1/1/4.
+So, let’s disable them all at once.
+INTERFACE RANGE G1/0/6-24, then a comma, and
+G1/1/3-4.
+Okay, now disable them with SHUTDOWN.
+And then I’ll use EXIT.
+Let’s check with DO SHOW INTERFACES STATUS
+again.
+Okay, all of the ‘notconnect’ interfaces
+are now disabled.
+And because this is the last step of this
+part, I’ll also use DO WRITE to save the
+config.
+Now, the other distribution switches use the
+same interfaces, so to disable their unused
+interfaces I’ll just copy and paste the
+commands from my notepad.
+Here it is: INTERFACE RANGE G1/0/6-24,G1/1/3-4,
+and then SHUTDOWN.
+I’ll copy these commands, and then paste
+them into DSW-A2 first.
+Right click, paste, EXIT.
+DO WRITE.
+Then B1.
+Right click, paste, EXIT.
+DO WRITE.
+And finally B2.
+Right click, paste, EXIT.
+DO WRITE.
+Okay, next up, we’ll disable unused interfaces
+on the access switches.
+First, I’ll go on ASW-A1.
+Let’s see which interfaces are in use with
+DO SHOW INTERFACES STATUS.
+So, F0/1 is connected to an LWAP and F0/2
+to WLC1, and then G0/1 and 0/2 are connected
+to the distribution switches.
+So, we should disable these remaining FastEthernet
+interfaces: F0/3 to 24.
+INTERFACE RANGE F0/3-24.
+SHUTDOWN.
+EXIT.
+And then DO WRITE to save.
+Now, the other access switches are a bit different:
+they only have end hosts connected to their
+F0/1 interfaces.
+They don’t have a WLC connected like ASW-A1
+does.
+So, instead of disabling F0/3 to 24, we’ll
+disable F0/2 to 24.
+I’ll copy and paste the configurations from
+my notepad.
+Here are the commands: INTERFACE RANGE F0/2-24,
+SHUTDOWN.
+Copy those commands, and then I’ll paste
+them into ASW-A2 first.
+Right click, paste, EXIT.
+DO WRITE.
+Then A3.
+Right click, paste, EXIT.
+DO WRITE.
+Move on to ASW-B1 next.
+Right click, paste, EXIT.
+DO WRITE.
+Then B2.
+Right click, paste, EXIT DO WRITE.
+And finally, ASW-B3.
+Right click, paste, EXIT.
+DO WRITE.
+Okay that’s step 9, and now part 2 of the
+lab is complete.
+Look at the completion score.
+We aren’t actually halfway through the lab
+because we got a big boost after configuring
+the first step but we’ve made some good
+progress.
+Now let’s click next to move on to part
+3.
+Part 3 covers IP addresses, Layer-3 EtherChannel,
+and HSRP, Hot Standby Router Protocol.
+This part has a lot of steps, most of it involving
+configuring IP addresses, so I’ll do lots
+of copying and pasting here.
+All of the IP addresses are given in the instructions,
+but you can also take a look at the spreadsheet
+in the lab files; the second tab in the spreadsheet
+has a chart showing all of the IP addresses
+that you can refer to.
+But let’s get started with step 1, which
+involves configuring R1’s interfaces.
+G0/0/0 and G0/1/0 are connected to the Internet,
+and they will use DHCP to learn their IP addresses.
+Then, we’ll manually configure 10.0.0.33/30
+on G0/0, .37/30 on G0/1, and create and configure
+an IP address on loopback0, 10.0.0.76/32.
+So, let’s go on the CLI of R1.
+First, I’ll configure G0/0/0 and G0/1/0
+with INTERFACE RANGE G0/0/0, a comma, and
+then G0/1/0.
+Use IP ADDRESS DHCP to make them learn their
+IP addresses via DHCP, and don’t forget
+NO SHUTDOWN to enable them; router interfaces
+are disabled by default.
+Next, let’s configure G0/0; this is the
+interface connected to CSW1.
+INTERFACE G0/0.
+IP ADDRESS 10.0.0.33 255.255.255.252.
+NO SHUTDOWN.
+Then G0/1, the interface connected to CSW2.
+INTERFACE G0/1.
+IP ADDRESS 10.0.0.37 255.255.255.252.
+NO SHUTDOWN.
+And finally, create loopback 0 with INTERFACE
+LOOPBACK0, and configure IP ADDRESS 10.0.0.76,
+and a /32 netmask.
+So, let’s check R1’s interfaces with DO
+SHOW IP INTERFACE BRIEF.
+Okay, G0/0/0 and 0/1/0 learned IP addresses
+via DHCP, and G0/0, G0/1, and loopback0 have
+the IP addresses we configured.
+This is the only step involving R1 in this
+section of the lab, so I’ll use DO WRITE
+to save its configuration.
+Before moving on, let’s take a look at that
+spreadsheet I mentioned a couple of times;
+it might be useful when you do this lab.
+The first tab lists each device’s physical
+connections.
+For example, here at the top left we can see
+that R1 G0/0 is connected to CSW1 G1/0/1,
+and G0/1 is connected to CSW2 G1/0/1.
+Feel free to refer to this chart, or use SHOW
+CDP NEIGHBORS in the lab to figure out how
+the devices are connected.
+Then, in the IPv4 tab, you can see each device’s
+IP addresses.
+For example, on the R1 to ISP A link, you
+can see the subnet here, 203.0.113.0/30.
+Here is ISP A’s IP address, 203.0.113.1.
+And here is R1 G0/0/0’s address, .2, which
+it learned via DHCP.
+All of the other subnets are listed here too.
+R1 to ISP B, the management subnet for Office
+A, the management subnet for office B, etc.
+Once again, feel free to refer to this chart
+as needed as you configure this lab.
+Okay, let’s return back to the lab itself.
+Step 1 is complete, so let’s move on to
+step 2, which says to enable IPv4 routing
+on all core and distribution switches.
+That just requires a single command on each
+switch: IP ROUTING.
+So, let’s quickly do that on each of them,
+starting with CSW1: IP ROUTING.
+Then CSW2: IP ROUTING.
+DSW-A1.
+DSW-A2.
+DSW-B1.
+And DSW-B2.
+Okay, that’s all for step 2.
+Next, in step 3 we’ll create a Layer-3 EtherChannel
+between CSW1 and CSW2 using a Cisco-proprietary
+protocol, so PAgP, and both should actively
+try to form an EtherChannel, so we’ll use
+desirable mode.
+The subnet is 10.0.0.40/30, and CSW1 should
+use .41 and CSW2 .42.
+Okay, let’s configure that on CSW1 first.
+First, let’s see which interfaces are connected
+to CSW2.
+DO SHOW CDP NEIGHBORS.
+Okay, we can see two entries for CSW2, connected
+to CSW1’s G1/0/2 and G1/0/3 interfaces.
+And they are connected to the same interfaces
+on CSW2: G1/0/2 and 3.
+So, let’s configure them with INTERFACE
+RANGE G1/0/2-3.
+First, I’ll make them routed ports with
+NO SWITCHPORT.
+Then, make the EtherChannel with CHANNEL-GROUP
+1 MODE DESIRABLE.
+A Layer-3 EtherChannel’s IP address must
+be configured on the port channel interface,
+so INTERFACE PORT-CHANNEL1.
+IP ADDRESS 10.0.0.41 and a /30 netmask.
+Now let’s do the same on CSW2.
+INTERFACE RANGE G1/0/2-3.
+NO SWITCHPORT.
+CHANNEL-GROUP 1 MODE DESIRABLE.
+Then configure the port-channel: INTERFACE
+PORT-CHANNEL1.
+IP ADDRESS 10.0.0.42 and a /30 netmask.
+Okay, let’s check the EtherChannel with
+DO SHOW ETHERCHANNEL SUMMARY.
+So, on PortChannel1 RU means Layer 3 and in
+use, which is good.
+And the member ports both have the P flag,
+which is also what we want.
+Let’s quickly test by pinging CSW1: DO PING
+10.0.0.41.
+Because the ARP process in Packet Tracer is
+slow, you might see the first ping or two
+time out, but then the others work.
+And if you ping a second time, they all work.
+Okay, that’s all for step 3.
+Next, let’s look at steps 4 and 5 together,
+which involve configuring the appropriate
+interfaces on CSW1 and CSW2.
+We just configured the EtherChannel that connects
+them, and now we have to configure their other
+interfaces, which should all be routed ports.
+Their G1/0/1 interfaces connect to R1: CSW1
+G1/0/1 is 10.0.0.34/30 and CSW2 is .38.
+Then, their G1/1/1, 2, 3, and 4 interfaces
+each connect to the distribution switches.
+Then, configure a loopback interface on each
+of them.
+Finally, notice that it also says to disable
+all unused interfaces.
+Remember that as a security best practice.
+So, you can see all of the IP addresses here.
+I don’t think you need to see me configuring
+these IP addresses one by one, so let’s
+look at the commands in the notepad and then
+I’ll just copy and paste them.
+So, here we are, part 3 step 4, CSW1.
+On each of its physical interfaces, I’ll
+first use NO SWITCHPORT to make it a routed
+port, and then just configure the IP address.
+Then I’ll configure loopback0, and disable
+the unused interfaces, which are G1/0/4 to
+24.
+So, I’ll highlight and copy all of these
+commands.
+Then I’ll go into the CLI of CSW1, right
+click, and paste them.
+And then EXIT.
+This is actually the last step that involves
+CSW1 in this part of the lab, so I’ll use
+DO WRITE to save the configuration here.
+Now let’s do the same for CSW2.
+I’ll go back to the notepad, and scroll
+down to Part 3, step 5.
+So, the commands for CSW2 are identical, aside
+from the different IP addresses.
+So, let’s highlight and copy these commands,
+go to the CLI of CSW2, right click, and paste
+them in.
+Then I’ll EXIT and use DO WRITE to save
+the config.
+Okay, steps 4 and 5 are complete.
+Now let’s do steps 6, 7, 8, and 9 together,
+which involve configuring IP addresses on
+the distribution switches’ connections to
+the core switches, as well as a loopback interface
+on each distribution switch.
+Like steps 4 and 5, these steps just involve
+configuring IP addresses on interfaces, so
+I’ll copy and paste them from my notepad.
+First, here’s part 3 step 6, configuring
+DSW-A1.
+On G1/1/1 and G1/1/2, the connections to CSW1
+and CSW2, we’ll configure 10.0.0.46/30 and
+.62/30, and then we’ll create loopback0
+and configure .79/32.
+So, I’ll copy these commands, paste them
+into DSW-A1’s CLI, and then EXIT.
+Then I’ll go back to the notepad for step
+7, configuring DSW-A2.
+The commands are the same, just with different
+IP addresses.
+So, I’ll highlight and copy these commands,
+go into the CLI of DSW-A2, right click, paste,
+and then EXIT.
+Okay, back to the notepad for DSW-B1, which
+is step 8, configuring .54/30, .70/30, and
+.81/32 on the loopback.
+So, highlight and copy these commands, go
+into the CLI of DSW-B1, right click, paste,
+and then EXIT.
+And finally go back to the notepad for step
+9, configuring DSW-B2.
+I’ll highlight and copy these commands,
+go to the CLI of DSW-B2, right click, paste,
+and then EXIT.
+Okay, steps 6, 7, 8, and 9 are done; we’ve
+configured IP addresses on the distribution
+switches’ physical and loopback interfaces.
+Step 10 is a bit different.
+Instead of configuring IP addresses in the
+IOS CLI, we’ll configure SRV1’s IP settings
+in the Packet Tracer GUI: default gateway
+10.5.0.1, IPv4 address 10.5.0.4, with a /24
+subnet mask.
+So, after clicking on SRV1 go to the Config
+tab.
+Here, we can configure SRV1’s IPv4 default
+gateway: 10.5.0.1.
+Then, on the left click on FastEthernet0,
+and then IPv4 address 10.5.0.4.
+It uses a /8 subnet mask by default because
+it’s a Class A address, but change that
+to /24.
+Okay, we’ve configured SRV1’s IP settings,
+so that’s all for step 10.
+Step 11 says to configure the following management
+IP addresses on the access switches, using
+the VLAN 99 interface, and configure the appropriate
+subnet’s first usable address as the default
+gateway.
+So, these access switches are layer 2 switches,
+but we want to be able to connect to them
+remotely for configuration via SSH, so we
+need to configure an IP address and default
+gateway on each of them.
+ASW-A1, A2, and A3 have IP addresses in the
+10.0.0.0/28 subnet, so we’ll configure the
+first usable address of that subnet – .1
+– as their default gateway.
+ASW-B1, B2, and B3 have IP addresses in the
+10.0.0.16/28 subnet, so we’ll configure
+.17 as their default gateway.
+Let’s start in Office A with ASW-A1.
+To configure a layer-2 switch’s default
+gateway, use IP DEFAULT-GATEWAY, and then
+the IP address, 10.0.0.1.
+Now let’s configure the VLAN 99 SVI.
+INTERFACE VLAN 99.
+IP ADDRESS 10.0.0.4, and the prefix length
+is /28, so 255.255.255.240.
+EXIT.
+This is the last step involving these access
+switches in this part of the lab, so I’ll
+use DO WRITE to save the config.
+And now let’s move on to ASW-A2.
+Same default gateway, IP DEFAULT-GATEWAY 10.0.0.1.
+INTERFACE VLAN 99.
+IP ADDRESS 10.0.0.5 and a /28 netmask.
+EXIT.
+And save the config with DO WRITE.
+And then the same on ASW-A3.
+IP DEFAULT-GATEWAY 10.0.0.1.
+INTERFACE VLAN 99.
+IP ADDRESS 10.0.0.6 /28.
+EXIT.
+DO WRITE.
+Office A is done, let’s move on to Office
+B, configuring the 10.0.0.16/28 subnet for
+management, with .20 for ASW-B1, .21 for B2,
+and .22 for B3.
+ASW-B1 first.
+IP DEFAULT-GATEWAY 10.0.0.17.
+INTERFACE VLAN 99.
+IP ADDRESS 10.0.0.20 /28.
+EXIT.
+DO WRITE.
+ASW-B2 next.
+IP DEFAULT-GATEWAY 10.0.0.17.
+INTERFACE VLAN99.
+IP ADDRESS 10.0.0.21 /28.
+EXIT.
+DO WRITE.
+And finally, ASW-B3.
+IP DEFAULT-GATEWAY 10.0.0.17.
+INTERFACE VLAN 99.
+IP ADDRESS 10.0.0.22 /28.
+EXIT.
+DO WRITE.
+Okay, we’ve configured a management IP address
+on each access switch.
+That’s all for step 11.
+In the remaining steps for this part, steps
+12 to 19, we will be configuring HSRP on each
+office’s distribution switches.
+We need to configure HSRP for 4 subnets in
+each office.
+In Office A, we need HSRP for the management
+subnet, the PCs subnet, the Phones subnet,
+and the Wi-Fi subnet.
+In Office B, we need HSRP for the management
+subnet, the PCs subnet, the Phones subnet,
+and the Servers subnet.
+I’ll demonstrate the complete configuration
+for DSW-A1 and A2 in Office A, but for the
+sake of time I’ll just copy and paste the
+configurations for Office B.
+So, steps 12 to 15 focus on Office A. Step
+12 says to configure HSRP version 2 group
+1 for office A’s management subnet, which
+is VLAN 99.
+We should make DSW-A1 the active router by
+increasing its priority to 5 above the default.
+The default is 100, so we should make it 105.
+And then, enable preemption on DSW-A1, the
+active router.
+The subnet is 10.0.0.0/28, with .1 as the
+virtual IP, .2 for DSW-A1, and .3 for A2.
+So, let’s configure that on DSW-A1 first.
+These distribution switches will be the default
+gateway for hosts in each subnet, and they
+will use HSRP to provide redundancy.
+Okay, so on DSW-A1 configure INTERFACE VLAN
+99.
+First, I’ll configure DSW-A1’s own IP:
+IP ADDRESS 10.0.0.2 with a /28 netmask.
+Then I’ll enable HSRP version 2 with STANDBY
+VERSION 2.
+Next I’ll configure the VIP with STANDBY
+1 IP 10.0.0.1.
+Now let’s ensure that DSW-A1 becomes the
+Active router by increasing the priority to
+105: STANDBY 1 PRIORITY 105.
+Finally, let’s enable preemption so this
+switch will always be the active switch as
+long as it is up and running.
+STANDBY 1 PREEMPT.
+Next let’s configure DSW-A2’s side of
+the management subnet.
+INTERFACE VLAN 99.
+DSW-A2’s IP is IP ADDRESS 10.0.0.3 and a
+/28 netmask.
+Then, enable HSRPv2 with STANDBY VERSION 2.
+And finally, configure the VIP with STANDBY
+1 IP 10.0.0.1.
+That’s all we have to configure on DSW-A2.
+We can leave it at the default priority since
+we already raised DSW-A1’s priority.
+And there’s no need to configure preemption
+on the standby router, although you can use
+the command if you want to – it won’t
+do any harm.
+So, we’ve configured HSRP for the management
+subnet.
+Next, let’s move on to step 13, in which
+we’ll configure HSRPv2 for the PCs subnet.
+Once again, DSW-A1 should be the active router.
+However, notice that it says to configure
+group 2, instead of group 1.
+The configurations will be nearly identical,
+but we will use a different group number and
+different IP addresses: the subnet is 10.1.0.0/24,
+with .1 as the VIP, .2 for DSW-A1, and .3
+for A2.
+Let’s start with DSW-A1.
+INTERFACE VLAN 10.
+First, configure the interface’s IP with
+IP ADDRESS 10.1.0.2 255.255.255.0.
+Then, enable HSRPv2 with STANDBY VERSION 2.
+Then I’ll configure the VIP with STANDBY
+2 IP 10.1.0.1.
+Make sure to use the correct group number
+here.
+Then, I’ll raise the priority with STANDBY
+2 PRIORITY 105.
+And finally STANDBY 2 PREEMPT.
+Okay, now let’s configure DSW-A2’s side.
+INTERFACE VLAN 10.
+IP ADDRESS 10.1.0.3 /24.
+STANDBY VERSION 2.
+STANDBY 2 IP 10.1.0.1.
+Okay, that’s all for A2.
+Now we have two more HSRP groups to configure
+for Office A in steps 14 and 15.
+For these two groups, we will make DSW-A2
+the active router instead of A1.
+Let’s start with step 14, configuring HSRPv2
+group 3 for the phones subnet.
+The subnet is 10.2.0.0/24, with .1 as the
+VIP, .2 for DSW-A1, and .3 for DSW-A2.
+I’ll start with DSW-A2 this time.
+INTERFACE VLAN 20.
+IP ADDRESS 10.2.0.3 /24.
+Then enable HSRPv2, STANDBY VERSION 2.
+Configure the VIP: STANDBY 3 IP 10.2.0.1.
+And this switch should be the active router,
+so STANDBY 3 PRIORITY 105.
+STANDBY 3 PREEMPT.
+And now, DSW-A1’s side.
+INTERFACE VLAN 20.
+IP ADDRESS 10.2.0.2 /24.
+STANDBY VERSION 2.
+STANDBY 3 IP 10.2.0.1.
+Finally, we have one more HSRP group to configure
+for step 15: the Wi-Fi subnet, VLAN 40.
+Again, DSW-A2 should be the active router.
+The subnet is 10.6.0.0/24, with .1 as the
+VIP, .2 for DSW-A1, and .3 for DSW-A2.
+And note that the HSRP group is 4.
+Let’s start on DSW-A2.
+INTERFACE VLAN 40.
+IP ADDRESS 10.6.0.3 /24.
+STANDBY VERSION 2.
+STANDBY 4 IP 10.6.0.1.
+STANDBY 4 PRIORITY 105.
+STANDBY 4 PREEMPT.
+And then let’s configure DSW-A1’s side.
+INTERFACE VLAN 40.
+IP ADDRESS 10.6.0.2 /24.
+STANDBY VERSION 2.
+STANDBY 4 IP 10.6.0.1.
+Okay, we’ve finished configuring HSRP in
+Office A. DSW-A1 is the active router for
+groups 1 and 2, and DSW-A2 is the active router
+for groups 3 and 4.
+Let me save the config with DO WRITE and EXIT
+to return to global config mode.
+Then I’ll do the same on A2.
+DO WRITE.
+EXIT.
+Steps 16 to 19 are the same thing, but for
+Office B. HSRPv2 group 1 is for the management
+subnet, VLAN 99.
+Group 2 is for the PCs subnet, VLAN 10.
+Group 3 is for the Phones subnet, VLAN 20.
+And Group 4 is for the Servers subnet, VLAN
+30.
+DSW-B1 should be active for groups 1 and 2,
+and DSW-B2 should be active for groups 3 and
+4.
+Instead of going through the configurations
+one by one, I’ll just copy and paste them
+from my notepad.
+So, here we are.
+Part 3, steps 16 to 19.
+DSW-B1 will be primary for HSRP groups 1 and
+2, and standby for groups 3 and 4.
+Let me highlight and copy these configurations.
+And then go into the CLI of DSW-B1.
+Right click, paste, EXIT.
+DO WRITE.
+And now DSW-B2, let’s look at the commands
+in the notepad.
+So, this switch will be standby for groups
+1 and 2, and active for groups 3 and 4.
+Let’s highlight and copy these commands,
+go into the CLI of DSW-B2, right click, paste,
+EXIT.
+DO WRITE.
+Okay, we’re finally done with part 3.
+We configured IP addresses on R1 and all of
+these switches, configured Layer-3 EtherChannel
+between CSW1 and CSW2, and configured various
+HSRP groups among these distribution switches.
+Now I’ll click Next to move on to part 4.
+Part 4 is all about Rapid Spanning Tree Protocol.
+This part shouldn’t take so long.
+In step 1, we’ll configure Rapid PVST+ on
+the access and distribution switches, and
+then in step 2 we’ll enable PortFast and
+BPDU Guard on the appropriate ports.
+So, let’s get right into it with step 1.
+First of all, we should enable Rapid PVST+
+on the distribution and access switches.
+By default, these switches in Packet Tracer
+run standard PVST+, not the Rapid version.
+To prove that, I’ll go on DSW-A1 and use
+DO SHOW SPANNING-TREE.
+Notice that it says ‘Spanning tree enabled
+protocol ieee’.
+Note that this doesn’t mean it’s running
+IEEE-standard Spanning Tree Protocol; this
+means it is running Cisco’s Per-VLAN Spanning
+Tree Plus, PVST+.
+To change it to Rapid PVST+, the command is
+SPANNING-TREE MODE RAPID-PVST.
+And let’s double check with DO SHOW SPANNING-TREE
+again.
+Okay, now it says ‘rstp’, meaning Rapid
+PVST+ is enabled.
+Okay, let me highlight the SPANNING-TREE MODE
+RAPID-PVST command and copy it.
+Now I’ll quickly go on to the other switches
+and paste it in.
+DSW-A2 first.
+Right click, paste.
+Then DSW-B1.
+Right click, paste.
+And DSW-B2.
+Right click, paste.
+Then the access switches.
+ASW-A1.
+Right click, paste.
+And A2.
+Right click, paste.
+And A3.
+Right click, paste.
+Then ASW-B1.
+Right click, paste.
+Then ASW-B2.
+Right click, paste.
+And finally, ASW-B3.
+Right click, and paste.
+Okay, now all of these switches are running
+Rapid PVST+, instead of the classic PVST+.
+Now let’s look at the sub steps of step
+1.
+1a says to ensure that the Root Bridge for
+each VLAN aligns with the HSRP active router
+by configuring the lowest possible STP priority.
+So, that means a priority of 0.
+So, in Office A, DSW-A1 should be the root
+for the Management VLAN, which is VLAN 99,
+and the PCs VLAN, which is VLAN 10.
+And DSW-A2 should be the root for the Phones
+VLAN, VLAN 20, and the Wi-Fi VLAN, VLAN 40.
+The same applies for Office B, with the Servers
+VLAN replacing the Wi-Fi VLAN.
+Okay, and then B says to configure the HSRP
+standby router for each VLAN with an STP priority
+one increment above the lowest priority.
+So, the lowest priority is 0.
+What’s one increment above that?
+Well, STP priority is configured in increments
+of 4096, so one increment above 0 is 4096.
+Let’s configure that on each distribution
+switch, starting with DSW-A1.
+So, first I’ll set its priority to 0 for
+VLANs 10 and 99 with SPANNING-TREE VLAN 10,99
+PRIORITY 0.
+You can also do it in two separate commands
+– one for VLAN 10 and one for VLAN 99 – the
+effect is the same.
+Let me double check that it’s the root bridge
+now – VLAN 10 first.
+DO SHOW SPANNING-TREE VLAN 10.
+Okay, it says ‘this bridge is the root’.
+And then for VLAN 99.
+DO SHOW SPANNING-TREE VLAN 99.
+Okay, same for this VLAN.
+Then, I’ll set its priority to 4096 for
+VLANs 20 and 40 – the phones VLAN and the
+Wi-Fi VLAN.
+SPANNING-TREE VLAN 20,40 PRIORITY 4096.
+Okay, that’s all for this switch in this
+part of the lab, so I’ll use DO WRITE to
+save the config.
+Now let’s configure DSW-A2.
+First, I’ll set its priority to 0 for VLANs
+20 and 40.
+SPANNING-TREE VLAN 20,40 PRIORITY 0.
+Next, let’s set it to 4096 for VLANs 10
+and 99.
+SPANNING-TREE VLAN 10,99 PRIORITY 4096.
+And save the config with DO WRITE.
+Now let’s do the same thing in Office B.
+First, I’ll set DSW-B1’s priority to 0
+for the PCs VLAN and the Management VLAN – VLANs
+10 and 99.
+SPANNING-TREE VLAN 10,99 PRIORITY 0.
+And then set it to 4096 for the Phones VLAN
+and the Servers VLAN – VLANs 20 and 30.
+SPANNING-TREE VLAN 20,30 PRIORITY 4096.
+And let’s save the config with DO WRITE.
+And finally, DSW-B2.
+First, I’ll set the priority to 0 for VLANS
+20 and 30.
+SPANNING-TREE VLAN 20,30 PRIORITY 0.
+And then to 4096 for VLANs 10 and 99.
+SPANNING-TREE VLAN 10,99 PRIORITY 4096.
+And then save the config with DO WRITE.
+Now let’s do step 2, which says to enable
+PortFast and BPDU Guard on all ports connected
+to end hosts, including WLC1.
+Perform the configurations in interface config
+mode.
+Okay, so PortFast allows ports connected to
+end hosts to immediately move to the STP Forwarding
+state, without having to wait 30 seconds to
+transition through listening and learning.
+You should generally configure it on ports
+connected to end hosts so they don’t have
+to wait to access the network after physically
+connecting to the switch.
+BPDU Guard, on the other hand, is used to
+disable a port if it receives a spanning tree
+BPDU.
+You should configure it on ports connected
+to end hosts to prevent users from connecting
+an unauthorized switch to the network.
+So, I’ll start on ASW-A1.
+First, I’ll configure PortFast and BPDU
+Guard on F0/1, which is connected to LWAP1.
+INTERFACE F0/1.
+SPANNING-TREE PORTFAST.
+SPANNING-TREE BPDUGUARD ENABLE.
+And now F0/2, which is connected to WLC1.
+INTERFACE F0/2.
+SPANNING-TREE PORTFAST.
+Let’s pause for a second here.
+Notice the second warning message.
+Portfast has been configured on F0/2 but will
+only have effect when the interface is in
+a non-trunking mode.
+That’s a problem: F0/2 is a trunk port,
+because it’s connected to WLC1 and needs
+to support the Management and Wi-Fi VLANs.
+Here’s the solution.
+I’ll use the up arrow to go back to the
+command, and then use the question mark.
+Notice the TRUNK option.
+As the description says, this will enable
+portfast on the interface even in trunk mode.
+Okay, so SPANNING-TREE PORTFAST TRUNK.
+There we go.
+And now I’ll enable BPDU Guard.
+SPANNING-TREE BPDUGUARD ENABLE.
+EXIT.
+And save the config with DO WRITE.
+Okay, so we’re done with ASW-A1.
+It was a special case because of that trunk
+port.
+The other access switches only have one host
+connected and require the same commands to
+enable PortFast and BPDU Guard, so I’ll
+return to my notepad.
+Here are the commands.
+INTERFACE F0/1.
+SPANNING-TREE PORTFAST.
+SPANNING-TREE BPDUGUARD ENABLE.
+So, I’ll copy these commands, and let’s
+paste them into ASW-A2.
+Right click, paste, EXIT.
+And save with DO WRITE.
+Then ASW-A3.
+Right click, paste, EXIT, DO WRITE.
+And ASW-B1.
+Right click, paste, EXIT, DO WRITE.
+Then B2.
+Right click, paste, EXIT, DO WRITE.
+And finally, ASW-B3.
+Right click, paste, EXIT, DO WRITE.
+Okay, that’s all for part 4 of this lab.
+We enabled Rapid PVST+ on the distribution
+and access switches, modified the priority
+values of the distribution switches for each
+VLAN to align with the HSRP active and standby
+routers, and then configured PortFast and
+BPDU Guard on the access switches.
+Now I’ll click Next to go to part 5.
+This part of the lab is all about static and
+dynamic routing.
+In step 1, we’ll configure OSPF on R1 and
+the core and distribution switches.
+Then, in step 2 we’ll configure default
+routes on R1 for its Internet connections,
+and then make R1 an ASBR that advertises its
+default route to other routers in the OSPF
+domain.
+So, let’s get started with step 1.
+Step 1 says to configure OSPF on R1’s LAN-facing
+interfaces, so these two connected to CSW1
+and 2, and all Core and Distribution switches,
+specifically on all Layer-3 interfaces.
+Now, there are a lot of specific instructions
+below, so before jumping into the configurations
+it’s important to read all of these.
+A says to use process ID 1 and Area 0.
+B Says to manually configure each device’s
+router ID to match the loopback interface
+IP.
+So, R1’s loopback is 10.0.0.76, CSW1’s
+is .77, CSW2’s is .78, etc.
+Okay, then C says that, on switches, you should
+use the NETWORK command to match the exact
+IP address of each interface.
+In other words, use the NETWORK command with
+a /32 wildcard mask, which is 0.0.0.0, to
+enable OSPF on each interface.
+Then D says that you should enable OSPF in
+interface config mode on R1.
+You can do that with the IP OSPF 1 AREA 0
+command on each interface.
+Moving on to E, it says to make sure OSPF
+is enabled on all loopback interfaces, too.
+And they should be passive interfaces.
+And F says that each distribution switch’s
+SVIs, except the management VLAN SVI, should
+be passive too.
+So, by default, after enabling OSPF on the
+distribution switch SVIs, they will send OSPF
+hello messages out of their SVIs to the LANs.
+And they will receive each other’s Hellos
+and become OSPF neighbors.
+However, we don’t need them to become neighbors
+four times – once for each VLAN.
+We’ll make all SVIs except the Management
+SVI passive, so they will only send hellos
+out of the Management SVI.
+Finally, G says to configure all physical
+connections between OSPF neighbors to use
+a network type that doesn’t elect a DR and
+BDR.
+In other words, you should configure the point-to-point
+network type on the interfaces.
+Note that, in packet tracer, the necessary
+command isn’t available on the Layer-3 PortChannel
+interface between CSW1 and CSW2.
+So, we’ll leave this link as the default
+network type.
+Okay, so we have a lot of configurations to
+do.
+I’ll configure the first couple of devices
+one command at a time in the CLI to walk you
+through the process, but after that I’ll
+just copy and paste the commands.
+So, let’s open the CLI of R1 and get started.
+First, I’ll create the OSPF process with
+ROUTER OSPF 1.
+Now, let’s specify R1’s router ID.
+Actually, if I check the current router ID
+with DO SHOW IP OSPF, you can see that the
+ID is 10.0.0.76 – the IP address of its
+loopback interface.
+However, step 1b said to manually configure
+each device’s router ID, so I will do that
+with ROUTER-ID 10.0.0.76.
+Okay, there is only one more command to configure
+in this mode, which is PASSIVE-INTERFACE LOOPBACK0.
+We haven’t enabled OSPF on loopback0 yet,
+but let’s do that next.
+The instructions said to activate OSPF in
+interface config mode on R1, so INTERFACE
+LOOPBACK0.
+And then activate OSPF with IP OSPF 1 AREA
+0.
+And now we just have to activate OSPF on R1’s
+two LAN-facing interfaces, connected to CSW1
+and CSW2.
+Those are G0/0 and 0/1, so INTERFACE RANGE
+G0/0-1.
+Let’s activate OSPF.
+IP OSPF 1 AREA 0.
+And then also configure the point-to-point
+network type.
+IP OSPF NETWORK POINT-TO-POINT.
+Okay that’s all for R1.
+We configured its router ID, made its loopback
+interface passive, activated OSPF on the appropriate
+interfaces, and configured the point-to-point
+network type.
+Next, I’ll go on CSW1.
+First, create the OSPF process with ROUTER
+OSPF 1.
+And like on R1, I’ll first configure the
+router ID with ROUTER-ID 10.0.0.77 – the
+IP address of its loopback interface.
+And let’s make the loopback passive: PASSIVE-INTERFACE
+LOOPBACK0.
+Now, for the switches, the instructions say
+to activate OSPF using the NETWORK command
+with a /32 wildcard mask.
+So, let’s see the IP addresses of CSW1’s
+interfaces.
+If I use DO SHOW IP INTERFACE BRIEF like this,
+the output is full of these interfaces without
+any IP address.
+To filter out these interfaces from the output,
+let me add a pipe to the end of the command,
+EXCLUDE, and then ‘un’ to filter any lines
+that include ‘unassigned’.
+There we go; now we can only see the interfaces
+that have an IP address.
+So, let’s activate OSPF on these interfaces
+in order, starting with port-channel 1.
+NETWORK 10.0.0.41 0.0.0.0 AREA 0.
+And now I can simply hit the up arrow to return
+to that command, and then change the IP address
+to .34 for the G1/0/1 interface.
+And then up arrow again, change it to .45
+for G1/1/1.
+Up arrow again, .49 for G1/1/2.
+Then again for G1/1/3, .53.
+Up arrow again, change it to .57 for G1/1/4.
+And one more time, change it to .77 for loopback0.
+Okay, we’ve activated OSPF on all of CSW1’s
+interfaces.
+But there’s one more thing to configure
+on CSW1: we need to configure the point-to-point
+network type on its physical ports: G1/0/1,
+and G1/1/1, 2, 3, and 4.
+So, INTERFACE RANGE G1/0/1, a comma, and then
+G1/1/1-4.
+And configure the network type with IP OSPF
+NETWORK POINT-TO-POINT.
+Okay, that’s all for CSW1.
+Finally, I’ll EXIT and use DO WRITE to save
+the config.
+The configurations for the rest of the switches
+are similar, so I’ll just copy them from
+the notepad and then paste them into each
+device.
+To repeat what I said before, when you are
+doing this lab yourself, it’s important
+that you prepare all of these configurations
+yourself – otherwise, it’s not practice.
+But, for the sake of the video, let’s do
+this to speed things up – the video is long
+enough as is.
+So, CSW2’s configurations are identical
+to CSW1’s, just with different IP addresses.
+So, I’ll copy them, go into the CLI of CSW2,
+and paste them in.
+Then I’ll EXIT and save the config with
+DO WRITE.
+Now let’s return to the notepad and look
+at the commands for DSW-A1.
+We’ll set its router ID, make its loopback
+interface passive, and also make its SVIs
+passive for VLANs 10, 20, and 40 – but not
+for the management VLAN, VLAN 99.
+Then activate OSPF on each interface.
+And finally configure the point-to-point network
+type on G1/1/1 and 1/1/2 – those are the
+physical links connecting to CSW1 and 2.
+So, I’ll highlight and copy these commands,
+go to the CLI of DSW-A1, and paste them.
+Then, EXIT and DO WRITE.
+Okay, and now let’s return to the notepad
+and look at DSW-A2’s configurations.
+These are identical to DSW-A1’s, just with
+different IP addresses.
+So, I’ll copy them, go into the CLI of DSW-A2,
+and paste them.
+Then EXIT and DO WRITE.
+Now, before moving on let’s check its OSPF
+neighbors.
+DO SHOW IP OSPF NEIGHBOR.
+So, it has three neighbors.
+10.0.0.79 is DSW-A1.
+Notice that the interface is VLAN 99.
+If we didn’t make the VLAN 10, 20 and 40
+SVIs passive, DSW-A1 and A2 would become OSPF
+neighbors with each other four times – once
+for each SVI – that isn’t necessary.
+And notice that, because we made G1/1/1 and
+1/1/2 point-to-point, no DR or BDR are elected
+for the connections with CSW1 and CSW2: 10.0.0.77
+and 78 here.
+Okay, now let’s do the same for DSW-B1 and
+B2 in Office B. So, I’ll return to the notepad.
+The configurations are basically identical,
+with different IP addresses of course.
+And instead of VLAN 40, Office B has VLAN
+30.
+But that’s it.
+So, I’ll copy these commands for DSW-B1,
+open its CLI, and paste them.
+Then I’ll EXIT and DO WRITE.
+And finally, let’s return to the notepad
+and copy the commands for DSW-B2.
+Once again, these commands are identical,
+just with different IP addresses.
+Open the CLI of DSW-B2, paste the commands,
+and EXIT, DO WRITE.
+Okay, we’re done with step 1, configuring
+OSPF.
+Now let’s move on to step 2.
+It says to configure one static default route
+for each of R1s Internet connections.
+They should be recursive routes, meaning they
+should specify a next hop IP address, but
+not an exit interface.
+For review, recursive routes specify only
+the next hop IP, directly connected routes
+specify only the exit interface, and fully
+specified routes specify both.
+2a says to make the route via G0/1/0 a floating
+static route by configuring an AD value 1
+greater than the default, and then B says
+that R1 should function as an ASBR, advertising
+its default route to other routers in the
+OSPF domain.
+Okay, let’s go back to the CLI of R1.
+So, R1 has two Internet connections.
+Let’s see.
+DO SHOW IP INTERFACE BRIEF.
+There they are: G0/0/0 and G0/1/0.
+Both of them have a /30 prefix length.
+You can confirm that with DO SHOW IP INTERFACE
+G0/0/0.
+You can see that here in the second line,
+Internet address is 203.0.113.2/30.
+A /30 subnet only has two usable addresses,
+.1 and .2 in this case, so that means the
+ISP’s IP address must be 203.0.113.1.
+Let’s check with DO PING 203.0.113.1.
+Okay, so that should be the next hop IP of
+one of the routes.
+And let’s verify the other one.
+DO SHOW IP INTERFACE G0/1/0.
+Okay, Internet address is 203.0.113.6/30.
+This is the .4/30 subnet, and the other usable
+address is .5, which should be the ISP’s
+address.
+Let’s ping it.
+DO PING 203.0.113.5.
+Okay, it works.
+That should be the next hop IP of the other
+default route.
+So, let’s configure those routes.
+The first one, via 203.0.113.1.
+IP ROUTE 0.0.0.0 0.0.0.0 203.0.113.1.
+Okay, that’s it.
+Now let’s configure the second one via .5
+and make it a floating static route.
+IP ROUTE 0.0.0.0 0.0.0.0 203.0.113.5.
+Now, the instructions say to make the AD 1
+higher than the default.
+What’s the default administrative distance
+of a static route in Cisco IOS?
+It’s 1, so let’s specify 2 here.
+So, we configured two default routes.
+Let’s verify that only one is active in
+the routing table.
+DO SHOW IP ROUTE.
+Look down at the bottom, and there it is.
+0.0.0.0/0, via 203.0.113.1.
+Perfect.
+Finally, let’s do step 2b, in which we’ll
+make R1 an OSPF ASBR so it advertises its
+default route.
+To do that, go back to OSPF config mode with
+ROUTER OSPF 1.
+And then use DEFAULT-INFORMATION ORIGINATE.
+And that’s it.
+Finally, I’ll use EXIT and DO WRITE.
+Now, if I go to any of the layer-3 switches,
+such as DSW-B2, and use DO SHOW IP ROUTE,
+I should see the default route.
+You can see it down at the bottom of the routing
+table.
+Notice it has two routes installed: one with
+CSW1 as the next hop, and one with CSW2 as
+the next hop.
+Now, if I ping R1’s internet IP from this
+switch, it should work.
+DO PING 203.0.113.2.
+Okay, the ping works.
+Now, what about the ISP’s IP address?
+Let’s try.
+DO PING 203.0.113.1.
+It gets five Us in reply, meaning ‘unreachable’.
+The reason for that is DSW-B2 is pinging from
+a private IP address, which the ISP’s router
+doesn’t accept.
+To solve that, we need to configure NAT, network
+address translation.
+So, let’s click Next in the lab instructions
+to move on to Part 6.
+In part 6 of this lab, we’ll configure various
+network services like DHCP, DNS, NTP, SNMP,
+Syslog, FTP, SSH, and NAT.
+We’ve got a lot of configurations to do
+in this section, so let’s get started with
+step 1, which says to configure the following
+DHCP pools on R1 to make it serve as the DHCP
+server for hosts in Offices A and B. Also,
+we must exclude the first ten usable addresses
+of each pool.
+So, which pools do we need to configure?
+First, a pool for Office A’s management
+subnet.
+LWAP1 will lease an IP address from this pool.
+Then, a pool for Office A’s PCs.
+PC1 and PC2 will use this pool.
+And then a pool for Office A’s phones, which
+Phone1 and Phone2 will use.
+Then, we will configure the equivalent management,
+PC, and phone pools for Office B, and finally
+a single pool for wireless clients.
+So, all of these pools will use similar commands,
+just with different IP addresses.
+I’ll configure the first one manually, but
+then copy and paste the others.
+But before we configure the pools, let’s
+configure the excluded address ranges: the
+first ten addresses of each subnet.
+To do that, I’ll open up my notepad again.
+So, here’s part 6 step 1.
+These are the seven ranges of addresses we’ll
+exclude, in the same order as the instructions.
+Office A’s management, PC, and phone subnets.
+Then Office B’s management, PC, and phone
+subnets.
+And finally, the Wi-Fi subnet.
+The command is IP DHCP EXCLUDED-ADDRESS, followed
+by the first address in the range, and then
+the last address in the range.
+So, these commands exclude the first 10 usable
+host addresses of each subnet, so R1 won’t
+assign them to clients.
+I’ll highlight and copy these commands,
+and then go into the CLI of R1, and paste
+them.
+Now let’s configure the DHCP pools.
+Like I said, I’ll do the first one, for
+Office A’s management subnet, manually.
+Let’s look at the info again.
+The subnet is 10.0.0.0/28, and the default
+gateway is 10.0.0.1, which is the HSRP VIP
+that we configured on DSW-A1 and A2.
+The domain name is jeremysitlab.com, the DNS
+server is 10.5.0.4, which is SRV1, and then
+the WLC is 10.0.0.7, WLC1.
+And note that name: A-Mgmt.
+This has to match or it won’t be marked
+correctly when you click ‘Check Results’.
+So, let’s go back to the CLI of R1, and
+use IP DHCP POOL A-Mgmt to create the pool.
+Then, use NETWORK 10.0.0.0 255.255.255.240
+to specify the 10.0.0.0/28 subnet.
+And DEFAULT-ROUTER 10.0.0.1 to specify the
+default gateway.
+Next, configure the domain name with DOMAIN-NAME
+jeremysitlab.com.
+And then I’ll specify SRV1 as the DNS server
+with DNS-SERVER 10.5.0.4.
+Finally, we need to specify the WLC address
+for lightweight access points.
+Actually, take another look at the network.
+In office A, when LWAP1 sends a broadcast
+message to identify any WLCs in the network,
+WLC1 will receive that broadcast and respond.
+So, we technically don’t need to specify
+the WLC address in this DHCP pool.
+However, for Office B’s management DHCP
+pool, it is necessary.
+When LWAP2 sends a broadcast message, it won’t
+reach WLC1, so we should specify WLC1’s
+IP address in the DHCP pool, so LWAP2 can
+send a unicast message directly to WLC1 to
+connect.
+However, the lab instructions say to configure
+the WLC address for this pool, so let’s
+go back to the CLI.
+I’ll use the question mark to see the available
+commands.
+To specify a WLC address, we have to use the
+OPTION keyword.
+After that, specify the option number.
+The correct number here is option 43, then
+IP, and then the IP address: 10.0.0.7.
+So, that’s the command: OPTION 43 IP 10.0.0.7.
+Okay, so that’s the first pool, and the
+rest will use basically the same commands,
+so let’s go back to the notepad.
+Here are the commands for the rest of the
+pools: A-PC, A-Phone, B-Mgmt, B-PC, B-Phone,
+and Wi-Fi.
+I’ll highlight and copy these commands,
+return to the CLI of R1, right click, and
+paste.
+And EXIT.
+Okay, so step 1 is done.
+But if I use DO SHOW IP DHCP BINDING on R1
+it won’t show any DHCP leases.
+The reason for that is that clients’ broadcast
+DHCP requests won’t reach R1.
+So, in step 2 we’ll configure the distribution
+switches to function as DHCP relay agents,
+forwarding clients’ broadcast messages to
+R1’s loopback0 IP address, which is 10.0.0.76.
+To do that, we need to use the IP HELPER-ADDRESS
+command on the interfaces that receive clients’
+broadcast DHCP messages.
+In this case, those are the various SVIs on
+each switch.
+I’ll go back to the notepad to see the commands.
+On DSW-A1 and A2, we’ll use IP HELPER-ADDRESS
+10.0.0.76 on the VLAN 10, 20, 40, and 99 SVIs.
+And then on B1 and B2 it’ll be for VLANs
+10, 20, 30, and 99.
+The thing to note here is that this command
+must be configured on the correct interface:
+the interface that receives the broadcast
+DHCP messages from clients.
+More specifically, the layer-3 interface:
+each SVI in this case, not the physical layer
+2 switch port.
+Okay, let’s copy the commands for Office
+A, then open the CLI of DSW-A1.
+And paste the commands in.
+EXIT.
+Okay, DSW-A2 needs the same commands, so let’s
+open its CLI, and paste the commands in.
+EXIT.
+Then, I’ll return to the notepad and copy
+these commands for Office B.
+The only difference is that it uses VLAN 30
+instead of VLAN 40.
+Now I’ll go on to DSW-B1.
+And paste the commands in.
+EXIT.
+Finally, DSW-B2.
+Let’s paste the commands in here, and EXIT.
+Okay, we’re done with step 2.
+Now hosts should be able to lease IP addresses.
+To test, I’ll go on PC1.
+From the Desktop tab, click on Command Prompt.
+And then use IPCONFIG /RENEW to send a DHCP
+DISCOVER and lease an IP address.
+And a few seconds later, it works.
+Let’s try some pings now.
+How about pinging R1’s loopback interface?
+PING 10.0.0.76.
+Okay, the ping works.
+And how about one of R1’s internet interfaces?
+PING 203.0.113.2.
+That ping works as well.
+However, what if I ping the ISP router at
+PING 203.0.113.1.
+As you can see, this ping doesn’t work.
+Once again, this is because we need to configure
+NAT on R1.
+That’ll be later in a later step.
+But now, let’s move on to step 3.
+In this step, we’ll configure some DNS entries
+on SRV1: one for google.com, one for youtube.com,
+and one for jeremysitlab.com.
+The three most popular sites on the web.
+And then we’ll create another entry mapping
+www.jeremysitlab.com to jeremysitlab.com.
+So, let’s open up SRV1 again.
+And from the services tab, click on DNS.
+First, make sure to turn on the DNS service
+here, or SRV1 won’t respond to DNS queries.
+Now let’s create those three IP address
+mappings.
+To map a domain name to an IPv4 address, we
+need to make an A record, which is the default
+here.
+So, I’ll type google.com for the name, and
+then let’s check that address.
+172.253.62.100.
+Okay, so I’ll just highlight the address
+here, left click and copy, and then paste
+it here and click Add to add the entry.
+Next, type youtube.com for the name.
+And let’s copy the address here.
+152.250.31.93.
+And paste it in the address box, and add the
+entry.
+Finally, type jeremysitlab.com for the domain
+name, and let’s copy the address.
+66.235.200.145.
+And then paste it in the address bar.
+Okay, so we’ve created three A records mapping
+names to IP addresses.
+Now we have to map a name to another name,
+and for that we need a CNAME, canonical name,
+record.
+So, in the ‘name’ box type www.jeremysitlab.com.
+And then in the host name box type jeremysitlab.com.
+Okay, we’ve created the DNS records.
+Now let’s test if DNS works.
+I’ll go back to PC1, and first let’s ping
+SRV1 to make sure that PC1 can reach it.
+PING 10.5.0.4.
+Okay, PC1 can reach SRV1.
+Now let’s try one of those entries we created.
+PING google.com.
+Okay, the ping failed because we still haven’t
+configured NAT, but notice that DNS itself
+worked.
+Using DNS, PC1 was able to translate google.com
+into this IP address.
+And how about PING jeremysitlab.com.
+Same thing, the ping doesn’t work, but DNS
+resolution does work.
+And one more: PING www.jeremysitlab.com.
+Same thing.
+Notice that it was translated to the same
+IP address as jeremysitlab.com.
+www.jeremysitlab.com was translated into jeremysitlab.com,
+which was then translated into this IP address.
+Next, in step 4, we’ll configure all routers
+and switches to use the domain name jeremysitlab.com
+and to use SRV1 as their DNS server.
+This requires the same two commands on all
+devices, so once again I’ll just copy and
+paste the commands from the notepad.
+Those two commands are IP DOMAIN NAME jeremysitlab.com
+and IP NAME-SERVER 10.5.0.4.
+I’ll copy these commands, and then paste
+them into each device.
+Feel free to skip ahead in the video.
+So, R1 first.
+Right click, paste.
+And CSW1.
+Right click and paste.
+And then CSW2.
+Moving on to the distribution switches.
+DSW-A1.
+DSW-A2.
+And then DSW-B1.
+And DSW-B2.
+And then the access switches.
+ASW-A1 first.
+Then ASW-A2.
+And then A3.
+And then Office B. ASW-B1.
+ASW-B2.
+And ASW-B3.
+And just to test that DNS works on these devices,
+first let’s ping SRV1 from here on ASW-B3.
+DO PING 10.5.0.4.
+Okay, the ping works.
+And now let’s try DO PING google.com.
+Okay, once again the ping itself doesn’t
+work, but DNS was able to translate the name
+into an IP address.
+Now let’s move on to step 5, in which we’ll
+configure NTP.
+5a says to make R1 a stratum 5 NTP server.
+We can do that with the NTP MASTER command.
+And then 5b says that R1 should learn the
+time from NTP server 216.239.35.0.
+5c is just a note saying that you don’t
+need to wait for NTP to sync – it can take
+a very long time, so once you’ve done the
+configurations you can just move on.
+So, let’s go on the CLI of R1.
+To make R1 an NTP server with a specific stratum
+level, use NTP MASTER, followed by the stratum,
+which should be 5 in this case.
+So, that’s the first half.
+Next, to make R1 sync to an external NTP server,
+use NTP SERVER, followed by the IP address,
+which is 216.239.35.0.
+And that’s all for step 5 – like I said,
+NTP takes a very long time to sync, so let’s
+just move on.
+Step 6 is a continuation of step 5.
+We’ll configure NTP on all core, distribution,
+and access switches, making them sync to R1.
+Specifically, they should use the IP address
+of R1’s loopback interface.
+Additionally, these clients should authenticate
+R1 using key number 1 and the password ‘ccna’.
+So, first I’ll create the authentication
+key on R1, and then configure the clients.
+To create the key, the command is NTP AUTHENTICATION-KEY,
+followed by the key number, which should be
+1, MD5, and then the key itself, ccna.
+However, that’s not enough; we need to specify
+it as a “trusted key” with NTP TRUSTED-KEY
+1.
+Okay, that’s all for R1.
+Now let’s do the clients: all of the switches.
+The configurations are identical on all switches,
+so I’ll do one manually and then copy and
+paste the rest.
+So, let’s go on CSW1.
+First, use the same two commands we just configured
+on R1.
+NTP AUTHENTICATION-KEY 1 MD5 ccna.
+And then NTP TRUSTED-KEY 1.
+So, we’ve created the authentication key
+and trusted it.
+Next, let’s tell CSW1 to sync to R1, while
+using key number 1 for authentication.
+The command is NTP SERVER 10.0.0.76 KEY 1.
+And that’s it.
+As I said, NTP takes forever to sync, so we
+won’t wait for that.
+Let’s just configure the other switches.
+So, I’ll go to the notepad, and here it
+is: part 6, step 6.
+I’ll highlight and copy those three commands,
+and let’s go to CSW2 next, and paste them
+in.
+And now the distribution and access switches.
+Again, feel free to skip ahead in 
+the video.
+DSW-A1.
+DSW-A2.
+DSW-B1.
+DSW-B2.
+And then the access switches, starting with
+A1.
+Then ASW-A2.
+ASW-A3.
+ASW-B1.
+ASW-B2.
+And ASW-B3.
+Okay, that’s all for NTP.
+Next, in steps 7 and 8, we’ll configure
+SNMP and Syslog.
+I’ll do these two steps together because
+all devices need the same commands, so I can
+just copy and paste them together.
+Let’s see the requirements.
+Step 7 says to configure the SNMP community
+string SNMPSTRING on all routers and switches.
+It should allow GET messages, but not SET
+messages.
+So, that means it should be a read only string,
+rather than a read-write string.
+Let’s configure that on R1 before looking
+at the Syslog requirements.
+The command to configure an SNMP community
+string is SNMP-SERVER COMMUNITY, followed
+by the string, SNMPSTRING in this case, and
+then RO for read only.
+That’s it.
+With that configured, an SNMP server should
+be able to send SNMP GET messages to read
+information from this router.
+Now let’s go back to see the Syslog requirements
+in step 8.
+It says to send Syslog messages to SRV1, and
+messages of all severity levels should be
+logged.
+Then 8b says to enable logging to the buffer,
+and reserve 8192 bytes of memory for the buffer.
+So, let’s go into R1 and configure that.
+First we need to send Syslog message to SRV1.
+To enable that, just use LOGGING 10.5.0.4.
+And we need to ensure that messages of all
+severity levels are sent.
+So, levels 7, 6, 5, 4, 3, 2, 1, and 0.
+To configure that, use LOGGING TRAP DEBUGGING.
+That enables logging at the debugging level,
+level 7, and below.
+Finally, we need to enable logging to the
+buffer, which is stored in local memory on
+the device.
+The command to do that is LOGGING BUFFERED,
+but the instructions also specify that the
+buffer’s size should be 8192 bytes, so add
+8192 to the end of this command.
+There we go.
+Let’s quickly check that everything is correct
+with DO SHOW LOGGING.
+So, logging to the console, monitor, and buffer
+are all enabled at level debugging.
+And if I scroll to the bottom, you can see
+that the buffer is 8192 bytes in size.
+The rest of the devices all need the exact
+same commands as R1, so let me open up the
+notepad and copy these commands under part
+6, steps 7 and 8.
+And now let’s paste them into the remaining
+devices, CSW1 first.
+Then CSW2.
+DSW-A1.
+DSW-A2.
+DSW-B1.
+DSW-B2.
+And the access switches, starting with ASW-A1.
+A2.
+A3.
+ASW-B1.
+ASW-B2.
+And finally, ASW-B3.
+So, we’ve configured SNMP and Syslog on
+all of these devices.
+Now let’s move on to step 9.
+In step 9, we’ll use FTP on R1 to download
+a new IOS version from SRV1.
+To do so, well first configure R1’s default
+FTP credentials in 9a, copy the file from
+SRV1 in 9b, and then reboot R1 using the new
+IOS version in 9c.
+So, let’s do 9a first, which says to configure
+username and password cisco on R1.
+To configure the username, the command is
+IP FTP USERNAME, and in this case the username
+should be cisco.
+And then to configure the password it’s
+IP FTP PASSWORD cisco.
+That’s it.
+Next let’s look closer at step 9b.
+We should use FTP to copy this file from SRV1
+to R1’s flash drive.
+So, you can copy the file name right here
+from the instructions, but let’s go find
+it on SRV1.
+From the services tab on SRV1, click on FTP,
+and you can see the available files here.
+Look for c2900 universal, there it is.
+So, click on the file name here, use ctrl-c
+to copy, and now let’s go back to R1.
+First, let’s verify that R1 can ping SRV1.
+DO PING 10.5.0.4.
+Okay, connectivity is fine.
+Now let’s copy the file to flash with DO
+COPY FTP: FLASH:.
+First, it asks for the address of the remote
+host.
+Enter 10.5.0.4 for SRV1.
+Then the source filename, the name of the
+file on SRV1.
+So, I’ll paste that filename that I just
+copied here.
+And finally, the destination filename.
+Just hit enter here to accept the default,
+which is the same as the source filename.
+Now, it’ll start copying the file.
+Just a warning, this is going to take a very
+long time.
+It’ll take so long that you’ll think it’s
+not working, but it is.
+So if you’re doing the lab now, get up,
+grab a drink, take a break, and come back
+later.
+I’ll stop the video here and return when
+the download is complete.
+Okay, the download is done.
+I’ll use DO SHOW FLASH: to view the file.
+There it is.
+Now let’s configure R1 to boot using this
+new IOS image.
+First, highlight and copy the filename if
+you need to.
+Then, to tell R1 to boot from this file, use
+BOOT SYSTEM FLASH:, and then paste the filename.
+Now, before rebooting the router it’s very
+important to save the config; otherwise, the
+BOOT SYSTEM command won’t take effect.
+So, use DO WRITE.
+And before rebooting, let’s also use DO
+SHOW VERSION, and look at the top line of
+the output.
+Version 15.1.
+After rebooting, we’ll check to make sure
+that it changes.
+So, I’ll use DO RELOAD to reboot the router.
+This can take quite a few minutes on a real
+device, but fortunately these routers in Packet
+Tracer only take about 10 or 15 seconds.
+Once it has booted up, log in with cisco and
+password ccna.
+Then ENABLE and password jeremysitlab.
+And now let’s check the version again with
+SHOW VERSION.
+So, look at the top line, and there it is:
+version 15.5, upgraded from the previous 15.1.
+Now let’s look at the instructions one more
+time.
+At the end of step 9c it says to delete the
+old IOS file from flash.
+So, let’s view the contents of flash again
+with SHOW FLASH.
+And then highlight the filename of the old
+version, right click and copy the name.
+And then delete it with DELETE FLASH, with
+a colon, and then paste the filename here.
+So, delete the file, and let’s double check
+with SHOW FLASH once more.
+Okay, now it’s gone.
+So, we’re done with step 9.
+Let’s take a look at step 10 next.
+It says to configure SSH for secure remote
+access on all routers and switches.
+Okay, let’s read through the requirements.
+10a says to use the largest modulus size for
+the RSA keys.
+10b says to allow SSH version 2 connections
+only.
+10c says to create and apply a standard ACL
+that allows only packets sourced from Office
+A’s PCs subnet.
+So only PCs in that subnet will be able to
+use SSH to configure these devices.
+10d says we should only allow SSH connections
+to the VTY lines – no Telnet.
+E says to require users to log in with a local
+user account when connecting via SSH.
+And then finally we must configure synchronous
+logging on the VTY lines.
+So, this is another step where we have to
+configure the same thing on all of these devices.
+First, let’s go on R1 and walk through each
+step.
+First, I’ll return to global config mode
+with CONF T. To use SSH, we need to create
+an RSA key pair.
+Let’s do that with CRYPTO KEY GENERATE RSA.
+Now it asks for the key modulus size.
+This plays a big role in determining the security
+of the keys; a larger size is more secure.
+The instructions said to use the largest size
+available, and as you can see here that is
+4096 bits.
+So, enter 4096 here and press enter.
+Now I’ll use DO SHOW IP SSH to check the
+SSH version.
+Notice that SSH version 1.99 is enabled. 1.99
+isn’t actually a version of SSH.
+It just means that R1 accepts both SSH version
+1 and version 2 connections.
+Let’s change that with IP SSH VERSION 2.
+And confirm with DO SHOW IP SSH again.
+So, now R1 will only accept SSHv2 connections.
+Next, before we configure the VTY lines, let’s
+create that ACL that allows only the Office
+A PCs subnet.
+The subnet is 10.1.0.0/24, so ACCESS-LIST
+1 PERMIT 10.1.0.0 0.0.0.255.
+And that’s it, we just need that one entry.
+The implicit deny will block all other traffic.
+Now let’s configure the VTY lines with LINE
+VTY 0 15.
+First, I’ll apply that ACL.
+To apply an ACL to an interface, the command
+is IP ACCESS-GROUP, but for the VTY lines
+it’s ACCESS-CLASS, then the ACL name or
+number, 1 in this case, and IN.
+Next, I’ll allow only SSH connections – no
+Telnet, since it isn’t secure.
+TRANSPORT INPUT SSH.
+And let’s require users to log in with a
+local user account, just like we configured
+on the console line at the beginning of this
+lab.
+LOGIN LOCAL.
+And then enable synchronous logging with LOGGING
+SYNCHRONOUS.
+Okay, that’s all for R1.
+I’ll EXIT back to global config mode.
+The other devices require the same commands,
+so once again I’ll copy and paste them from
+the notepad.
+First, generating the keys with CRYPTO KEY
+GENERATE RSA, and then 4096 to specify the
+modulus size.
+Enabling SSH version 2, configuring an ACL
+and applying it to the VTY lines.
+Allowing only SSH, requiring login with a
+local user account, and enabling synchronous
+logging.
+Let’s copy these commands, and then paste
+them into the other devices.
+CSW1 first.
+Paste in the commands, and EXIT.
+Then CSW2.
+Right click and paste, and then EXIT.
+DSW-A1.
+Right click, paste, EXIT.
+DSW-A2.
+Right click, paste, exit.
+DSW-B1.
+Right click, paste, EXIT.
+And B2.
+Right click, paste, exit.
+Finally, the access switches, starting with
+A1.
+Paste the commands, EXIT.
+Then A2.
+Paste the commands, EXIT.
+And A3.
+Right click, paste, EXIT.
+Then ASW-B1.
+Paste the commands, EXIT.
+And B2.
+Paste the commands, EXIT.
+And finally ASW-B3.
+Right click, paste, and EXIT.
+Okay, now before moving on let’s test SSH
+by connecting to one of the devices.
+I’ll go on PC1.
+From the command prompt, I’ll try to ping
+R1’s loopback.
+PING 10.0.0.76.
+Okay, PC1 can reach R1.
+Now let’s SSH.
+SSH -l cisco 10.0.0.76.
+Enter the password ‘ccna’, and we’re
+in.
+So, SSH works from PC1.
+Now I’ll EXIT out of there.
+Next I’ll try from PC3, let’s open its
+command prompt.
+Because of the ACL we applied, SSH shouldn’t
+work from PC3 – it’s not in the Office
+A PCs subnet.
+First I’ll just use IPCONFIG /RENEW to make
+sure that PC3 got an IP address, since we
+just configured DHCP in this part of the lab.
+Okay, and next I’ll ping R1 with PING 10.0.0.76.
+Okay, the ping works.
+Finally, let’s try SSH.
+SSH -l cisco 10.0.0.76.
+Connection refused by remote host, so the
+ACL is working.
+That’s all for step 10.
+Steps 11 and 12 focus on NAT, Network Address
+Translation.
+We’ll configure static NAT in step 11, and
+then pool-based dynamic PAT in step 12.
+So let’s read step 11 first.
+It says to configure static NAT on R1 to enable
+hosts on the Internet to access SRV1 via the
+IP address 203.0.113.113.
+So, we just need to configure a static NAT
+statement mapping SRV1’s inside local address,
+10.5.0.4, to the inside global address 203.0.113.113.
+It only takes a single command.
+Let’s open up the CLI of R1, and configure
+it with IP NAT INSIDE SOURCE STATIC, then
+the inside local address, which is 10.5.0.4,
+followed by the inside global address, which
+is 203.0.113.113.
+Now, we’ve configured the static NAT statement,
+but there’s still something missing; we
+need to specify the inside and outside interfaces.
+R1 G0/0/0 and G0/1/0 are connected to the
+Internet, so I’ll make them the outside
+interfaces.
+INTERFACE RANGE g0/0/0 and g0/1/0.
+IP NAT OUTSIDE.
+And then the inside interfaces are G0/0 and
+G0/1, connected to CSW1 and CSW2.
+INTERFACE RANGE G0/0-1.
+IP NAT INSIDE.
+And EXIT.
+Okay, so we’ve configured static NAT for
+SRV1.
+That should allow hosts on the Internet to
+communicate with SRV1 by sending their packets
+to 203.0.113.113.
+It should also allow SRV1 to ping hosts on
+the Internet, so let’s test that.
+I’ll go back to SRV1, and let’s open up
+the command prompt, and then try PING google.com.
+Okay, the ping doesn’t work.
+Even though SRV1 is a DNS server, we have
+to specify itself as its own DNS server in
+Packet Tracer.
+So go to the config tab, and add 10.5.0.4
+as the DNS server here.
+This isn’t part of the lab steps by the
+way.
+I’m just doing it to test.
+Next, return to the command prompt, and let’s
+try PING google.com again.
+Okay, now the ping works.
+So, step 11 is done.
+In step 12, we’ll configure dynamic PAT,
+port address translation, to enable the other
+hosts in these LANs to communicate over the
+Internet.
+We will configure pool-based dynamic NAT,
+so we’ll need an ACL to define the appropriate
+inside local addresses, a NAT pool to define
+a range of inside global addresses, and then
+we’ll map them to each other with a NAT
+statement.
+So, let’s first create the ACL, looking
+at step 12a.
+It says to use standard ACL 2 to define the
+appropriate inside local address ranges in
+the following order.
+Office A PCs, Office A phones, Office B PCs,
+Office B Phones, and then Wi-Fi.
+I’ll open the CLI of R1 again, and let’s
+make that ACL.
+First, I’ll permit the Office A PCs subnet.
+ACCESS-LIST 2 PERMIT 10.1.0.0 0.0.0.255.
+Then I’ll hit the up arrow, and let’s
+change that to 10.2.0.0 for the Office A Phones
+subnet.
+And then do it again, permitting 10.3.0.0
+for the Office B PCs.
+And then again, configure 10.4.0.0 for the
+Office B Phones.
+And finally permit 10.6.0.0/24 for the Wi-Fi
+subnet.
+So, that ACL defines the range of inside local
+addresses that will be translated when communicating
+over the Internet.
+Now let’s look at step 12b.
+We need to define the pool of inside local
+addresses – the public IP addresses.
+The pool’s name should be POOL1, with a
+range from 203.0.113.200 to .207 and a /29
+netmask.
+So, let’s go back on to R1.
+And create the pool with IP NAT POOL POOL1,
+and then the starting IP address, 203.0.113.200.
+And then the ending IP address, 203.0.113.207.
+NETMASK, and then 255.255.255.248 for /29.
+Okay, we’ve created the ACL and the pool.
+Now let’s do step 12c, which says to map
+ACL 2 to POOL1 and enable PAT, and then confirm
+that hosts can access the Internet.
+So, let’s go back to R1 and configure the
+NAT statement.
+IP NAT INSIDE SOURCE LIST 2 POOL POOL1, and
+then don’t forget OVERLOAD to make it PAT,
+instead of regular dynamic NAT.
+Okay, the NAT configuration is done, so let’s
+test it out on PC1.
+From PC1, let’s do PING jeremysitlab.com.
+Okay, the ping works.
+So, our dynamic PAT configuration was correct.
+Now, step 12d says to verify that Internet
+link failover works by disabling R1 G0/0/0
+and pinging again.
+However, note the paragraph here: you will
+need to remove and re-configure the DEFAULT-INFORMATION
+ORIGINATE command on R1 for this to work.
+When R1 loses its primary default route and
+inserts the floating default route into the
+routing table, it won’t automatically advertise
+the new route into OSPF.
+As this explanation says, you can use DEFAULT-INFORMATION
+ORIGINATE ALWAYS to work around this, but
+it’s not available in Packet Tracer.
+So, let’s go on R1 now.
+I’ll disable its G0/0/0 interface.
+INTERFACE G0/0/0.
+SHUTDOWN.
+Now R1 should remove its main default route
+from the routing table, and insert the floating
+default route instead.
+Next let’s go into OSPF config mode.
+ROUTER OSPF 1.
+And then use NO DEFAULT-INFORMATION ORIGINATE
+to remove the command, and then reconfigure
+it again.
+DEFAULT-INFORMATION ORIGINATE.
+So, R1 should now advertise its new default
+route to other OSPF routers.
+Let’s just double check that the floating
+static route actually entered the routing
+table.
+DO SHOW IP ROUTE.
+Okay, so down at the bottom of the output
+you can see that R1’s default route has
+an AD of 2 – this is the floating route
+we configured earlier in the lab.
+I’ll go on PC1 now and try that ping again.
+PING jeremysitlab.com.
+And it works again.
+So, the failover worked.
+Now let’s go back on R1 and undo that.
+First, I’ll re-enable G0/0/0.
+INTERFACE G0/0/0.
+NO SHUTDOWN.
+And then configure OSPF.
+ROUTER OSPF 1.
+NO DEFAULT-INFORMATION ORIGINATE.
+DEFAULT-INFORMATION ORIGINATE.
+And now I’ll EXIT.
+Okay, we have one last step before wrapping
+up this part of the lab.
+In step 13, we’ll disable CDP on all devices
+and enable LLDP instead.
+We also must disable LLDP Tx, that’s transmission,
+on each access switch’s access port, which
+is F0/1.
+So, since this is a fairly simple step, I’ll
+go straight to showing the commands in the
+notepad.
+On R1, and the core and distribution switches,
+we just need to use NO CDP RUN to disable
+CDP, and then LLDP RUN to enable LLDP instead.
+We’ll use the same commands on the access
+switches, but also use NO LLDP TRANSMIT on
+each switch’s F0/1 interface.
+So, I’ll copy these commands for R1 and
+the core and distribution switches.
+And let’s go on R1 now.
+Right click, paste, and since this is the
+final step for this part of the lab I’ll
+use DO WRITE to save the config.
+Then CSW1.
+Right click, paste, DO WRITE.
+And CSW2.
+Right click, paste, DO WRITE.
+DSW-A1.
+Right click, paste, DO WRITE.
+Then A2.
+Right click, paste, DO WRITE.
+DSW-B1 next.
+Right click, paste, DO WRITE.
+And then B2.
+Right click, paste, DO WRITE.
+Now let’s go back to the notepad and copy
+the commands for the access switches, disabling
+LLDP transmission on their F0/1 interfaces.
+Let’s paste them into ASW-A1 first.
+Right click, paste and DO WRITE.
+Then A2.
+Right click, paste, and DO WRITE.
+And A3.
+Paste the commands, and save with DO WRITE.
+Okay, three more.
+On B1, right click, paste, DO WRITE.
+ASW-B2.
+Paste the commands in, DO WRITE.
+And finally, ASW-B3.
+Right click, paste, DO WRITE.
+Okay, looking at the completion score, you
+can see that we’re almost done with this
+lab.
+There are still three sections remaining,
+but they will be shorter than this one.
+So, let’s click on Next to move on to part
+7.
+In part 7, our focus is security.
+We’ll configure and apply an extended ACL
+to limit traffic from Office A’s PCs to
+Office B’s PCs in step 1, and then configure
+Port Security, DHCP Snooping, and DAI on the
+access switches.
+So, let’s get started with step 1.
+It says to configure extended ACL OfficeA_to_OfficeB
+where appropriate.
+It should allow ICMP messages from the Office
+A PCs to the Office B PCs, block all other
+traffic from the Office A PCs to the Office
+B PCs, but permit all other traffic.
+Step 1d says to apply the ACL according to
+general best practice for extended ACLs.
+That general best practice is that extended
+ACLs should be applied as close to the source
+as possible.
+Standard ACLs, on the other hand, should generally
+be applied as close to the destination as
+possible.
+In this case, we are filtering traffic from
+Office A’s PCs to Office B’s PCs, so the
+source is Office A.
+The access switches are layer 2, so we can’t
+apply IP ACLs to their interfaces.
+So, the closest location to the source is
+the VLAN 10 SVI of DSW-A1 and DSW-A2 - the
+default gateway for the Office A PCs.
+Currently, DSW-A1 is the HSRP active router,
+but we should configure and apply the ACL
+on DSW-A2’s VLAN 10 SVI as well, since it
+must be ready to take over if DSW-A1 fails.
+So, let’s configure and apply it on DSW-A1
+first, and then we’ll do the same on A2.
+First, let’s create the ACL with IP ACCESS-LIST
+EXTENDED OfficeA_to_OfficeB.
+Now, we need to create three entries.
+One to permit ICMP traffic from the Office
+A PCs to the Office B PCs, one to deny other
+traffic from the Office A PCs to the Office
+B PCs, and then one to permit all other traffic.
+The Office A PC subnet is 10.1.0.0/24, and
+the Office B PC subnet is 10.3.0.0/24.
+So, let’s configure the first entry.
+PERMIT ICMP 10.1.0.0 0.0.0.255, that’s the
+Office A subnet, 10.3.0.0 0.0.0.255, that’s
+the Office B subnet.
+For the second entry, it’s DENY IP, and
+then the same subnets.
+10.1.0.0 0.0.0.255 10.3.0.0 0.0.0.255.
+And for the final entry, PERMIT IP ANY ANY
+to allow all other traffic.
+Now let’s apply it as close to the source
+as possible, which is the VLAN 10 SVI – the
+layer 3 interface that receives packets from
+hosts in the Office A PC subnet.
+INTERFACE VLAN 10.
+IP ACCESS-GROUP OfficeA_to_OfficeB IN.
+Okay, that’s all for DSW-A1.
+I’ll use EXIT and then DO WRITE to save
+the config.
+Now I’ll go on DSW-A2 and configure the
+same.
+So, first create the ACL.
+IP ACCESS-LIST EXTENDED OfficeA_to_OfficeB.
+Then the first entry, permitting ICMP.
+PERMIT ICMP 10.1.0.0 0.0.0.255 10.3.0.0 0.0.0.255.
+Then deny other traffic.
+DENY IP 10.1.0.0 0.0.0.255 10.3.0.0 0.0.0.255.
+And permit all other traffic.
+PERMIT IP ANY ANY.
+And then apply it to the VLAN 10 SVI.
+INTERFACE VLAN 10.
+IP ACCESS-GROUP OfficeA_to_OfficeB IN.
+Finally, EXIT and DO WRITE.
+So, we’re done with step 1.
+We created and applied an extended ACL as
+close to the source as possible, filtering
+traffic from the Office A PC subnet to the
+Office B PC subnet.
+Now let’s move on to step 2, in which we’ll
+configure Port Security on the F0/1 port of
+each access switch.
+Let’s read the instructions.
+2a says to allow the minimum necessary number
+of MAC addresses on each port.
+For example, for these ports with a phone
+and a PC, two MAC addresses are needed: one
+for the phone, and one for the PC.
+The ports connected to LWAPs only need one
+MAC address.
+The LWAP tunnels all client traffic, so the
+switch should only see the LWAP’s own MAC
+address.
+And this note mentions that SRV1 doesn’t
+use virtualization, so it uses only a single
+MAC address.
+If it had virtual machines running on it,
+each VM would have its own MAC address.
+Okay, then step 2b says to configure a violation
+mode that blocks invalid traffic without affecting
+valid traffic.
+And the switches should send notifications,
+such as Syslog messages or SNMP traps, when
+invalid traffic is detected.
+So, that’s referring to the ‘restrict’
+violation mode.
+Finally, 2c says that switches should automatically
+save the secure MAC addresses they learn to
+the running-config.
+In other words, we must enable sticky MAC
+address learning.
+So, let’s configure ASW-A1 manually and
+then copy and paste the commands for the others.
+Port Security is configured directly on the
+interface, so INTERFACE F0/1.
+First, enable it with SWITCHPORT PORT-SECURITY.
+And then enable the ‘restrict’ violation
+mode with SWITCHPORT PORT-SECURITY VIOLATION
+RESTRICT.
+And finally, enable sticky MAC address learning
+with SWITCHPORT PORT-SECURITY MAC-ADDRESS
+STICKY.
+Okay, that’s all for ASW-A1.
+I’ll EXIT to return to global config mode.
+ASW-B1 and ASW-B3 also need the same commands.
+So, I’ll go to the notepad, and here are
+the commands.
+Highlight and copy them, and then I’ll open
+the CLI of ASW-B1 and paste them.
+And then EXIT.
+Then ASW-B3.
+Paste the commands in, and EXIT.
+Now let’s configure ASW-A2, A3, and B2.
+They require an additional command.
+Let’s open up the notepad again.
+Because these switches connect to a phone
+and a PC, we need to use the SWITCHPORT PORT-SECURITY
+MAXIMUM 2 command to allow two MAC addresses:
+the PC’s MAC address and the phone’s MAC
+address.
+I didn’t configure this command on ASW-A1,
+B1, or B3, because the default number of allowed
+addresses is 1, and that’s all that’s
+needed on those ports.
+So, I’ll highlight and copy these commands,
+and now go on to ASW-A2 and paste them in.
+And then EXIT.
+Then ASW-A3.
+Paste the commands, and EXIT.
+And ASW-B2.
+Paste the commands, and EXIT.
+Okay, we’ve enabled Port Security on the
+access switches, allowed the minimum necessary
+number of MAC addresses, and configured the
+restrict violation mode and sticky learning.
+Now let’s move on to step 3, in which we’ll
+configure DHCP Snooping on these switches.
+There are a few requirements.
+3a says to enable DHCP Snooping for all active
+VLANs in each LAN.
+So, VLANs 10, 20, 40, and 99 in Office A,
+and VLANs 10, 20, 30, and 99 in Office B.
+Then, we must trust the appropriate ports,
+which are those pointing toward the DHCP server,
+R1.
+In other words, we must trust the G0/1 and
+G0/2 uplinks that connect to the distribution
+layer.
+Then, in 3c we must disable insertion of option
+82, also known as the relay agent information
+option.
+Then, we’ll set a DHCP rate limit of 15
+pps, packets per second, on untrusted ports.
+However, ASW-A1’s connection to WLC1 should
+have a 100 pps limit.
+Once again, I’ll manually configure ASW-A1
+and then paste the configurations for the
+other switches.
+So, on ASW-A1 I’ll first enable DHCP Snooping
+with IP DHCP SNOOPING.
+However, we also need to enable it on a per-VLAN
+basis, and the command is IP DHCP SNOOPING
+VLAN 10,20,40,99.
+Next, I’ll disable option 82 insertion with
+NO IP DHCP SNOOPING INFORMATION OPTION.
+That’s a step that people often forget;
+it can prevent DHCP from working properly.
+Okay, next I’ll trust the uplinks to the
+distribution layer.
+INTERFACE RANGE G0/1-2.
+IP DHCP SNOOPING TRUST.
+Next, let’s set rate limits for DHCP messages
+on untrusted ports.
+F0/1 first.
+INTERFACE F0/1.
+IP DHCP SNOOPING LIMIT RATE 15.
+So, if ASW-A1 receives DHCP messages on this
+interface at a rate greater than 15 packets
+per second, the interface will be error-disabled.
+And now F0/2, which is connected to WLC1.
+INTERFACE F0/2.
+IP DHCP SNOOPING LIMIT RATE 100.
+Okay, that’s all.
+EXIT.
+Now let’s open the notepad and see the configurations
+for the other switches.
+I’ll highlight and copy the commands for
+ASW-A2 and A3.
+They are the same as A1, minus the F0/2 interface,
+which is disabled on these two switches.
+Okay, I’ll paste these commands into ASW-A2.
+And then return to global config mode with
+EXIT.
+Next, ASW-A3.
+Right click, paste, and EXIT.
+Okay, let’s return to the notepad for the
+Office B switches.
+The commands here are almost identical, just
+replacing VLAN 40 with VLAN 30, the Servers
+VLAN.
+So, after copying these commands, let’s
+paste them into ASW-B1.
+And then EXIT.
+Then B2.
+EXIT.
+And finally, B3.
+EXIT.
+Okay, step 3 is done, now let’s move on
+to step 4, in which we’ll configure DAI,
+Dynamic ARP Inspection.
+We need to enable it for all active VLANs,
+trust the appropriate ports, and enable all
+optional validation checks.
+Once again, let’s configure ASW-A1 first.
+Unlike DHCP Snooping, DAI only needs to be
+enabled per-VLAN.
+You don’t need to enable it globally.
+So, first I’ll use IP ARP INSPECTION VLAN
+10,20,40,99 to enable it.
+Next, let’s enable the optional checks.
+Usually, DAI checks to make sure a matching
+entry exists in the DHCP Snooping binding
+table.
+But you can enable these checks to make it
+perform a more thorough inspection of ARP
+messages.
+The command is IP ARP INSPECTION DST-MAC SRC-MAC
+IP.
+And finally, I’ll trust the two uplink ports.
+INTERFACE RANGE G0/1-2.
+IP ARP INSPECTION TRUST.
+Okay, that’s all.
+I’ll use EXIT and then save with DO WRITE
+since this is the last step for this part.
+Now I’ll open up the notepad and go to part
+7 step 4.
+So, here are the commands we just configured
+on ASW-A1.
+I’ll copy them, and then let’s paste them
+into ASW-A2 and A3.
+A2 first.
+Paste the commands.
+EXIT, and save with DO WRITE.
+Then A3.
+Paste the commands.
+EXIT, and DO WRITE.
+Now let’s go back to the notepad, and copy
+the commands for Office B.
+The commands are the same, just replacing
+VLAN 40 with VLAN 30.
+Enable DAI on each VLAN, enable the optional
+checks, and then trust G0/1 and 2.
+So, I’ll go on ASW-B1 first and paste the
+commands in.
+And then EXIT and save the config with DO
+WRITE.
+Then B2.
+Copy the commands, EXIT and DO WRITE.
+And finally, B3.
+Copy the commands, EXIT, and DO WRITE.
+Okay, we’re done with the security section
+of this lab.
+We configured and applied an extended ACL,
+and then configured the layer-2 security features
+Port Security, DHCP Snooping, and Dynamic
+ARP Inspection.
+I’ll click Next to move on to part 8.
+Part 8 is all about IPv6.
+However, we’re not going to do a full IPv6
+configuration, just some IP addresses on R1,
+CSW1, and CSW2, and a couple of routes on
+R1.
+Since this lab is already long enough, let’s
+just test that you know the basic IPv6 configuration
+commands for the CCNA exam.
+So, in step 1 we’ll enable IPv6 routing
+and configure IPv6 addresses on R1, CSW1,
+and CSW2.
+On R1 G0/0/0, which is connected to the Internet,
+we’ll configure 2001:db8:a::2/64, and then
+:b::2/64 on G0/1/0, which is also connected
+to the Internet.
+Then, for the connections between R1 and the
+core switches, we’ll use these specified
+prefixes, 2001:db8:a1::/64 and a2::/64, and
+use EUI-64 to automatically generate interface
+IDs.
+Finally, for the EtherChannel connection between
+CSW1 and CSW2, we’ll enable IPv6 on the
+interfaces without using the IPV6 ADDRESS
+command.
+In other words, we’ll use the IPV6 ENABLE
+command, which enables IPv6 and generates
+a link-local address.
+Okay, let’s get started by configuring R1.
+Now, before configuring the interfaces, don’t
+forget to enable IPv6 routing with IPV6 UNICAST-ROUTING.
+That’s a common command to forget.
+Now I’ll configure G0/0/0, connected to
+the Internet.
+INTERFACE G0/0/0.
+IPV6 ADDRESS 2001:db8:a::2/64.
+And then G0/1/0.
+INTERFACE G0/1/0.
+IPV6 ADDRESS 2001:db8:b::2/64.
+Okay, we’ve configured R1’s Internet-connected
+interfaces, now let’s do the LAN-facing
+interfaces.
+Looking back at the instructions again, I
+need to use this prefix with EUI-64 for G0/0,
+and this prefix for G0/1.
+Let’s return to the CLI and do that.
+INTERFACE G0/0.
+IPV6 ADDRESS 2001:db8:a1::/64 EUI-64.
+And then G0/1.
+INTERFACE G0/1.
+IPV6 ADDRESS 2001:db8:a2::/64 EUI-64.
+Alright, we’ve configured R1’s interfaces.
+Now let’s quickly confirm with DO SHOW IPV6
+INTERFACE BRIEF.
+Okay, there are the four interfaces we just
+configured, each with a link-local address
+as well as the global unicast address we configured.
+Now let’s configure CSW1 and CSW2’s G1/0/1
+interfaces.
+For both of them, we’ll use EUI-64 just
+like we did on R1.
+I’ll go on CSW1 first.
+Before configuring the IP address, let’s
+use IPV6 UNICAST-ROUTING to enable IPv6 routing.
+You should make a habit of configuring that
+first so you don’t forget.
+Next, INTERFACE G1/0/1.
+IPV6 ADDRESS 2001:db8:a1::/64 EUI-64.
+Okay, that’s CSW1.
+Next I’ll go on CSW2.
+First, enable IPv6 routing.
+IPV6 UNICAST-ROUTING.
+And then configure the interface.
+INTERFACE G1/0/1.
+IPV6 ADDRESS 2001:db8:a2::/64 EUI-64.
+Okay, finally let’s do the EtherChannel
+between CSW1 and CSW2.
+Since I’m already on CSW2, I’ll start
+here.
+INTERFACE PORT-CHANNEL1.
+The instructions said to enable IPv6 without
+using the IPV6 ADDRESS command, so the command
+to use here is IPV6 ENABLE.
+Let’s verify the effect of that command.
+DO SHOW IPV6 INTERFACE BRIEF.
+So, look at the port-channel1 interface.
+Enabling IPv6 with IPV6 ENABLE automatically
+generates a link-local address like this.
+Okay, now I’ll save the config with DO WRITE
+since this was the last configuration on CSW2.
+And now I’ll go on to CSW1.
+INTERFACE PORT-CHANNEL1.
+IPV6 ENABLE.
+And then save the config.
+DO WRITE.
+So, step 1 is done.
+We configured IPv6 addresses in three different
+ways: configuring the exact address, configuring
+a /64 prefix and using EUI-64, and then using
+IPV6 ENABLE.
+Now in step 2, we’ll configure two default
+static routes on R1, pointing to the Internet.
+We’ll configure a recursive static route
+via next hop 2001:db8:a::1, the ISP connected
+to G0/0/0.
+And then a fully-specified route via next
+hop 2001:db8:b::1, the ISP connected to G0/1/0.
+This second route should be a floating route,
+with an AD 1 higher than the default.
+Okay, let’s return to R1 to configure those
+routes.
+The instructions say the first route should
+be a recursive route, meaning it should only
+specify the next-hop IP address.
+So, IPV6 ROUTE ::/0, that’s equivalent to
+0.0.0.0/0 in IPv4, and then the next hop is
+2001:db8:a::1.
+Now the next route, which must be fully specified,
+meaning it should specify both the exit interface
+and the next-hop IP address.
+It should also be a floating route.
+So, IPV6 ROUTE ::/0 G0/1/0 2001:db8:b::1,
+and then set the AD to 2 to make it a floating
+route.
+Okay that’s it, let’s save with DO WRITE.
+And that’s all for part 8.
+We configured IPv6 addresses on R1, CSW1,
+and CSW2, and then configured a couple of
+default routes on R1.
+I’ll click next to move on to part 9.
+Finally, we’ve reached last part of this
+lab, in which we’ll configure a wireless
+LAN using the GUI of WLC1.
+Let’s take a look at the steps.
+First, of course, we have to access the GUI
+of WLC1, which has the IP address 10.0.0.7.
+The login is admin with the password adminPW12.
+In step 2 we’ll create a dynamic interface
+for the Wi-Fi WLAN.
+Then in step 3 create a wireless LAN.
+And then finally we’ll verify that both
+LWAPs have associated with WLC1.
+There’s also a note saying that, due to
+packet tracer’s limitations, wireless clients
+won’t be able to properly lease an IP address
+from the Wi-Fi DHCP pool.
+In my experience, they always lease an IP
+address from the management DHCP pool in Packet
+Tracer.
+Don’t worry about it – it’s just an
+issue with packet tracer.
+So, let’s get started.
+I’ll access WLC1 from PC1.
+First I’ll open up the command prompt and
+ping WLC1 just to make sure PC1 can reach
+it.
+PING 10.0.0.7.
+This should also ensure that all devices have
+the correct ARP entries – it can be quite
+slow in packet tracer.
+Okay, next I’m going to leave the command
+prompt and open up PC1’s web browser.
+It can take a few seconds.
+Once the browser opens up, use HTTPS to access
+WLC1 by typing in the address bar.
+HTTPS://10.0.0.7.
+Here’s the login screen.
+Click on Login, and then enter the username
+admin and the password adminPW12.
+Okay, we’re in.
+Now let’s look closer at step 2.
+We need to configure a dynamic interface for
+the Wi-Fi WLAN, which is 10.6.0.0/24.
+The name should simply be Wi-Fi, with VLAN
+number 40.
+It should use port number 1 on WLC1, its IP
+address should be .2 of its subnet and default
+gateway .1.
+Finally, its DHCP server should be 10.0.0.76.
+Okay, let’s configure that on WLC1.
+To configure the WLC’s interfaces, open
+the CONTROLLER tab.
+Once it loads, click on Interfaces on the
+left.
+By default, the WLC has two interfaces: the
+management interface and the virtual interface.
+Let’s create a dynamic interface.
+Scroll to the right of this page and click
+on “New…”.
+The first menu has the interface name and
+VLAN ID.
+So, let’s name the interface Wi-Fi, and
+set the VLAN to 40.
+Then, click Apply to move to the next menu.
+We need to configure a few things here.
+Scroll down to Physical Information and set
+the port number to 1.
+Then, under Interface Address set the IP to
+10.6.0.2, the netmask to 255.255.255.0, and
+the gateway to 10.6.0.1.
+Finally, set the primary DHCP server to 10.0.0.76,
+R1’s loopback interface.
+Okay, that’s it.
+Scroll up and click apply, and then click
+Okay on the popup.
+And we’re done.
+I’ll click on Interfaces again to go back
+to the list of interfaces, and as you can
+see in the list, the interface has been created.
+Next, let’s look at step 3.
+We need to create a WLAN with the name and
+SSID Wi-Fi, and ID number of 1.
+We need to enable it, and set WPA2 with AES
+encryption, and a pre shared key of cisco123.
+Okay, let’s go back to WLC1 and configure
+it.
+WLANs are configured from the WLAN tab, of
+course.
+To create a new WLAN, just click on Go here
+on the right.
+In the first menu, we can set the profile
+name, SSID and ID number.
+Both of these should simply be Wi-Fi, and
+the ID should be 1, so we don’t have to
+change that.
+Okay, click on Apply to move on to the next
+screen.
+On this next page, we need to configure a
+couple of things.
+First, click the checkbox here to enable the
+WLAN.
+Then, we should configure the interface; this
+WLAN should use the Wi-Fi interface, not the
+management interface.
+Okay, after configuring that, click on the
+Security tab.
+Let’s enable WPA2.
+From the layer 2 security drop-down, select
+WPA+WPA2.
+Then click on WPA2 policy.
+For the encryption, AES is selected by default,
+so we don’t have to change that.
+Then click on PSK to enable pre-shared key
+authentication.
+And configure the PSK as cisco123.
+And that’s it.
+There are additional tabs here, but we don’t
+have to configure them for this lab.
+Most of the remaining settings don’t work
+in packet tracer, anyway.
+So, just click on apply in the top right to
+apply the settings.
+All configurations are done!
+I’ll just click on Save Configuration to
+save them.
+After saving the configurations, click on
+MONITOR to return to the first screen.
+If you scroll down, you can see the access
+points associated with WLC1.
+There should be two: LWAP1 and LWAP2.
+Click here to see a list, and here they are.
+Okay, I’ll do one more thing before finishing
+up.
+Let’s open up Laptop1.
+From the Config tab, click on the Wireless0
+interface.
+Let’s make it associate with LWAP1.
+So, specify the SSID ‘Wi-Fi’ that we just
+configured.
+Under authentication, click on WPA2-PSK and
+enter the PSK ‘cisco123’.
+Finally, select the correct encryption type:
+AES.
+After a few seconds, Laptop 1 should associate
+with LWAP1.
+However, look back at the note under step
+4 in the instructions once more.
+Wireless clients won’t be able to lease
+an IP address from the Wi-Fi DHCP pool.
+The Wi-Fi subnet is 10.6.0.0/24.
+But look at the IP address Laptop1 leased:
+it’s in the 10.0.0.0/28 subnet: the Office
+A management subnet.
+But as I said, don’t worry about it.
+The configurations we did here are correct.
+It’s just a problem with packet tracer.
+So, we’re finally done.
+As the completion score of 100% here shows,
+we did all of the steps correctly.
+To be honest, if you’re studying for the
+CCNA exam, I’d be surprised if you got 100%
+on the first attempt – this is a huge lab
+so you will most likely get a few things wrong.
+If your score isn’t 100%, click on Check
+Results and then assessment items, and then
+click on ‘show incorrect items’.
+This will show you which commands you got
+wrong, so you can go back and fix them.
+Okay, this video has gone on long enough,
+so let’s end it here.
+This was the Jeremy’s IT Lab CCNA Mega Lab.
+I hope this lab and video were both challenging
+and helpful.
+Thanks for watching.

@@ -1,0 +1,267 @@
+============================================================
+CCNA 200-301 MASTER PROMPT
+============================================================
+Copy the prompt below into Claude along with your transcript
+batch files. Adjust [BATCH_NUMBER] and [VIDEO_LIST] as needed.
+============================================================
+
+
+PROMPT START (copy from here)
+------------------------------------------------------------
+
+You are a CCNA 200-301 exam coach and network engineering mentor. I am studying for the CCNA exam (200-301) using transcripts file 1-->28 store in folder "ccna_transcripts" extracted from a 126-video YouTube course.
+
+Below are transcripts from Batch [BATCH_NUMBER]. Analyze them thoroughly and produce and save into md file the following:
+
+---
+
+## 1. EXAM KNOWLEDGE MAP
+
+For each video, extract:
+- **Core concepts** tested on the CCNA 200-301 exam
+- **Exam domain** mapping (which of the 6 exam domains this falls under, with % weight):
+  - 1.0 Network Fundamentals (20%)
+  - 2.0 Network Access (20%)
+  - 3.0 IP Connectivity (25%)
+  - 4.0 IP Services (10%)
+  - 5.0 Security Fundamentals (15%)
+  - 6.0 Automation and Programmability (10%)
+- **Specific exam objectives** covered (e.g., "1.1 Explain the role of network components" or "3.3 Configure and verify IPv4 and IPv6 static routing")
+
+---
+
+## 2. MUST-KNOW CONCEPTS (Exam Critical)
+
+Create a structured reference for each key concept:
+- **What it is** (1-2 sentence definition)
+- **How it works** (brief technical explanation)
+- **Key facts to memorize** (numbers, defaults, ranges that appear on the exam)
+- **Common exam traps** (misconceptions or tricky question angles)
+- **Comparison** (if similar to another concept, create a quick comparison table)
+
+---
+
+## 3. CISCO IOS COMMANDS
+
+Extract ALL Cisco commands mentioned. For each command:
+```
+Command:        [full syntax]
+Mode:           [User EXEC / Privileged EXEC / Global Config / Interface Config / etc.]
+Purpose:        [what it does]
+Example:        [practical usage]
+Show/Verify:    [related show command to verify]
+Exam note:      [what the exam might ask about this command]
+```
+
+---
+
+## 4. DAILY PRACTICE CHECKLIST
+
+Based on this batch's content, create:
+
+### Lab exercises (for Packet Tracer / GNS3):
+- Step-by-step lab scenarios I should practice
+- Specific topologies to build
+- Commands to practice until they become muscle memory
+
+### Real-world application:
+- How these concepts apply in a production network
+- Common troubleshooting scenarios using these concepts
+- What I would encounter as a junior network engineer on day 1
+
+---
+
+## 5. EXAM-STYLE QUESTIONS
+
+Generate 15 questions in CCNA exam format:
+- 8 multiple choice (single answer)
+- 4 multiple choice (choose 2 or 3)
+- 3 scenario-based questions (read a network description, answer what to do)
+
+For each question:
+- Mark difficulty: [Easy / Medium / Hard]
+- Provide the correct answer with detailed explanation
+- Explain why each wrong answer is wrong
+
+---
+
+## 6. QUICK REFERENCE CARD
+
+Create a condensed "cheat sheet" section I can review in 5 minutes:
+- Key port numbers
+- Protocol functions and layers
+- Default values (timers, metrics, AD values)
+- Subnet shortcuts
+- Any mnemonics or memory tricks for this batch's content
+
+---
+
+## 7. KNOWLEDGE GAPS FLAG
+
+Identify:
+- Topics mentioned briefly that need deeper study
+- Prerequisites assumed but not fully explained
+- Related topics NOT in this batch that I should cross-reference
+- Areas where this batch connects to other CCNA exam domains
+
+---
+
+FORMAT RULES:
+- Use tables where comparing items
+- Use code blocks for all CLI commands
+- Bold all terms that are directly exam-testable
+- Mark any "EXAM ALERT" for content that frequently appears on the real exam
+- Keep explanations practical, not academic
+- If a concept is better understood with a diagram description, describe what the diagram would show
+
+---
+
+[PASTE TRANSCRIPT BATCH CONTENT HERE]
+
+
+------------------------------------------------------------
+PROMPT END
+============================================================
+
+
+============================================================
+FINAL CONSOLIDATION PROMPT
+============================================================
+Use this AFTER processing all batches to create the ultimate
+study guide. Paste it with all your previous batch summaries.
+============================================================
+
+
+PROMPT START (copy from here)
+------------------------------------------------------------
+
+You are my CCNA 200-301 exam coach. I have completed studying all 126 videos of the CCNA course. Below are all the summaries, concepts, commands, and quiz results from each batch.
+
+Now create my FINAL EXAM PREPARATION PACKAGE:
+
+---
+
+## PART A: COMPLETE COMMAND REFERENCE
+
+Consolidate ALL Cisco IOS commands from the entire course into one organized reference:
+
+### By category:
+1. Device setup & management commands
+2. Interface configuration commands
+3. VLAN & trunking commands
+4. Routing commands (static + OSPF)
+5. ACL & security commands
+6. NAT/DHCP/DNS service commands
+7. Monitoring & troubleshooting (show/debug) commands
+8. Wireless commands
+9. Automation & programmability commands
+
+For each command include: syntax, mode, purpose, and one-line example.
+
+---
+
+## PART B: EXAM BLUEPRINT COVERAGE ANALYSIS
+
+Map everything I learned against the official CCNA 200-301 exam topics:
+
+| Exam Topic | Covered? | Confidence Level | Videos | Notes |
+|------------|----------|-----------------|--------|-------|
+| 1.1 ...    | Yes/No   | High/Med/Low    | #s     |       |
+
+Flag any exam objectives that were NOT adequately covered in the course.
+
+---
+
+## PART C: TOP 100 EXAM FACTS
+
+The 100 most important facts, numbers, and concepts I must know on exam day. Organized by domain. These should be things I can review the night before the exam.
+
+---
+
+## PART D: TROUBLESHOOTING METHODOLOGY
+
+For each major topic area, create a troubleshooting flowchart (described in text):
+- Cannot ping remote host → check what first → then what → ...
+- VLAN not working → verify trunk → check native VLAN → ...
+- OSPF neighbor not forming → check area → check network statements → ...
+- ACL blocking traffic → check direction → check order → ...
+
+---
+
+## PART E: PRACTICE EXAM (FULL LENGTH)
+
+Create a complete practice exam:
+- 100 questions
+- Time allocation: 120 minutes
+- Distribution matching real exam:
+  - Network Fundamentals: 20 questions
+  - Network Access: 20 questions
+  - IP Connectivity: 25 questions
+  - IP Services: 10 questions
+  - Security Fundamentals: 15 questions
+  - Automation: 10 questions
+- Mix of: single answer, multiple answer, drag-and-drop style
+- Include scenario-based questions with network diagrams (described)
+- Answer key with full explanations at the end
+
+---
+
+## PART F: 14-DAY REVISION PLAN
+
+Create a day-by-day revision schedule:
+- Which topics to review each day
+- Which labs to practice
+- Daily quiz focus areas
+- Building up to a final mock exam on day 14
+
+---
+
+## PART G: DAILY PRACTICE REFERENCE
+
+For someone working as a network engineer, organize the practical knowledge into:
+
+### Week 1-4 on the job: What I need to know
+- Common daily tasks and which commands to use
+- How to safely make changes in production
+- Reading and interpreting show command outputs
+- Basic troubleshooting workflow
+
+### Configuration templates
+- Standard switch port setup
+- Standard router interface setup
+- VLAN creation and assignment template
+- OSPF basic configuration template
+- Standard ACL template
+- NAT configuration template
+
+---
+
+[PASTE ALL BATCH SUMMARIES HERE]
+
+
+------------------------------------------------------------
+PROMPT END
+============================================================
+
+
+============================================================
+TIPS FOR BEST RESULTS
+============================================================
+
+1. Process 2-3 batch files per Claude conversation
+   (avoid hitting token limits)
+
+2. Save each batch's output to a file before starting next
+
+3. For the FINAL CONSOLIDATION prompt, you may need to
+   split it into Part A-C and Part D-G due to length
+
+4. After the practice exam, ask Claude:
+   "Based on my wrong answers, what are my weak areas
+    and what should I study more?"
+
+5. For hands-on practice, always use:
+   - Cisco Packet Tracer (free from netacad.com)
+   - Or GNS3 (free, more advanced)
+
+============================================================

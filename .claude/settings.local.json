@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/working/MyAI/CCNA_Course_Notes/Course_Notes/**)",
+      "Bash(done)"
+    ]
+  }
+}
